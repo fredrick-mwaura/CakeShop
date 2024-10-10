@@ -1,0 +1,49 @@
+.primary_btn {
+    padding: 10px 10px;
+    background-color: rgba(247, 212, 57, 0.63);
+    color: black;
+    min-height: 30px;
+    min-width: 205px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 16px;
+    justify-content: center;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adjusted box-shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.primary_btn:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.24); /* Adjusted shadow for hover */
+    color: rgb(105, 86, 2);
+}
+
+.outline_btn {
+    padding: 10px 10px;
+    background-color: transparent;
+    color: black;
+    min-height: 30px;
+    min-width: 420px;
+    border: 1px solid black; /* Border remains as is */
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: bold; /* Corrected from '800px' to 'bold' */
+    font-size: 16px;
+    justify-content: center;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.outline_btn:hover {
+    box-shadow: 
+        0 5px 5px rgba(0,0,0,0.24), 
+        0 10px 25px rgba(0,0,0,0.19);
+    color: rgb(82, 60, 1);
+}

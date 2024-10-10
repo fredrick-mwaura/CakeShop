@@ -1,0 +1,34 @@
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f9f9f9; /* You can customize this */
+  }
+  
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .feature-icon {
+    font-size: 40px;
+    color: #ff3f81; /* You can customize this */
+    margin-bottom: 15px;
+  }
+  
+  .feature h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    color: #666;
+  }
