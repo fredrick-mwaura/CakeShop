@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
+// import React from 'react'
 import '../stylesheets/footer.css'
 
 export default function Footer() {

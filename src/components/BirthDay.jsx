@@ -4,7 +4,7 @@ import { CartContext } from "./GlobalCart"; // Import CartContex
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./icon";
-import Footer from "./footer";
+// import Footer from "./footer";
 import '../stylesheets/birthday.css'
 import Cake1 from '../images/cake.webp'
 import Cake3 from "../images/1.jpg"
@@ -194,9 +194,9 @@ const Birthday = ({ cake }) => {
       {/* Add to Cart Button */}
       {/* <button onClick={() => addToCart(cake)}>Add to Cart</button> */}
       <div className="Icon">    
-         <Icon icon={faWhatsapp} size="1.5x" color="black" className="chatty" />
-         <Icon icon={faEye} size="1.5x" color="black" className="chatty" />
-         <Icon icon={faCartPlus} size="1.5x" color="black" className="chatty" onClick={() => addToCart(cake)}/>
+         <Icon icon={faWhatsapp} size="1x" color="black" className="chatty" />
+         <Icon icon={faEye} size="1x" color="black" className="chatty" />
+         <Icon icon={faCartPlus} size="1x" color="black" className="chatty" onClick={() => addToCart(cake)}/>
       </div>
     </div>
   );
@@ -220,9 +220,9 @@ const BirthDay = () => {
           <Birthday key={index} cake={cake} />
         ))}
       </div>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
     </>
   );
 };
