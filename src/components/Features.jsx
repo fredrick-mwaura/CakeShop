@@ -1,10 +1,10 @@
 import "../stylesheets/Features.css";
 import ball from "../images/1.jpg";
 import gum from "../images/2.jpg";
-import buubb from "../images/3.jpg";
-import berry from "../images/4.jpg";
-import stra from "../images/5.jpg";
-import flav from "../images/6.jpg";
+import mango from "../images/3.jpg";
+import orange from "../images/4.jpg";
+import strawberry from "../images/5.jpg";
+import flavor from "../images/6.jpg";
 import cele from "../images/cele.webp";
 
 function Features() {
@@ -53,17 +53,17 @@ function Features() {
           </div>
 
           <div className="flavour">
-            <img src={berry} alt="flavour" />
+            <img src={orange} alt="flavour" />
             <p>Rocky Road</p>
           </div>
 
           <div className="flavour">
-            <img src={stra} alt="flavour" />
+            <img src={strawberry} alt="flavour" />
             <p>Rocky Road</p>
           </div>
 
           <div className="flavour">
-            <img src={buubb} alt="flavour" />
+            <img src={mango} alt="flavour" />
             <p>Rocky Road</p>
           </div>
 
@@ -73,7 +73,7 @@ function Features() {
           </div>
 
           <div className="flavour">
-            <img src={flav} alt="flavour" />
+            <img src={flavor} alt="flavour" />
             <p>Rocky Road</p>
           </div>
         </div>
@@ -127,7 +127,7 @@ function Features() {
                 imagination to life!
               </p>
             </div>
-            <img src={flav} className="img_2" alt="Celebrate" />
+            <img src={flavor} className="img_2" alt="Celebrate" />
           </div>
         </div>
       </div>

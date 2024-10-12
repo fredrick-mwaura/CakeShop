@@ -2,7 +2,7 @@ import {
   faEye,
   faCartPlus,
 } from "@fortawesome/free-solid-svg-icons";
-
+import './product.css'
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Icon from '../icon'
 import { useState } from "react";
@@ -32,18 +32,18 @@ const ProductCard = ({ product, addToCart }) => {
         {/* WhatsApp Share */}
         <Icon
           icon={faWhatsapp}
-          size="lg"
+          size="1x"
           className="icon"
           onClick={shareOnWhatsApp}
         />
 
         {/* Product Preview Modal */}
-        <Icon icon={faEye} size="lg" className="icon" onClick={toggleModal} />
+        <Icon icon={faEye} size="1x" className="icon" onClick={toggleModal} />
 
         {/* Add to Cart */}
         <Icon
           icon={faCartPlus}
-          size="lg"
+          size="1x"
           className="icon"
           onClick={() => addToCart(product)}
         />

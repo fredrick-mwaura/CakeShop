@@ -18,7 +18,7 @@
     padding: 1.5rem;
     margin: 1rem;
     text-align: center;
-    flex: 1 1 calc(33.3333% - 2rem); 
+    flex: 1 1 calc(33.3333% - 2rem);
     max-width: 300px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s; 
@@ -26,7 +26,7 @@
 
 .feature:hover {
     transform: scale(1.05); 
-  /* grid-template-columns: 1fr 2fr;htly enlarge on hover */
+   grid-template-columns: 1fr 2fr;
 }
 
 .feature-icon {
@@ -57,10 +57,6 @@
 .flavour img {
     width: 100%;
     border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
 }
 
 .disp_1 {
@@ -100,13 +96,10 @@
     background-color:#bdbbbb;
     margin: 1rem;
     display: block;
-    /*justify-content: center;
-    */align-items: center;
+    justify-content: center;
+    align-items: center;
     border-radius:30px;
-    -webkit-border-radius:30px;
-    -moz-border-radius:30px;
-    -ms-border-radius:30px;
-    -o-border-radius:30px;
+
 }
 .Chat p{
     display: flex;

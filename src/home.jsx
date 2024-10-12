@@ -1,17 +1,19 @@
 // import React from 'react'
-import './stylesheets/Home.css'
 import Cake from './images/cake.webp'
 import Celebrate from './images/celebrate.webp'
 import Cut from './images/cut.webp'
-import Navbar from './components/Header'
-import Footer from './components/footer.jsx'
-import Features from './components/Features.jsx'
+// import Navbar from './components/Header'
+// import Footer from './components/footer'
+import Features from './components/Features'
+import './stylesheets/Home.css'
 // import BirthDay from './components/BirthDay.jsx'
 
-export default function Home() {
+function Home() {
  return (
    <>
-     <Navbar/>
+     {/* <div>
+      <Navbar/>
+     </div> */}
      <div className="homepage">
        <div className="container">
          <div className="content">
@@ -32,14 +34,16 @@ export default function Home() {
            </div>
          </div>
        </div>
-     </div>
-     <div>
        <Features />
      </div>
+     {/* <div> */}
+     {/* </div> */}
      {/* <BirthDay/> */}
-     <div>
-      <Footer/>
-    </div>
+     {/* <div> */}
+     {/* <Footer /> */}
+     {/* </div> */}
    </>
  );
 };
+
+export default  Home;

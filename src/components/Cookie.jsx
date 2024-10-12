@@ -22,7 +22,7 @@ const cakeProducts = [
 
 const Cookie = ({ addToCart }) => {
   return (
-    <div className="product-grid">
+    <div className="cake-grid">
       {cakeProducts.map((product, index) => (
         <ProductCard key={index} 
         product={product} 

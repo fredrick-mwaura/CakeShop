@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext.jsx"; 
+import { AuthContext } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types

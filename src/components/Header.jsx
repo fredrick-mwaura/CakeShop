@@ -1,14 +1,10 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import { useState } from "react";
 import "../stylesheets/Header.css";
 import { Link } from "react-router-dom";
 import Images from "./image";
-// import AddToCart from './AddToCart';
 import Logo from "../images/logo.png";
-// import Product from './BirthDay';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function Header() {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -17,46 +13,68 @@ function Header() {
 
   return (
     <header className="nillavee-header">
-      <Images
-        src={Logo}
-        alt="Nillavee Logo"
-        width="30"
-        height="30"
-        className="Nillave"
-        // onClick={toggleMenu}
-      />
+      <div className="menu-bar">
+        <Images
+          src={Logo}
+          alt="Nillavee Logo"
+          width=""
+          height=""
+          className="Nillave"
+        />
 
-      <div className="header-nav">
-        <div className="logo-container">
-          <input type="text" placeholder="Search..." className="search-input" />
-          <p className="contact-info ">+254723174434</p>
+        <div className="header-nav">
+          <div className="logo-container">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-input"
+            />
+            <p className="contact-info ">+254723174434</p>
+          </div>
+
+          <ul className={`navigation ${isOpen ? "open" : ""}`}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/allCakes">All Cakes</Link>
+            </li>
+            <li>
+              <Link to="/birthday">Birthday Cakes</Link>
+            </li>
+            <li>
+              <Link to="/cookie">cookie</Link>
+            </li>
+            <li>
+              <Link to="/contact_us">Contact Us</Link>
+            </li>
+          </ul>
+          {/* <div><AddToCart/></div> */}
         </div>
-
-        <ul className={`navigation ${isOpen ? "open" : ""}`}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/AllCakes">All Cakes</Link>
-          </li>
-          <li>
-            <Link to="/birthday">Birthday Cakes</Link>
-          </li>
-          <li>
-            <Link to="/cookie">cookie</Link>
-          </li>
-          <li>
-            <Link to="/contact_us">Contact Us</Link>
-          </li>
-        </ul>
-        {/* <div><AddToCart/></div> */}
       </div>
 
       <div className="hamburger" onClick={toggleMenu}>
         {isOpen ? "✖" : "☰"}
       </div>
+      {/*<ul className={`dropdown ${isOpen ? "open" : ""}`}>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/">Home</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/allCakes">All Cakes</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/birthday">Birthday Cakes</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/cookie">cookie</Link>*/}
+      {/*  </li>*/}
+      {/*  <li>*/}
+      {/*    <Link to="/contact_us">Contact Us</Link>*/}
+      {/*  </li>*/}
+      {/*</ul>*/}
     </header>
   );
 }
 
-export default Header;
+export default Navbar;

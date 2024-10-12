@@ -13,7 +13,7 @@ export default function AddToCart() {
 
   return (
     <div className="addTo">
-      <Icon icon={faCartShopping} size="2x" color="blue" className="Cart" />
+      <Icon icon={faCartShopping} size="2x" color="black" className="Cart" />
         {totalItems > 0 && (
       <span className="badge">{totalItems}</span>
         )}
