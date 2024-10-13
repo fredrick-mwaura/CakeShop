@@ -1,5 +1,5 @@
 // import React from 'react'
-import Home from "../../home"
+import Home from "../home.jsx"
 import './notfound.css'
 
 

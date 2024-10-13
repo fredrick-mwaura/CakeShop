@@ -79,19 +79,21 @@ function Features() {
         </div>
 
         <div className="disp_1">
-          <div className="card_1">
+          <div className='celebrate'>
             <img src={cele} alt="Celebrate" />
-            <h3>Celebrate with us</h3>
-            <p>
-              Are you ready to channel the magic of birthdays and make your{" "}
-              <br />
-              celebrations complete? The missing wow factor is exquisite
-              birthday <br />
-              cakes baked in a design unique to you to create memories that
-              last.
-              <br />
-              We can help!
-            </p>
+            <div>
+              <h3>Celebrate with us</h3>
+              <p >
+                Are you ready to channel the magic of birthdays and make your
+                <br />
+                celebrations complete? The missing wow factor is exquisite
+                birthday <br />
+                cakes baked in a design unique to you to create memories that
+                last.
+                <br />
+                We can help!
+              </p>
+            </div>
           </div>
           <div className="Chat">
             <p> Any Question?</p>

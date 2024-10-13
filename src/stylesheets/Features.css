@@ -110,9 +110,7 @@
 }
 
 .Chat a{
-    /* background-color:green; */
     padding: 10px;
-    border-radius:10px;
     color:#5a8de0;
     display: flex;
     justify-content: center;
@@ -121,10 +119,7 @@
     font-size: large;
     border: 0;
     cursor:pointer;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    -ms-border-radius:10px;
-    -o-border-radius:10px;
+    border-radius: 30px;
 }
 
 @media (max-width: 768px) {

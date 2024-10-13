@@ -1,4 +1,4 @@
-import Home from "./home";
+import Home from "./components/home.jsx";
 import { Toaster } from "react-hot-toast";
 import { Profile } from "./components/Profile/Userprofile.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

@@ -19,12 +19,12 @@ import ProductCard from "./productCard/card.jsx";
 const Product = [
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: Cake5,
   },
   {
@@ -34,12 +34,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake4,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [1500, 2000],
+    price: 2000,
     src: Cake6,
   },
   {
@@ -49,12 +49,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 1000,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: Cake3,
     },
   {
@@ -64,12 +64,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 1200,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3000,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -79,12 +79,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -94,12 +94,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -109,12 +109,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -124,12 +124,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -139,12 +139,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -154,12 +154,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
   {
@@ -169,12 +169,12 @@ const Product = [
   },
   {
     name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
+    price: 3500,
     src: Cake1,
   },
   {
     name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
+    price: 3500,
     src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
   },
 
@@ -191,9 +191,7 @@ const Product = [
 // {/*      <img src={cake.src} alt={cake.name} className="cake-image" />*/}
 // {/*      <h3>{cake.name}</h3>*/}
 // {/*      <p>*/}
-// {/*        {Array.isArray(cake.priceRange)*/}
-// {/*          ? `Ksh ${cake.priceRange[0]} - ${cake.priceRange[1]}`*/}
-// {/*          : `Ksh ${cake.price}`}*/}
+// {/*        {Array.isArray(cake.price)*/*         ? `Ksh ${cake.price[0cakeprice[1// {*          : `Ksh ${cake.price}`}*/}
 // {/*      </p>*/}
 //
 // {/*      /!* Add to Cart Button *!/*/}
@@ -212,7 +210,7 @@ const Product = [
 // {/*  cake: PropTypes.shape({*/}
 // {/*    name: PropTypes.string.isRequired,*/}
 // {/*    price: PropTypes.number,*/}
-// {/*    priceRange: PropTypes.arrayOf(PropTypes.number),*/}
+// {/*    price: es.arayOf(PropTypes.number),*/}
 // {/*    src: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,*/}
 // {/*  }).isRequired,*/}
 // {/*};*/}

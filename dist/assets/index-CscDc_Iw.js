@@ -219,7 +219,7 @@ to {
 `,cv="0%{opacity:0;} 100%{opacity:1;}",fv="0%{opacity:1;} 100%{opacity:0;}",dv=nn("div")`
   display: flex;
   align-items: center;
-  background: #fff;
+  // background: #fff;
   color: #363636;
   line-height: 1.3;
   will-change: transform;

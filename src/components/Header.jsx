@@ -1,80 +1,62 @@
-import { useState } from "react";
-import "../stylesheets/Header.css";
-import { Link } from "react-router-dom";
-import Images from "./image";
-import Logo from "../images/logo.png";
+import { useState } from 'react';
+import '../stylesheets/Header.css';
+import {Link} from 'react-router-dom'
+import Images from './image';
+import Logo from '../images/logo.png';
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+function Header() {
 
-  return (
-    <header className="nillavee-header">
-      <div className="menu-bar">
-        <Images
-          src={Logo}
-          alt="Nillavee Logo"
-          width=""
-          height=""
-          className="Nillave"
-        />
+    const [isOpen, setIsOpen] = useState(false);
 
-        <div className="header-nav">
-          <div className="logo-container">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="search-input"
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <header className="nillavee-header">
+            <Images
+                src={Logo}
+                alt="Nillavee Logo"
+                width="30"
+                height="30"
+                className="Nillave"
+                // onClick={toggleMenu}
             />
-            <p className="contact-info ">+254723174434</p>
-          </div>
 
-          <ul className={`navigation ${isOpen ? "open" : ""}`}>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/allCakes">All Cakes</Link>
-            </li>
-            <li>
-              <Link to="/birthday">Birthday Cakes</Link>
-            </li>
-            <li>
-              <Link to="/cookie">cookie</Link>
-            </li>
-            <li>
-              <Link to="/contact_us">Contact Us</Link>
-            </li>
-          </ul>
-          {/* <div><AddToCart/></div> */}
-        </div>
-      </div>
+            <div className="header-nav">
+                <div className="logo-container">
+                    <input type="text" placeholder="Search..." className="search-input" />
+                    <p className="contact-info">+254723174434</p>
+                </div>
 
-      <div className="hamburger" onClick={toggleMenu}>
-        {isOpen ? "✖" : "☰"}
-      </div>
-      {/*<ul className={`dropdown ${isOpen ? "open" : ""}`}>*/}
-      {/*  <li>*/}
-      {/*    <Link to="/">Home</Link>*/}
-      {/*  </li>*/}
-      {/*  <li>*/}
-      {/*    <Link to="/allCakes">All Cakes</Link>*/}
-      {/*  </li>*/}
-      {/*  <li>*/}
-      {/*    <Link to="/birthday">Birthday Cakes</Link>*/}
-      {/*  </li>*/}
-      {/*  <li>*/}
-      {/*    <Link to="/cookie">cookie</Link>*/}
-      {/*  </li>*/}
-      {/*  <li>*/}
-      {/*    <Link to="/contact_us">Contact Us</Link>*/}
-      {/*  </li>*/}
-      {/*</ul>*/}
-    </header>
-  );
+                <ul className={`navigation ${isOpen ? "open" : ""}`}>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/">All Cakes</Link>
+                    </li>
+                    <li>
+                        <Link to="/birthday">Birthday Cakes</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About Us</Link>
+                    </li>
+                    <li>
+                        <Link to="/contact_us">Contact Us</Link>
+                    </li>
+                </ul>
+                <div>
+                    {/* <AddToCart/> */}
+                </div>
+            </div>
+
+            <div className="hamburger" onClick={toggleMenu}>
+                {isOpen ? "✖" : "☰"}
+            </div>
+        </header>
+    );
 }
 
-export default Navbar;
+export default Header;

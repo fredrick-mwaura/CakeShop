@@ -1,98 +1,86 @@
- .homepage {
-  /* background: linear-gradient(
-    to right,
-    #f7e1e2,
-    #ffecd2
-  ); */
-  /* height: unset; */
-  padding: 50px 0;
-  margin:0;
+.content {
+  background: linear-gradient(to right, #77a4f8, #8b8dfd);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  /* max-width: 1200px; */
-   /* height: max-content; */
+  max-width: 1200px;
+  padding: 20px;
   margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .text-content {
-  max-width: 50%;
+  text-align: center;
+  float: left;
+  /*background-color: linear-gradient(to right, #77a4f8, #8b8dfd);*/
+  margin-right: 3%;
 }
 
 .text-content h1 {
   font-size: 3rem;
-  color: #222;
+  font-weight: bold;
+  color: black;
   margin-bottom: 20px;
 }
 
 .text-content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #444;
+  font-size: 1.25rem;
+  color: #4a4a4a;
+  margin-bottom: 30px;
 }
 
 .shop-button {
-  background-color: #ff5f70;
+  background-color: #060230;
   color: white;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.3s;
 }
 
 .shop-button:hover {
-  background-color: #ff416c;
+  background-color: rgba(0, 255, 0, 0.4);
 }
 
 .image-content {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
 }
 
 .main-image {
-  width: 500px;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 20px;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .side-images {
+  position: relative;
+  top: 10%;
+  right: -10%;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .side-image {
   width: 150px;
-  height: auto;
-  border-radius: 10px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .text-content {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .image-content {
-    align-items: center;
-  }
+.image-content{
+  display: block;
 }
-
+}

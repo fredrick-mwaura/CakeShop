@@ -4,15 +4,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #fff;
     border-bottom: 1px solid #ccc;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: linear-gradient(to right, #b7e1ff, #ffefbb); /* Gradient background */
-    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+    background: linear-gradient(to right, #b7e1ff, #ffefbb);
 }
 
 .menu-bar {

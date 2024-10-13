@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useNavigationType } from "react-router-dom";
-import Home from "../../home"; 
+import Home from "../home.jsx";
 
 const BackOrHome = () => {
   const navigate = useNavigate();
