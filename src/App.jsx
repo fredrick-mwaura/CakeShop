@@ -16,7 +16,7 @@ import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import NotFound from "./components/Error/notfound";
-import Navbar from "./components/Header";
+// import Navbar from "./components/Header";
 import ErrorBoundary from "./components/Error/errorBoundary";
 
 function App() {
