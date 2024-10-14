@@ -71,6 +71,10 @@
   gap: 16px;
 }
 
+.iconn{
+  cursor: pointer;
+}
+
 .side-image {
   width: 150px;
   height: 150px;
@@ -83,4 +87,7 @@
 .image-content{
   display: block;
 }
+  /*.main-image{*/
+  /*  display: none;*/
+  /*}*/
 }

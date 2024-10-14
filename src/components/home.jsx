@@ -10,8 +10,7 @@ function Home() {
         <Header/>
         <AddToCart/>
         <Hws/>
-          <Features />
-
+        <Features />
       </>
   )
 }

@@ -7,7 +7,8 @@ import BirthDay from "./components/BirthDay";
 import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import { CartProvider } from "./components/GlobalCart";
-import Footer from "./components/footer";
+import CartView from './components/productCard/cardview.jsx'
+// import Footer from "./components/footer";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
@@ -28,7 +29,7 @@ function App() {
         <Router>
           {/* <div> */}
             <AddToCart />
-            <Navbar />
+            {/*<Navbar />*/}
           {/* </div> */}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -39,6 +40,7 @@ function App() {
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="cart" element={<CartView/>}/>
             <Route
               path="/order"
               element={
@@ -49,7 +51,7 @@ function App() {
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
+          {/*<Footer />*/}
         </Router>
       </CartProvider>
        </AuthProvider>

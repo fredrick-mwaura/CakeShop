@@ -1,8 +1,11 @@
-div p{
+.notfound p{
    display:flex;
    flex-direction:column;
    position:relative;
    align-items:center;
-   
-
+}
+div a{
+   display: flex;
+   justify-content: center;
+   top: 50%;
 }

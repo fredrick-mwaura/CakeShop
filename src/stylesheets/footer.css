@@ -3,6 +3,8 @@
     height:auto;
     color:aliceblue;
     background: #060230;
+    /*position: sticky;*/
+    bottom: 0;
 }
 
 .footer{
