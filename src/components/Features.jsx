@@ -1,4 +1,4 @@
-import "../stylesheets/Features.css";
+import "../stylesheets/Features1.css";
 import ball from "../images/1.jpg";
 import gum from "../images/2.jpg";
 import mango from "../images/3.jpg";
@@ -8,9 +8,11 @@ import flavor from "../images/6.jpg";
 import cele from "../images/cele.webp";
 
 function Features() {
-  const PhoneNumber = '0705776570';
+  const PhoneNumber = "0705776570";
   const message = "Hello Cakes and Pastries.";
-  const WhatsappLink = `https://api.whatsapp.com/send?phone=${PhoneNumber}&text=${encodeURIComponent(message)}`;
+  const WhatsappLink = `https://api.whatsapp.com/send?phone=${PhoneNumber}&text=${encodeURIComponent(
+    message
+  )}`;
 
   const feature = [
     {
@@ -45,45 +47,47 @@ function Features() {
         ))}
       </div>
       <div>
-        <h3 className="flavor">Flavours Available</h3>
+        <div className="heading-container">
+          <h1 className="heading">Flavours Available</h1>
+        </div>
+
         <div className="flavours">
           <div className="flavour">
             <img src={gum} alt="flavour" />
-            <p>Rocky Road</p>
+            <p>Vanilla</p>
           </div>
 
           <div className="flavour">
             <img src={orange} alt="flavour" />
-            <p>Rocky Road</p>
+            <p>Chocolate</p>
           </div>
 
           <div className="flavour">
             <img src={strawberry} alt="flavour" />
-            <p>Rocky Road</p>
+            <p>Strawberry</p>
           </div>
 
           <div className="flavour">
             <img src={mango} alt="flavour" />
-            <p>Rocky Road</p>
+            <p>lemon</p>
           </div>
 
           <div className="flavour">
             <img src={ball} alt="flavour" />
-            <p>Rocky Road</p>
+            <p>forest</p>
           </div>
-
           <div className="flavour">
-            <img src={flavor} alt="flavour" />
-            <p>Rocky Road</p>
+            <img src={ball} alt="flavour" />
+            <p>caramel</p>
           </div>
         </div>
 
         <div className="disp_1">
-          <div className='celebrate'>
+          <div className="celebrate">
             <img src={cele} alt="Celebrate" />
-            <div>
+            <div className="bodytext">
               <h3>Celebrate with us</h3>
-              <p >
+              <p>
                 Are you ready to channel the magic of birthdays and make your
                 <br />
                 celebrations complete? The missing wow factor is exquisite
@@ -106,9 +110,8 @@ function Features() {
               Chat On Whatsapp
             </a>
           </div>
-
           <div className="card_2">
-            <div>
+            <div className="bodytext">
               <h3>Cakes for Kids</h3>
               <p>
                 Show love and create sweet memories with your kid(s). Make your

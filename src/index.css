@@ -1,4 +1,4 @@
 html, body{
-  font-family: sans-serif;
+  font-family: 'Roboto';
   font-size: clamp(0.2rem, 2vw, 1rem);
 }
