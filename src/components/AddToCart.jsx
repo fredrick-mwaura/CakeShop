@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+ import {useContext, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom'
 import Icon from './icon';
 import { CartContext } from "./GlobalCart";
@@ -10,6 +10,8 @@ import {toast} from "react-hot-toast";
 export default function AddToCart() {
   const { cart } = useContext(CartContext);
   const navigate = useNavigate();
+  const [prevCartLength, setPrevCartLength] = useState(cart.length);
+  // const [productAdded, setProductAdded] = useState(false);
 
   const cartView = () => {
     navigate('/cart')
@@ -17,12 +19,15 @@ export default function AddToCart() {
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   console.log(cart);
+  useEffect(()=> {
+    const itemAdded = cart.length > prevCartLength.length ||
+        cart.some((item, index) => item.quantity > (prevCartLength[index]?.quantity || 0));
 
-  useEffect(() => {
-    if(cart.length > 0){
-      toast.success("product added to cart successfully")
+    if (itemAdded) {
+      toast.success('Product added to cart successfully');
     }
-  }, [cart]);
+    setPrevCartLength(cart);
+  },[cart, prevCartLength])
 
   return (
     <div className="addTo">

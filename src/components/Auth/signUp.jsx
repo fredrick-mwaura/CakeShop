@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import Images from '../image.jsx'
+import google from '../../images/google.svg'
 import './signup.css';
 
 const SignUp = () => {
@@ -36,7 +38,6 @@ const SignUp = () => {
     setErrorMessage("");
 
     try {
-      // Sending the form data to the backend API
       const response = await axios.post("/api/auth/signup", { //api call(promise)
         username: formData.username,
         email: formData.email,
@@ -45,11 +46,11 @@ const SignUp = () => {
 
       setLoading(false);
 
-      if (response.status === 201) { //data received and saved successfully
+      if (response.status === 201) {
         localStorage.setItem("user", JSON.stringify(response.data));
         toast.success("Signup successful!");
         setTimeout(() => {
-          navigate("/home");
+          navigate("/cookie");
         }, 2000);
       }else{
         handleUnsuccessfulRes(response);
@@ -61,7 +62,6 @@ const SignUp = () => {
       } else {
         toast.error("An error occurred. Please try again.");
       }
-      // toast.error(errorMessage || "An error occurred. Please try again.");
     }
   };
 
@@ -126,14 +126,24 @@ const SignUp = () => {
                 required
             />
           </div>
-          <button type="submit" disabled={loading}>
+          <button type="submit" className="submit" disabled={loading}>
             {loading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
-        <p className="auth-footer">
-          have account? <a href="/login">Login</a>
-        </p>
+        <div>
+          <a href='/' target="_blank" rel="noopener noreferrer" className='contGoogle'>
+          <Images
+            src={google}
+            alt="google"
+            width={15}
+            height={15}
+            className='icon'
+          />continue with google</a>
+          <p className="auth-footer">
+            have account? <a href="/login">Login</a>
+          </p>
+        </div>
       </div>
-    );
+  );
 };
 export default SignUp;

@@ -3,12 +3,15 @@ import PropTypes from "prop-types"
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() =>{
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart): [];
+
+});
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
-  }, []);
+ localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -29,6 +32,7 @@ export const CartProvider = ({ children }) => {
 
     });
   };
+  localStorage.removeItem('cart')
 
   return (
     <CartContext.Provider value={{ cart, addToCart }}>

@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import Navbar from "../Header";
+// import Navbar from "../Header";
 import "./login.css";
 import {toast} from "react-hot-toast";
 
@@ -30,6 +30,8 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
 
+
+    // validate inputs
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -50,13 +52,13 @@ const Login = () => {
     // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setLoading(false);
-      setError(toast.error("An error occurred. Please try again."));//in fetching data from the backend
+      setError(toast.error("An error occurred. Please try again."));
     }
   };
 
   return (
     <>
-      <Navbar />
+      {/*<Navbar />*/}
       <div className="auth-container">
         <h2 className="auth-title">Login</h2>
         {error && <p className="error-message">{error}</p>}

@@ -1,0 +1,76 @@
+/* CheckoutForm.css */
+.checkout-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.checkout-container h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-btn {
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #4da6ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #3399ff;
+}
+
+.error {
+     color: #c11515;
+     background-color: #FFCCCB;
+     padding: 5px;
+     border-radius: 3px;
+     margin-top: 5px;
+ }
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
