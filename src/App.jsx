@@ -8,7 +8,7 @@ import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import { CartProvider } from "./components/GlobalCart";
 import CartView from './components/productCard/cardview.jsx'
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
@@ -16,8 +16,10 @@ import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import NotFound from "./components/Error/notfound";
-// import Navbar from "./components/Header";
+import Navbar from "./components/Header";
 import ErrorBoundary from "./components/Error/errorBoundary";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   return (
@@ -29,7 +31,7 @@ function App() {
         <Router>
           {/* <div> */}
             <AddToCart />
-            {/*<Navbar />*/}
+            <Navbar />
           {/* </div> */}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -51,7 +53,7 @@ function App() {
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {/*<Footer />*/}
+          <Footer />
         </Router>
       </CartProvider>
        </AuthProvider>

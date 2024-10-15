@@ -1,8 +1,8 @@
 .content {
-  background: linear-gradient(to right, #77a4f8, #8b8dfd);
+  background: linear-gradient(to right, #b7e1ff, #ffefbb);
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 

@@ -24,13 +24,13 @@ export default function AddToCart() {
     }
   }, [cart]);
 
-  return (
-    <div className="addTo">
-      <Icon icon={faCartShopping} size="2x" color="black" className="Cart" onClick={cartView}/>
-        {totalItems > 0 && (
-      <span className="badge">{totalItems}</span>
-        )}
+  // return (
+  //   <div className="addTo">
+  //     <Icon icon={faCartShopping} size="2x" color="black" className="Cart" onClick={cartView}/>
+  //       {totalItems > 0 && (
+  //     <span className="badge">{totalItems}</span>
+  //       )}
 
-    </div>
-  );
+  //   </div>
+  // );
 }
