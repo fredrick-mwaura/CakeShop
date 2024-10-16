@@ -14,96 +14,99 @@ const Product = [
     name: "Gluten Free Chocolate",
     price: 3500,
     src: Cake1,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id: 2,
     name: "Naked Chocolate",
     price: 3500,
     src: Cake5,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:3,
     name: "Orange Almond",
     price: 4200,
     src: Cake3,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:4,
     name: "Gluten Free Chocolate",
     price: 3500,
     src: Cake4,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:5,
     name: "Naked Chocolate",
     price: 2000,
     src: Cake6,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:6,
     name: "Orange Almond",
     price: 4200,
     src: Cake5,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:7,
     name: "Gluten Free Chocolate",
     price: 1000,
     src: Cake1,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:8,
     name: "Naked Chocolate",
     price: 3500,
     src: Cake3,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
     },
   {
     id:9,
     name: "Orange Almond",
     price: 4200,
     src: Cake4,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:10,
     name: "Gluten Free Chocolate",
     price: 1200,
     src: Cake1,
-  },
-  {
-    id:11,
-    name: "Naked Chocolate",
-    price: 3000,
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:12,
     name: "Orange Almond",
     price: 4200,
     src: Cake3,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:13,
     name: "Gluten Free Chocolate",
     price: 3500,
     src: Cake1,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
-  {
-    id:15,
-    name: "Naked Chocolate",
-    price: 3500,
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
+
   {
     id:16,
     name: "Orange Almond",
     price: 4200,
     src: Cake3,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
   {
     id:17,
     name: "Gluten Free Chocolate",
     price: 3500,
     src: Cake1,
+    description: 'Perfect for a morning pick-me-up or an afternoon break.'
   },
 
 ];

@@ -14,7 +14,7 @@ import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
-// import PrivateRoute from "./components/routes/PrivateRoute";
+import PrivateRoute from "./components/routes/PrivateRoute";
 import NotFound from "./components/Error/notfound";
 import Navbar from "./components/Header";
 import ErrorBoundary from "./components/Error/errorBoundary";
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
        <ErrorBoundary fallback={<Home />} >
-      <Toaster position="top-left" reverseOrder={true} />
+      <Toaster position="top-center" reverseOrder={true} />
        <AuthProvider>
       <CartProvider>
         <Router>
@@ -44,9 +44,9 @@ function App() {
             <Route
               path="/order"
               element={
-                // <PrivateRoute>
+                <PrivateRoute>
                   <OrderPage />
-                // </PrivateRoute>
+                </PrivateRoute>
               }
             />
             <Route path="*" element={<NotFound />} />
