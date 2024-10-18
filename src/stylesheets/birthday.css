@@ -1,3 +1,17 @@
+.title{
+  text-align: center;
+  padding: 5%;
+  /* width: 90%; */
+  margin: 2% 2%;
+  border-radius: 30px;
+  font-size: xx-large;
+  background-color:#e0dada;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
 .cake-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

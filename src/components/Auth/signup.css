@@ -11,9 +11,9 @@ h2 {
    text-align: center;
 }
 
-/*.error-message {*/
-/*   color: red;*/
-/*}*/
+.error-message {
+   color: red;
+}
 
 input[type="text"],
 input[type="email"],
@@ -42,7 +42,7 @@ input[type="password"] {
 }
 
 .auth-footer {
-   /*margin-top: 15px;*/
+   margin-top: 15px;
 }
 .auth-footer a {
    color: #007bff;

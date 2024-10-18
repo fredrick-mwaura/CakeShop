@@ -8,15 +8,16 @@ import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import { CartProvider } from "./components/GlobalCart";
 import CartView from './components/productCard/cardview.jsx'
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
-import NotFound from "./components/Error/notfound";
+// import NotFound from "./components/Error/notfound";
 import Navbar from "./components/Header";
+import ProductView from './components/productCard/productview'
 import ErrorBoundary from "./components/Error/errorBoundary";
 
 function App() {
@@ -32,14 +33,16 @@ function App() {
           {/* </div> */}
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/birthday" element={<BirthDay />} />
-            <Route path="/all-cakes" element={<AllCakes />} />
-            <Route path="/profile" element={<Profile />} />
-             <Route path="/cookie" element={<Cookie addToCart={AddToCart} />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="birthday" element={<BirthDay />} />
+            <Route path="all-cakes" element={<AllCakes />} />
+            <Route path="profile" element={<Profile />} />
+             <Route path="cookie" element={<Cookie addToCart={AddToCart} />} />
+            <Route path="contact-us" element={<Contact />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
             <Route path="cart" element={<CartView/>}/>
+            <Route path="/product-view/:productName" element={<ProductView/>}/>
+
 
             <Route
               path="/order"
@@ -49,9 +52,9 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </CartProvider>
        </AuthProvider>
