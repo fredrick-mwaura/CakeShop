@@ -1,47 +1,110 @@
-.foot{
+/* Footer Base Styles */
+.foot {
+    background-color:#170f32; /* Dark background for contrast */
+    color: #fff; /* White text for readability */
+    padding: 40px 20px; /* Add some padding around the footer */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures footer items wrap on smaller screens */
+    text-align: left;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    height:auto;
-    color:aliceblue;
-    background: #060230;
-    /*position: sticky;*/
-    bottom: 0;
-}
-
-.footer{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    height: auto;
-    justify-content: space-around;
-    padding-top: 15px ;
-    margin: 0;
-}
-
-.footer img{
-    width: auto;
-    height: 80px;
-}
-
-
-.footer ul {
-    /* color:black; */
-    display: block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.footer-bottom{
-    display: flex;
-    justify-content: center;
-    /* margin: 15px; */
-}
-
-a{
-    color: white;
+    max-width: 1200px; /* Max width to center content */
+    margin: 0 auto; /* Centers the footer horizontally */
+  }
+  
+  .footer ul {
+    list-style-type: none; /* Remove bullets from list */
+    padding: 0; /* Remove default padding */
+    margin-bottom: 20px; /* Add some space at the bottom */
+  }
+  
+  .footer ul h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1c40f; /* Accent color for section headers */
+  }
+  
+  .footer ul li {
+    margin-bottom: 8px;
+    padding-left: 0; /* No indentation */
+    padding-right: 20px; /* Add right padding for block style */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .footer ul li a {
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer ul li a:hover {
+    color: #f1c40f; /* Hover effect on links */
+  }
+  
+  .footer ul li i {
+    margin-right: 8px; /* Add space between icon and text */
+  }
+  
+  /* Contact section styles */
+  .footer div h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #b7e1ff; /* Accent color for the contact section */
+  }
+  
+  .footer div p,
+  .footer div a {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  
+  .footer div a {
     text-decoration: none;
-}
-
-a:hover{
-    /* color: yellow; */
-    text-decoration: underline;
-}
+    color: #b7e1ff; /* Accent color for the email link */
+    font-weight: bold;
+  }
+  
+  .footer div a:hover {
+    color: #fff; /* Invert the hover effect on email link */
+  }
+  
+  /* Footer bottom section */
+  .footer-bottom {
+    text-align: center; /* Center the text in the footer bottom */
+    padding-top: 20px;
+    border-top: 1px solid #444; /* Add a subtle border */
+    margin-top: 40px;
+    font-size: 14px;
+    color: #aaa; /* Lighter color for the copyright section */
+    width: 100%; /* Make sure it takes the full width */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content */
+  }
+  
+  /* Center the footer bottom content */
+  .footer-bottom p {
+    margin: 0;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center; /* Center text on smaller screens */
+    }
+  
+    .footer ul {
+      margin-bottom: 20px;
+    }
+  }
+  

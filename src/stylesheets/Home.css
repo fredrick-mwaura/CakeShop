@@ -1,8 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline:none;
+  padding: 0;
+}
+
 .content {
-  background: linear-gradient(to right, #b7e1ff, #ffefbb);
+  background: linear-gradient(to right, #b7e1ff,  #a0ebd5);
   height: 100vh;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -55,8 +63,8 @@
 }
 
 .main-image {
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 420px;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

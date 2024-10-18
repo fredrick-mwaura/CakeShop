@@ -5,6 +5,7 @@
   margin: 0;
   outline:none;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .features {
@@ -115,7 +116,7 @@
     font-family: 'Roboto', sans-serif;
     /* justify-content: space-between; */
     padding: 60px 0px;
-    background-color: #657792;
+    background-color: #ffffff;
 }
 
 /*.card_1 div{*/
@@ -126,8 +127,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    background: #a0a9b8;
+    justify-content: space-evenly;
+    background: #ffffff;
     width: 100%;
     padding: 60px 0px;
     /* margin: 10px 50px; */
@@ -142,14 +143,33 @@
   margin-right: clamp(1.5rem, 2vw, 10rem);
 }
 
-.chat{
+.Chat{
   display: flex;
-  align-items:center;
   justify-content: center;
+  background-color: #666668;
+  color: #ffffff;
   width: 100%;
-  margin: 40px 70px;
-  padding: 40px 0px;
+  height: 250px;
+  margin: 0;
+  padding: 40px;
 
+}
+.Chat div{
+  display: block;
+}
+
+.Chat p{
+  font-size: xx-large;
+  color: #ffffff;
+}
+
+.Chat button{
+  background-color: rgb(59, 119, 0);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0); 
 }
 
 .celebrate .bodytext{

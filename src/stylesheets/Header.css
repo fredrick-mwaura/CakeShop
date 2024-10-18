@@ -1,4 +1,10 @@
-/* Navbar Header */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline:none;
+  padding: 0;
+}
+
 .nillavee-header {
     display: flex;
     justify-content: space-between;
@@ -10,7 +16,7 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    background: linear-gradient(to right, #b7e1ff, #ffefbb);
+    background: linear-gradient(to right, #b7e1ff, #a0ebd5);
   /*display: flex;*/
   /*justify-content: space-between;*/
   /*align-items: center;*/
@@ -50,7 +56,6 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   max-width: 500px;
-  outline: none;
 }
 
 .header-nav {
