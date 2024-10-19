@@ -76,10 +76,6 @@ function Features() {
             <img src={ball} alt="flavour" />
             <p>forest</p>
           </div>
-          <div className="flavour">
-            <img src={ball} alt="flavour" />
-            <p>caramel</p>
-          </div>
         </div>
 
         <div className="disp_1">

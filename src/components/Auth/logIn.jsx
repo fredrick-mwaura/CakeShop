@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="contain">
       {/*<Navbar />*/}
       <div className="auth-container">
         <h2 className="auth-title">Login</h2>
@@ -128,7 +128,7 @@ const Login = () => {
           </p>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

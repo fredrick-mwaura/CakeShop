@@ -36,9 +36,7 @@ export default function AddToCart() {
   return (
       <div className="addTo">
         <Icon icon={faCartShopping} size="2x" color="black" className="Cart" onClick={cartView} />
-        {totalItems > 0 && (
-            <span className="badge">{totalItems}</span>
-        )}
+      <span className="badge">{totalItems > 0 ? totalItems : 0}</span>
       </div>
   );
 }

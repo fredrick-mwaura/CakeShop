@@ -1,50 +1,81 @@
-.auth-container {
+.contain{
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  /*min-height: 100vh;*/
-  padding: 20px;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Title styling */
+.contain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../../images/login.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(2px);
+  z-index: -1;
+  -webkit-filter: blur(2px);
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;    
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    overflow:hidden;
+
+}
+
 .auth-title {
   font-size: 2rem;
   margin-bottom: 20px;
+  color:black;
 }
 
-/* Error message styling */
 .error-message {
   color: red;
   margin-bottom: 15px;
 }
 
-/* Form styling */
 .auth-form {
-  background-color: white; /* White background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  background-color: white; 
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 100%;
-  max-width: 400px; /* Limit the width of the form */
+  max-width: 400px;
 }
 
-/* Input group styles */
 .form-group {
-  margin-bottom: 15px; /* Space between input groups */
+  margin-bottom: 15px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px; /* Space between label and input */
+  margin-bottom: 5px; 
 }
 
 input[type='text'],
 input[type='password'] {
-  width: 100%; /* Full width inputs */
-  padding: 10px; /* Padding for comfort */
-  border-radius: 4px; /* Rounded corners for inputs */
-  border: 1px solid #979494; /* Light border */
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px; 
+  border: 1px solid #979494; 
 }
 
 
@@ -63,33 +94,31 @@ input[type='password'] {
 }
 
 .auth-button {
-  width: 100%; /* Full width button */
+  width: 100%;
   padding: 10px;
-  background-color: #007bff; /* Primary color for the button */
-  color: white; /* White text on button */
-  border-radius: 4px; /* Rounded corners for button */
-  border: none; /* No border */
+  background-color: #007bff; 
+  color: white; 
+  border-radius: 4px; 
+  border: none;
 }
 
 
 .auth-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3; 
 }
 
 .auth-footer {
-  margin-top: 15px; /* Space above footer text */
+  margin-top: 15px;
 }
 
-/* Link styling in footer */
 .auth-footer a {
-  color: #007bff; /* Link color matching the button */
+  color: #007bff;
 }
 
 .auth-footer a:hover {
-  text-decoration: underline; /* Underline on hover for links */
+  text-decoration: underline; 
 }
 
-/* Container for the input and button */
 .input-container {
   position: relative;
   width: 100%;
@@ -97,7 +126,6 @@ input[type='password'] {
   margin: 0 auto;
 }
 
-/* Style for the input field */
 .input-container input {
   width: 100%;
   padding: 10px 40px 10px;

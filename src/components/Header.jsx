@@ -3,8 +3,6 @@ import "../stylesheets/Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import Images from "./image";
 import Logo from "../images/logo.png";
-// import { Button } from 'primereact/button';
-   import SignUp from './Auth/signUp';
      
 
 function Header() {
@@ -29,10 +27,10 @@ function Header() {
         <div className="header-nav">
           <div className="logo-container">
             <input type="text" placeholder="Search..." className="search-input" />
-            {/* <p className="auth">
-              <Link to='/login' className="auth-button login-button">Login</Link>
-              <Link to='/signup' className="auth-button register-button">Register</Link>
-            </p> */}
+            <p className="auth">
+              <Link to='/login'>Login</Link>
+              <Link to='/signup'>Register</Link>
+            </p>
 
           </div>
 

@@ -8,14 +8,13 @@ import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import { CartProvider } from "./components/GlobalCart";
 import CartView from './components/productCard/cardview.jsx'
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
-// import NotFound from "./components/Error/notfound";
 import Navbar from "./components/Header";
 import ProductView from './components/productCard/productview'
 import ErrorBoundary from "./components/Error/errorBoundary";
@@ -52,9 +51,9 @@ function App() {
                 </PrivateRoute>
               }
             />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<Home />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </CartProvider>
        </AuthProvider>
