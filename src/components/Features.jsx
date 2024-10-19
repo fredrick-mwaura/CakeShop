@@ -8,11 +8,23 @@ import flavor from "../images/6.jpg";
 import cele from "../images/cele.webp";
 
 function Features() {
+
   const PhoneNumber = "0705776570";
-  const message = "Hello Cakes and Pastries.";
+  const message = "Hello Cake shop and cakes.";
   const WhatsappLink = `https://api.whatsapp.com/send?phone=${PhoneNumber}&text=${encodeURIComponent(
     message
   )}`;
+
+//   const shareOnWhatsApp = () => {
+//   // Create the product URL using the same logic as in viewProductDetails
+//   const urlProduct = product.name.replace(/\s+/g, "-").toLowerCase();
+//   const productUrl = `http://localhost:5173/product-view/${urlProduct}`; // Replace with actual domain
+  
+//   const message = `Check out this product: ${product.name} for Ksh ${product.price}. More details here: ${productUrl}`;
+//   const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  
+//   window.open(url, "_blank");
+// };
 
   const feature = [
     {
@@ -98,14 +110,14 @@ function Features() {
           <div className="Chat">
             <div>
               <p> Any Question?</p>
-              <button
+              <a
                 href={WhatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="chat"
               >
                 Chat On Whatsapp
-              </button>
+              </a>
             </div>
           </div>
           <div className="card_2">
