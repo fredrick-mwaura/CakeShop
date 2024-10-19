@@ -100,15 +100,17 @@ function Features() {
             </div>
           </div>
           <div className="Chat">
-            <p> Any Question?</p>
-            <a
-              href={WhatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="chat"
-            >
-              Chat On Whatsapp
-            </a>
+            <div>
+              <p> Any Question?</p>
+              <button
+                href={WhatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="chat"
+              >
+                Chat On Whatsapp
+              </button>
+            </div>
           </div>
           <div className="card_2">
             <div className="bodytext">
@@ -119,13 +121,17 @@ function Features() {
                 birthday special with our kid-friendly cake flavors, and vibrant
                 themes of their <br />
                 favorite cartoon and comic characters. We bring their
-                imagination to life!Show love and create sweet memories with
-                your kid(s). Make your child&apos;s <br />
+                imagination to life!
+                <br />
+                Show love and create sweet memories with your kid(s). Make your
+                child&apos;s <br />
                 birthday special with our kid-friendly cake flavors, and vibrant
                 themes of their <br />
                 favorite cartoon and comic characters. We bring their
-                imagination to life!Show love and create sweet memories with
-                your kid(s). Make your child&apos;s <br />
+                imagination to life!
+                <br />
+                Show love and create sweet memories with your kid(s). Make your
+                child&apos;s <br />
                 birthday special with our kid-friendly cake flavors, and vibrant
                 themes of their <br />
                 favorite cartoon and comic characters. We bring their

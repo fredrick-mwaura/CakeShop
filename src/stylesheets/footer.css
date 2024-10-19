@@ -1,4 +1,17 @@
-.foot{
+/* Footer Base Styles */
+.foot {
+    background-color:#170f32; /* Dark background for contrast */
+    color: #fff; /* White text for readability */
+    padding: 40px 20px; /* Add some padding around the footer */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures footer items wrap on smaller screens */
+    text-align: left;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height:auto;
     color:aliceblue;
@@ -38,9 +51,43 @@
 a{
     color: white;
     text-decoration: none;
-}
-
-a:hover{
-    /* color: yellow; */
-    text-decoration: underline;
-}
+    color: #b7e1ff; /* Accent color for the email link */
+    font-weight: bold;
+  }
+  
+  .footer div a:hover {
+    color: #fff; /* Invert the hover effect on email link */
+  }
+  
+  /* Footer bottom section */
+  .footer-bottom {
+    text-align: center; /* Center the text in the footer bottom */
+    padding-top: 20px;
+    border-top: 1px solid #444; /* Add a subtle border */
+    margin-top: 40px;
+    font-size: 14px;
+    color: #aaa; /* Lighter color for the copyright section */
+    width: 100%; /* Make sure it takes the full width */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content */
+  }
+  
+  /* Center the footer bottom content */
+  .footer-bottom p {
+    margin: 0;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center; /* Center text on smaller screens */
+    }
+  
+    .footer ul {
+      margin-bottom: 20px;
+    }
+  }
+  
