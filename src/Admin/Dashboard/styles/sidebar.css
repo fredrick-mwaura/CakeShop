@@ -1,0 +1,115 @@
+/* styles/sidebar.css */
+
+.sidebar {
+  transition: width 0.3s ease; /* Smooth transition for sidebar width */
+}
+
+.sidebar.w-16 {
+  width: 4rem; /* Width when collapsed */
+}
+
+.sidebar.w-64 {
+  width: 16rem; /* Width when expanded */
+}
+
+.bg-gray-800 {
+  background-color: #2d3748; /* Gray background */
+}
+
+.text-white {
+  color: white; /* Text color */
+}
+
+.h-screen {
+  height: 100vh; /* Full height */
+}
+
+.p-4 {
+  padding: 1rem; /* Padding */
+}
+
+.flex {
+  display: flex; /* Flexbox layout */
+}
+
+.flex-col {
+  flex-direction: column; /* Vertical layout */
+}
+
+.justify-between {
+  justify-content: space-between; /* Space between items */
+}
+
+.fixed {
+  position: fixed; /* Fixed position */
+}
+
+.md\:relative {
+  position: relative; /* Relative position for medium screens and up */
+}
+
+.md\:hidden {
+  display: none; /* Hidden on medium screens and up */
+}
+
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: flex; /* Show on larger screens */
+  }
+}
+
+.logo {
+  margin-bottom: 1.5rem; /* Space below the logo */
+}
+
+.text-lg {
+  font-size: 1.125rem; /* Large text size */
+}
+
+.font-bold {
+  font-weight: bold; /* Bold text */
+}
+
+.mb-4 {
+  margin-bottom: 1rem; /* Space below items */
+}
+
+.hidden {
+  display: none; /* Hidden */
+}
+
+.block {
+  display: block; /* Block display */
+}
+
+.items-center {
+  align-items: center; /* Center items vertically */
+}
+
+.justify-end {
+  justify-content: flex-end; /* Align to the end */
+}
+
+.mt-4 {
+  margin-top: 1rem; /* Space above the button */
+}
+/* Add these styles in your CSS or Tailwind config */
+.sidebar {
+    transition: width 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      position: fixed;
+      z-index: 50;
+      width: 100%;
+      height: 100vh;
+      left: -100%;
+      transition: left 0.3s ease;
+    }
+  
+    .sidebar.w-64 {
+      left: 0;
+    }
+  }
+  

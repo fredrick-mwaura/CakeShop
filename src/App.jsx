@@ -18,6 +18,7 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import Navbar from "./components/Header";
 import ProductView from './components/productCard/productview'
 import ErrorBoundary from "./components/Error/errorBoundary";
+import Dash from "./Admin/dash.jsx";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Router>
             <AddToCart />
             <Navbar />
-          {/* </div> */}
+          
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="birthday" element={<BirthDay />} />
@@ -40,6 +41,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="cart" element={<CartView/>}/>
+            <Route path="dash" element={<Dash/>}/>
             <Route path="/product-view/:productName" element={<ProductView/>}/>
 
 

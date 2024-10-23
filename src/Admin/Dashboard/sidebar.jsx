@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import './styles/sidebar.css'
-import Sidebar from './sidebar';
+import './styles/sidebar.css';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -11,34 +10,34 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`sidebar ${isCollapsed ? 'w-16' : 'w-64'} bg-gray-800 text-white h-screen p-4 flex flex-col justify-between fixed md:relative transition-width duration-300`}>
+    <div className={`sidebar ${isCollapsed ? 'collapsed' : 'expanded'}`}>
       {/* Toggle Button for Mobile */}
-      <div className="md:hidden flex items-center justify-end mb-4">
-        <button onClick={toggleSidebar} className="text-white focus:outline-none">
+      <div className="toggle-button md-hidden">
+        <button onClick={toggleSidebar} className="toggle-icon">
           {isCollapsed ? <FaBars /> : <FaTimes />}
         </button>
       </div>
 
       {/* Sidebar Content */}
-      <div className="flex flex-col">
-        <div className={`logo mb-6 ${isCollapsed ? 'hidden' : 'block'}`}>
-          <h2 className="text-lg font-bold">Mate</h2>
+      <div className="sidebar-content">
+        <div className={`logo ${isCollapsed ? 'hidden' : 'visible'}`}>
+          <h2 className="logo-text">Mate</h2>
         </div>
         <nav>
           <ul>
-            <li className="mb-4">
-              <a href="#" className="flex items-center">
-                <span className={`${isCollapsed ? 'hidden' : 'block'}`}>Dashboard</span>
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                <span className={`${isCollapsed ? 'hidden' : 'visible'}`}>Dashboard</span>
               </a>
             </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center">
-                <span className={`${isCollapsed ? 'hidden' : 'block'}`}>Orders</span>
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                <span className={`${isCollapsed ? 'hidden' : 'visible'}`}>Orders</span>
               </a>
             </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center">
-                <span className={`${isCollapsed ? 'hidden' : 'block'}`}>Inventory</span>
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                <span className={`${isCollapsed ? 'hidden' : 'visible'}`}>Inventory</span>
               </a>
             </li>
             {/* Add more items as needed */}
@@ -47,8 +46,8 @@ const Sidebar = () => {
       </div>
 
       {/* Toggle Button */}
-      <div className="hidden md:flex items-center justify-center mt-4">
-        <button onClick={toggleSidebar} className="text-white focus:outline-none">
+      <div className="toggle-button hidden md-flex">
+        <button onClick={toggleSidebar} className="toggle-icon">
           {isCollapsed ? <FaBars /> : <FaTimes />}
         </button>
       </div>
