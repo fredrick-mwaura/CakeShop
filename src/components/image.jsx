@@ -1,6 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const Images = ({ src, alt, width, height, className }) => {
-    return <img src={src} 
+    return <img 
+        src={src} 
         alt={alt} 
         width={width} 
         height={height} 

@@ -21,6 +21,7 @@ import ErrorBoundary from "./components/Error/errorBoundary";
 import Dash from "./Admin/dash.jsx";
 import Users from "./Admin/Dashboard/users.jsx";
 import ProductList from "./Admin/Dashboard/Productlist.jsx";
+import Dashboard from "./Admin/Dashboard/Dashboard.jsx";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/product-view/:productName" element={<ProductView/>}/>            
             <Route path="/users" element={<Users/>} />             
             <Route path="/productAd" element={<ProductList/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
 
             <Route
               path="/order"
