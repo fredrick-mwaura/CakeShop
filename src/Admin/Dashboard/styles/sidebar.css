@@ -1,115 +1,127 @@
-/* styles/sidebar.css */
 
 .sidebar {
-  transition: width 0.3s ease; /* Smooth transition for sidebar width */
+  width: 250px;
+  height: 100vh;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;  
+  position: sticky;}
+
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.sidebar.w-16 {
-  width: 4rem; /* Width when collapsed */
+.brand h2 {
+  font-size: 20px;
+  color: #feca29;
+  margin: 0;
 }
 
-.sidebar.w-64 {
-  width: 16rem; /* Width when expanded */
+.admin-btn {
+  background-color: #fff;
+  color: #343a40;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.bg-gray-800 {
-  background-color: #2d3748; /* Gray background */
+.admin-btn:hover {
+  background-color: #e6e6e6;  
 }
 
-.text-white {
-  color: white; /* Text color */
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
 }
 
-.h-screen {
-  height: 100vh; /* Full height */
+/* Individual menu item styling */
+.menu-item {
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  display: block;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.p-4 {
-  padding: 1rem; /* Padding */
+.menu-item:hover {
+  background-color: #495057;
 }
 
-.flex {
-  display: flex; /* Flexbox layout */
+/* Flex container for icon and text within each menu item */
+.menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.flex-col {
-  flex-direction: column; /* Vertical layout */
+.menu-link svg {
+  margin-right: 10px;
+  font-size: 18px;
 }
 
-.justify-between {
-  justify-content: space-between; /* Space between items */
+/* Submenu items */
+.submenu {
+  list-style-type: none;
+  padding-left: 20px;  /* Indent submenu */
+  margin-top: 10px;
 }
 
-.fixed {
-  position: fixed; /* Fixed position */
+.submenu li {
+  padding: 8px 0;
+  font-size: 14px;  /* Slightly smaller font for submenu items */
+  transition: color 0.3s ease;
 }
 
-.md\:relative {
-  position: relative; /* Relative position for medium screens and up */
+/* Submenu hover effect */
+.submenu li:hover {
+  color: #feca29;
 }
 
-.md\:hidden {
-  display: none; /* Hidden on medium screens and up */
+/* Badge for notifications */
+.badge {
+  background-color: #feca29;
+  color: #343a40;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  margin-left: 10px;
+  display: inline-block;
 }
 
-@media (min-width: 768px) {
-  .md\:hidden {
-    display: flex; /* Show on larger screens */
+/* General span styling for menu text */
+.menu-item span {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;  /* Adjust the width for smaller screens */
+    padding: 15px;
+  }
+
+  .brand h2 {
+    font-size: 18px;
+  }
+
+  .menu-link svg {
+    font-size: 16px;
+  }
+
+  .menu-item span {
+    font-size: 14px;
   }
 }
-
-.logo {
-  margin-bottom: 1.5rem; /* Space below the logo */
-}
-
-.text-lg {
-  font-size: 1.125rem; /* Large text size */
-}
-
-.font-bold {
-  font-weight: bold; /* Bold text */
-}
-
-.mb-4 {
-  margin-bottom: 1rem; /* Space below items */
-}
-
-.hidden {
-  display: none; /* Hidden */
-}
-
-.block {
-  display: block; /* Block display */
-}
-
-.items-center {
-  align-items: center; /* Center items vertically */
-}
-
-.justify-end {
-  justify-content: flex-end; /* Align to the end */
-}
-
-.mt-4 {
-  margin-top: 1rem; /* Space above the button */
-}
-/* Add these styles in your CSS or Tailwind config */
-.sidebar {
-    transition: width 0.3s ease;
-  }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      position: fixed;
-      z-index: 50;
-      width: 100%;
-      height: 100vh;
-      left: -100%;
-      transition: left 0.3s ease;
-    }
-  
-    .sidebar.w-64 {
-      left: 0;
-    }
-  }
-  

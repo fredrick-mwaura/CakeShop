@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
 
     });
   };
-  // localStorage.removeItem('cart')
+  localStorage.removeItem('cart')
 
   return (
     <CartContext.Provider value={{ cart, addToCart }}>
