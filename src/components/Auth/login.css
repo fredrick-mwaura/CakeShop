@@ -1,4 +1,4 @@
-.contain{
+.containa{
   position: relative;
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.contain::before {
+.containa::before {
   content: "";
   position: absolute;
   top: 0;

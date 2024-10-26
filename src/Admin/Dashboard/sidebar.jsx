@@ -16,8 +16,8 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="brand">
-        <h2>who😂😂</h2>
-        <button className="admin-btn">ADMIN</button>
+        <h2>who😂</h2>
+        {/* <button className="admin-btn">ADMIN</button> */}
       </div>
 
       <ul className="menu">
@@ -26,7 +26,7 @@ const Sidebar = () => {
           <span>Dashboard</span>
         </li>
 
-        <li className="menu-item" onClick={toggleCatalog}>
+        {/* <li className="menu-item" onClick={toggleCatalog}>
           <FontAwesomeIcon icon={faBox} />
           <span>Catalog</span>
           {catalogOpen && (
@@ -35,7 +35,7 @@ const Sidebar = () => {
               <li>Product</li>
             </ul>
           )}
-        </li>
+        </li> */}
 
         <li className="menu-item">
           <FontAwesomeIcon icon={faUser} />
@@ -64,9 +64,6 @@ const Sidebar = () => {
               </li>
               <li>
                 <FontAwesomeIcon icon={faComment} />
-                <span>
-                  Chat <span className="badge">8</span>
-                </span>
               </li>
             </ul>
           )}

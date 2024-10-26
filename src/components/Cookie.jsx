@@ -1,5 +1,5 @@
 import ProductCard from "./productCard/card";
-import '../stylesheets/birthday.css'
+// import '../stylesheets/birthday.css'
 import Product from './utils/product'
 import PropTypes from "prop-types";
 

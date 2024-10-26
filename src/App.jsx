@@ -22,6 +22,7 @@ import Dash from "./Admin/dash.jsx";
 import Users from "./Admin/Dashboard/users.jsx";
 import ProductList from "./Admin/Dashboard/Productlist.jsx";
 import Dashboard from "./Admin/Dashboard/Dashboard.jsx";
+import Reports from "./Admin/components/reports.jsx";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             <Route path="/users" element={<Users/>} />             
             <Route path="/productAd" element={<ProductList/>} />
             <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/reports" element={<Reports/>} />
 
             <Route
               path="/order"

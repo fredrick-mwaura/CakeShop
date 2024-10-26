@@ -1,12 +1,13 @@
 
 .sidebar {
   width: 250px;
-  height: 100vh;
+  max-height: 100vh;
   background-color: #343a40;
   color: white;
   padding: 20px;
   overflow-y: auto;  
-  position: sticky;}
+  position: sticky;  
+}
 
 .brand {
   display: flex;
@@ -42,7 +43,6 @@
   margin: 20px 0;
 }
 
-/* Individual menu item styling */
 .menu-item {
   justify-content: space-between;
   align-items: center;
@@ -57,7 +57,6 @@
   background-color: #495057;
 }
 
-/* Flex container for icon and text within each menu item */
 .menu-link {
   display: flex;
   align-items: center;
@@ -69,25 +68,22 @@
   font-size: 18px;
 }
 
-/* Submenu items */
 .submenu {
   list-style-type: none;
-  padding-left: 20px;  /* Indent submenu */
+  padding-left: 20px; 
   margin-top: 10px;
 }
 
 .submenu li {
   padding: 8px 0;
-  font-size: 14px;  /* Slightly smaller font for submenu items */
+  font-size: 14px;  
   transition: color 0.3s ease;
 }
 
-/* Submenu hover effect */
 .submenu li:hover {
   color: #feca29;
 }
 
-/* Badge for notifications */
 .badge {
   background-color: #feca29;
   color: #343a40;
@@ -98,7 +94,6 @@
   display: inline-block;
 }
 
-/* General span styling for menu text */
 .menu-item span {
   display: flex;
   justify-content: space-between;
@@ -106,11 +101,9 @@
   font-size: 16px;
 }
 
-/* For mobile responsiveness */
 @media (max-width: 768px) {
   .sidebar {
-    width: 200px;  /* Adjust the width for smaller screens */
-    padding: 15px;
+    width: 200px; 
   }
 
   .brand h2 {

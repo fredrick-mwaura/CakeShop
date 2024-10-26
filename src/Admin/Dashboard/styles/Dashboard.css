@@ -1,18 +1,60 @@
-.container {
-   display: flex;
-   /* flex-direction: column; */
-   align-items: center;
-   justify-content: space-around;
-    margin: 0 auto;
+.dashboardi, .contain{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
-    background: #a86da0;
-  }
+    width: 100%; 
+    background-color: #a8729c;
+}
 
-  .child1{
-   display: flex;
-   justify-content: space-between;
+.dashboardi, .contain:first-child{
+    display: flex;
+    grid-template-columns: repeat(1, 1fr);
+    
+}
+
+
+.child {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.child h2 {
+    color: #5a5a5a;
+    font-size: 1.2rem;
+}
+
+.child p {
+    color: #7a7a7a;
+}
+
+.dp {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.icon {
+    background-color: #f9e2e2;
+    padding: 10px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.card-section {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    background: #be76b5;
-    border-radius: 8px;
-  }
+    gap: 10px;
+}
+
+.stats-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: #7a7a7a;
+}

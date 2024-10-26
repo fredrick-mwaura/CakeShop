@@ -18,7 +18,7 @@
   top: 10px;
   gap: 10px;
   padding: 5px;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .cake-card {
@@ -28,17 +28,17 @@
   /*overflow: hidden;*/
   text-align: center;
   padding: 10px;
-  position: relative;
+  position: absolute;
 }
 
 .cake-image {
   width: 60%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-h3 {
+/* h3 {
   font-size: 18px;
   margin: 10px 0;
   color: #333;
@@ -47,7 +47,7 @@ h3 {
 p {
   font-size: 16px;
   color: #555;
-}
+} */
 
 .cake-actions {
   display: flex;
