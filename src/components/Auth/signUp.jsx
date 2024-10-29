@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Images from '../image.jsx'
+import Button from '@mui/material/Buttton'
 import google from '../../images/google.svg'
 import './signup.css';
 
@@ -29,7 +30,7 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Validate password length and confirm password match
+    // Validate password length and confirm password matchs
     if(formData.password !== formData.confirmPassword){
       setErrorMessage(toast.error("Passwords do not match."));
     setLoading(false)
@@ -38,7 +39,7 @@ const SignUp = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("/api/auth/signup", { //api call(promise)
+      const response = await axios.post("/api/auth/signup", { //api call(promise based)
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -126,9 +127,9 @@ const SignUp = () => {
                 required
             />
           </div>
-          <button type="submit" className="submit" disabled={loading}>
+          <Button type="submit" className="submit" disabled={loading} color='secodary' variant='contained'>
             {loading ? "Signing up..." : "Sign Up"}
-          </button>
+          </Button>
         </form>
         <div>
           <a href='/' target="_blank" rel="noopener noreferrer" className='contGoogle'>
@@ -140,7 +141,7 @@ const SignUp = () => {
             className='icon'
           />continue with google</a>
           <p className="auth-footer">
-            have account? <a href="/login">Login</a>
+            Have account? <a href="/login">Login</a>
           </p>
         </div>
       </div>

@@ -8,21 +8,16 @@ import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import { CartProvider } from "./components/GlobalCart";
 import CartView from './components/productCard/cardview.jsx'
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import Cookie from "./components/Cookie";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
-// import Navbar from "./components/Header";
+import Navbar from "./components/Header";
 import ProductView from './components/productCard/productview'
 import ErrorBoundary from "./components/Error/errorBoundary";
-import Dash from "./Admin/dash.jsx";
-import Users from "./Admin/Dashboard/users.jsx";
-import ProductList from "./Admin/Dashboard/Productlist.jsx";
-import Dashboard from "./Admin/Dashboard/Dashboard.jsx";
-import Reports from "./Admin/components/reports.jsx";
 
 function App() {
   return (
@@ -32,8 +27,8 @@ function App() {
        <AuthProvider>
       <CartProvider>
         <Router>
-            {/* <AddToCart /> */}
-            {/* <Navbar /> */}
+            <AddToCart />
+            <Navbar />
           
           <Routes>
             <Route path="/" element={<Home />} />
@@ -45,13 +40,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="cart" element={<CartView/>}/>
-            <Route path="dash.php" element={<Dash/>}/>
-            <Route path="/product-view/:productName" element={<ProductView/>}/>            
-            <Route path="/users" element={<Users/>} />             
-            <Route path="/productAd" element={<ProductList/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/reports" element={<Reports/>} />
-
+            <Route path="/product-view/:productName" element={<ProductView/>}/>  
             <Route
               path="/order"
               element={
@@ -62,7 +51,7 @@ function App() {
             />
             <Route path="*" element={<Home />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </CartProvider>
        </AuthProvider>

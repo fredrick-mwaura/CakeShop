@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import Button from '@mui/material/Button'
 import "./login.css";
 import {toast} from "react-hot-toast";
 
@@ -120,11 +121,11 @@ const Login = () => {
               )}
             </button>
           </div>
-          <button type="submit" className="auth-button" disabled={loading}>
+          <Button type="submit" className="auth-button" disabled={loading} variant='contained' color='primary'>
             {loading ? "Logging in..." : "Login"}
-          </button>
+          </Button>
           <p className="auth-footer">
-            Don’t have an account? <a href="/signup">Sign Up</a>
+            Do not have an account? <a href="/signup">Sign Up</a>
           </p>
         </form>
       </div>
