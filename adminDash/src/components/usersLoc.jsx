@@ -18,7 +18,7 @@ const UserCountyStats = () => {
 
     useEffect(() => {
         // Fetch user's county
-        axios.get('https://ipinfo.io?token=YOUR_ACCESS_TOKEN')
+        axios.get('https://ipinfo.io?token=YOUR_ACCESS_TOKEN') //replace with token from ipinfo
             .then(response => {
                 const county = response.data.region;
                 setUserCounty(county);

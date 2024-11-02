@@ -10,6 +10,9 @@ import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import MenuButton from './Menu';
+// import { Logout } from '@mui/icons-material';
+import { Link, useNavigate } from 'react-router-dom';
+import AddUser from './AddUser';
 
 const MenuItem = styled(MuiMenuItem)({
   margin: '2px 0',
@@ -26,6 +29,15 @@ export default function OptionsMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const Logout = (() => {
+    const navigate = useNavigate();
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminData'); 
+
+    navigate.push('/login');
+
+  })
 
   return (
     <React.Fragment>
@@ -57,9 +69,8 @@ export default function OptionsMenu() {
         }}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>Add another account</MenuItem>
+        <Link to='/users/new'> <MenuItem onClick={handleClose}>Add another account</MenuItem> </Link>
         <MenuItem onClick={handleClose}>Settings</MenuItem>
         <Divider />
         <MenuItem
@@ -71,7 +82,7 @@ export default function OptionsMenu() {
             },
           }}
         >
-          <ListItemText>Logout</ListItemText>
+          <ListItemText onClick={Logout}>Logout</ListItemText>
           <ListItemIcon>
             <LogoutRoundedIcon fontSize="small" />
           </ListItemIcon>

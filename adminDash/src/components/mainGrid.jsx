@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Stack } from '@mui/material';
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
-import { LineChart, Line, ResponsiveContainer } from 'recharts';
+import { LineChart, Tooltip, Line, ResponsiveContainer } from 'recharts';
 import UserCountyStats from './usersLoc';
-import ClientList from './oftenClients';  
+// import ClientList from './oftenClients';  
 
 const data = [
   {
@@ -95,6 +95,23 @@ function Analytics() {
                     stroke={item.trend === 'up' ? '#4caf50' : item.trend === 'down' ? '#f44336' : '#9e9e9e'}
                     dot={false}
                   />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#444',  
+                      borderRadius: '8px',      
+                      padding: '5px',          
+                      border: '1px solid #444'  
+                    }}
+                    wrapperStyle={{
+                      outline: 'none',
+                    }}
+                    labelStyle={{
+                      fontSize: '14px',         
+                      fontWeight: 'bold',       
+                      color: '#fff',           
+                    }}
+                  />
+
                 </LineChart>
               </ResponsiveContainer>
             </Box>
@@ -103,7 +120,8 @@ function Analytics() {
       ))}
     </Box>
     <Box display="flex" justifyContent="space-around" mb={2}>
-      <ClientList/>
+      <h3>client list</h3>
+      {/* <ClientList/> */}
       <UserCountyStats />
       
     </Box>  

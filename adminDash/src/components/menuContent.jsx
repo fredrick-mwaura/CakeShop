@@ -12,29 +12,43 @@ import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
+import logo from '/vite.svg';
+import { useNavigate } from 'react-router-dom';
 
 const mainListItems = [
-  { text: 'Home', icon: <HomeRoundedIcon /> },
-  { text: 'Analytics', icon: <AnalyticsRoundedIcon /> },
-  { text: 'Clients', icon: <PeopleRoundedIcon /> },
+  { text: 'Home', icon: <HomeRoundedIcon />, link: '/'},
+  { text: 'Analytics', icon: <AnalyticsRoundedIcon />, link: '/analytics'},
+  { text: 'Clients', icon: <PeopleRoundedIcon />, link: '/users' },
 ];
 
 const secondaryListItems = [
-  { text: 'Settings', icon: <SettingsRoundedIcon />, Link: '/settings' },
-  { text: 'About', icon: <InfoRoundedIcon />, Link: '/about' },
-  { text: 'Feedback', icon: <HelpRoundedIcon />, Link: '/feedback' },
+  { text: 'Settings', icon: <SettingsRoundedIcon />, link: '/settings' },
+  { text: 'About', icon: <InfoRoundedIcon />, link: '/about' },
+  { text: 'Feedback', icon: <HelpRoundedIcon />, link: '/feedback' },
 ];
 
+
 export default function MenuContent() {
+
+const navigate = useNavigate();
+const logoClick = () => {
+  navigate('/');
+};
+
   return (
-    <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-between' }}>
+    <>
+    <img src={logo} alt="Logo" style={{ width: '100%', height: '200px', cursor:'pointer'}} onClick={logoClick} />
+    
+    <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-evenly' }}>
       <List dense>
         {mainListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+            <Link to={item.link} style={{ textDecoration: 'none', color: 'inherit' }}>
             <ListItemButton selected={index === 0}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -50,5 +64,6 @@ export default function MenuContent() {
         ))}
       </List>
     </Stack>
+    </>
   );
 }

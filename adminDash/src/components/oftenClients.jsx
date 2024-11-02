@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import axios from 'axios'; 
+import WarningIcon from '@mui/icons-material/Warning';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
@@ -37,7 +38,7 @@ const ClientList = () => {
         <Typography color="error">{error}</Typography> 
       ) : (
         <List dense>
-          {clients.length > 0 ? (
+          {Array.isArray(clients) && clients.length > 0 ? (
             clients.map(client => (
               <ListItem key={client.id}>
                 <ListItemText
@@ -47,8 +48,22 @@ const ClientList = () => {
               </ListItem>
             ))
           ) : (
-            <ListItem>
-              <ListItemText primary="No clients found." />
+            <ListItem disableGutters>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                width="100%"
+                p={2}
+                bgcolor="#f9f9f9"
+                border="1px solid #ddd"
+                borderRadius="8px"
+              >
+                <WarningIcon color="warning" style={{ marginRight: '8px' }} />
+                <Typography variant="body1" color="textSecondary">
+                  No clients found. Please check back later or ensure users are signed in.
+                </Typography>
+              </Box>
             </ListItem>
           )}
         </List>
