@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import { useLocation, useParams } from "react-router-dom";
-import Product from '../../components/utils/BirthDayProduct';
+import Product from '../../components/utils/product';
 import './productView.css';  // Import the CSS file
 // import AddToCart from "../AddToCart";
 import { CartContext } from '../GlobalCart.jsx';

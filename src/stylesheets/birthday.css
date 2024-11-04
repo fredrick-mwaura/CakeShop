@@ -1,0 +1,69 @@
+.title{
+  text-align: center;
+  padding: 5%;
+  /* width: 90%; */
+  margin: 2% 2%;
+  border-radius: 30px;
+  font-size: xx-large;
+  background-color:#e0dada;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.cake-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  top: 10px;
+  gap: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.cake-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+  /*overflow: hidden;*/
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
+
+.cake-image {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+}
+
+.cake-actions {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+
+.Icon {
+  fill: currentColor;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  color: #555;
+  font-size: 20px;
+}
+
+/*.Icon:hover {*/
+/*  size: 2x;*/
+/*}*/

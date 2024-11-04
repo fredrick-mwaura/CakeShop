@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline:none;
+    padding: 0;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2rem 1rem; 
+}
+
+.feature {
+    background: #f9f9f9; 
+    border-radius: 8px; 
+    padding: 1.5rem;
+    margin: 1rem;
+    text-align: center;
+    flex: 1 1 calc(33.3333% - 2rem);
+    max-width: 300px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; 
+}
+
+.feature:hover {
+    transform: scale(1.05); 
+   grid-template-columns: 1fr 2fr;
+}
+
+.feature-icon {
+    font-size: 2rem; 
+    margin-bottom: 1rem; 
+    color: #5a5a5a; 
+}
+
+.flavor {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 1.5rem; 
+}
+
+.flavours {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+}
+
+.flavour {
+    text-align: center;
+    margin: 1rem;
+    flex: 1 1 calc(20% - 1rem); 
+    max-width: 10em; 
+}
+
+.flavour img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.disp_1 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 2rem 0;
+}
+
+.side-disp, .side-dis {
+    text-align: left; 
+    margin: 1rem;
+    flex: 1; 
+}
+
+.side-disp h3, .side-dis h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.img_2{
+    float: right;
+    margin-bottom: 1rem; 
+}
+
+.side-disp p, .side-dis p {
+    margin-bottom: 1.5rem;
+}
+
+.shop-button:hover {
+    background-color: #5a8de0; 
+}
+
+.Chat{
+    width: 80%;
+    height: 9em;
+    background-color:#bdbbbb;
+    margin: 1rem;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border-radius:30px;
+
+}
+.Chat p{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.Chat a{
+    padding: 10px;
+    color:#5a8de0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-inline: auto;
+    font-size: large;
+    border: 0;
+    cursor:pointer;
+    border-radius: 30px;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        flex: 1 1 calc(50% - 2rem); 
+    }
+
+    .flavour {
+        flex: 1 1 calc(50% - 1rem); 
+    }
+
+    .disp_1 {
+        flex-direction: column; 
+    }
+
+    .disp_1 img {
+        width: 100%;
+        margin-bottom: 1rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .feature {
+        flex: 1 1 100%; 
+    }
+
+    .flavour {
+        flex: 1 1 100%; 
+    }
+
+    .side-disp, .side-dis {
+        text-align: center; 
+    }
+}

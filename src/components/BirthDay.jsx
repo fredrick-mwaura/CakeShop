@@ -1,6 +1,6 @@
 import React from "react";
 import '../stylesheets/birthday.css';
-import Product from "./utils/BirthDayProduct";
+import Product from "./utils/product";
 import ProductCard from "./productCard/card.jsx";
 
 // BirthDay Component

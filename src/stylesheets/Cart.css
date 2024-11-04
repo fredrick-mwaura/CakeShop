@@ -1,0 +1,41 @@
+.addTo {
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  cursor: pointer;
+}
+.badge {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  background-color: red; 
+  color: white;
+  border-radius: 50%;
+  padding: 0.25em 0.5em;
+  font-size: 0.75em; 
+}
+
+/* 
+.Cart {
+  position: relative;
+} */
+
+@media (max-width: 768px) {
+  .addTo {
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+  }
+
+  .badge {
+    top: -6px;
+    right: -6px;
+    font-size: 10px;
+  }
+}

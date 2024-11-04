@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Images from '../image.jsx'
-import Button from '@mui/material/Button'
 import google from '../../images/google.svg'
 import './signup.css';
 
@@ -30,7 +29,7 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Validate password length and confirm password matchs
+    // Validate password length and confirm password match
     if(formData.password !== formData.confirmPassword){
       setErrorMessage(toast.error("Passwords do not match."));
     setLoading(false)
@@ -39,7 +38,7 @@ const SignUp = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("/api/auth/signup", { //api call(promise based)
+      const response = await axios.post("/api/auth/signup", { //api call(promise)
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -84,7 +83,7 @@ const SignUp = () => {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <form onSubmit={handleSubmit} autoComplete="true">
           <div>
-            <label>Full Name</label>
+            <label>Username</label>
             <input
                 type="text"
                 name="username"
@@ -127,9 +126,9 @@ const SignUp = () => {
                 required
             />
           </div>
-          <Button type="submit" className="submit" disabled={loading} color='secodary' variant='contained'>
+          <button type="submit" className="submit" disabled={loading}>
             {loading ? "Signing up..." : "Sign Up"}
-          </Button>
+          </button>
         </form>
         <div>
           <a href='/' target="_blank" rel="noopener noreferrer" className='contGoogle'>
@@ -141,7 +140,7 @@ const SignUp = () => {
             className='icon'
           />continue with google</a>
           <p className="auth-footer">
-            Have account? <a href="/login">Login</a>
+            have account? <a href="/login">Login</a>
           </p>
         </div>
       </div>

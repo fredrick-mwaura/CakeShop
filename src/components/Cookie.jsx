@@ -1,6 +1,7 @@
+import React from "react";
 import ProductCard from "./productCard/card";
-// import '../stylesheets/birthday.css'
-import Product from './utils/BirthDayProduct'
+import '../stylesheets/birthday.css'
+import Product from './utils/product'
 import PropTypes from "prop-types";
 
 const cakeProducts = [

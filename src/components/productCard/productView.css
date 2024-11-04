@@ -1,0 +1,134 @@
+/* Product View Page Styling */
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 50%;
+  border-radius: 10px;
+}
+
+.product-info {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-info h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-info p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.product-info .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.product-info .availability {
+  color: green;
+  font-weight: bold;
+}
+
+.product-info .size {
+  background-color: #eef0f5;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.add-to-cart-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #c9302c;
+}
+
+.whatsapp-btn {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #4cae4c;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.product-description {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+}
+
+.product-description h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.product-description p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.product-image {
+  width: 100%; 
+  max-width: 400px;
+  height: auto; 
+  border-radius: 10px; 
+  object-fit: cover; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; 
+}
+
+.size span{
+  background-color: rgba(168, 168, 164, 0.5);
+  padding:2px;
+  border-radius:2px;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  -ms-border-radius:2px;
+  -o-border-radius:2px;
+}
