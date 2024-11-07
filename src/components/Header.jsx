@@ -19,8 +19,8 @@ function NavBar() {
         <Images
             src={Logo}
             alt="Nillavee Logo"
-            width="30"
-            height="30"
+            width="150"
+            height="150"
             className="logo-n"
             onClick={() => navigate('/client')}
         />

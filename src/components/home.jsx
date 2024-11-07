@@ -8,7 +8,7 @@ function Home() {
   console.log('Home.jsx');
   return (
       <>
-        <Header/>
+        {/* <Header/> */}
         <AddToCart/>
         <Hws/>
         <Features />
