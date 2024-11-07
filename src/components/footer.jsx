@@ -16,12 +16,6 @@ function Footer() {
             <a href="#">Celebration Insights</a>
           </li>
           <li>
-            <a href="#">Flavours</a>
-          </li>
-          <li>
-            <a href="#">Cake Size Pricing</a>
-          </li>
-          <li>
             <a href="#">Reviews</a>
           </li>
         </ul>
@@ -46,7 +40,7 @@ function Footer() {
         <div>
           <h4>Contact</h4>
           <p>Phone: 123-456-7890</p>
-          <a href="mailto:example@gmail.com">example@gmail.com</a>
+          <a href="mailto:cake@gmail.com">cake@gmail.com</a>
         </div>
       </div>
 

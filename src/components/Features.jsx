@@ -138,13 +138,6 @@ function Features() {
                 themes of their <br />
                 favorite cartoon and comic characters. We bring their
                 imagination to life!
-                <br />
-                Show love and create sweet memories with your kid(s). Make your
-                child&apos;s <br />
-                birthday special with our kid-friendly cake flavors, and vibrant
-                themes of their <br />
-                favorite cartoon and comic characters. We bring their
-                imagination to life!
               </p>
             </div>
             <img src={flavor} className="img_2" alt="Celebrate" />

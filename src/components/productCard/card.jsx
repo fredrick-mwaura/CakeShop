@@ -29,7 +29,7 @@ const shareOnWhatsApp = () => {
 
   const viewProductDetails = () => {
     const urlProduct = product.name.replace(/\s+/g, "-").toLowerCase();
-    navigate(`/product-view/${urlProduct}`, { state: { product } });
+    navigate(`product-view/${urlProduct}`, { state: { product } });
   };
 
   return (

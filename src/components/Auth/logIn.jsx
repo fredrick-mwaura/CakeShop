@@ -1,14 +1,15 @@
-
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import "./login.css";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { Box, Button, Container, IconButton, TextField, Typography, CircularProgress } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import back from '../../images/login.jpg'
 
 const Login = () => {
-
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  // const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -24,13 +25,10 @@ const Login = () => {
     setShowPassword((prev) => !prev);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-
-    // validate inputs
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -43,12 +41,11 @@ const Login = () => {
 
       if (response.status === 200) {
         login(result);
-        toast.success("successfully logged in!")
-        navigate(result.role === "admin" ? "/admin/dashboard" : "/dashboard");
+        toast.success("Successfully logged in!");
+        navigate(result.role === "admin" ? "/admin/dashboard" : "/dashboard"); //update
       } else {
-        setError(result.message || toast.error( "Login failed"));
+        setError(result.message || toast.error("Login failed"));
       }
-    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setLoading(false);
       setError(toast.error("An error occurred. Please try again."));
@@ -56,79 +53,69 @@ const Login = () => {
   };
 
   return (
-    <div className="contain">
-      {/*<Navbar />*/}
-      <div className="auth-container">
-        <h2 className="auth-title">Login</h2>
-        {error && <p className="error-message">{error}</p>}
-        <form className="auth-form" onSubmit={handleSubmit} name="login" id="login" autoComplete="true">
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                id="username"
-                value={formData.email}
-                onChange={handleChange}
-                required
+    <Container sx={{ display: "flex", justifyContent: "center", backgroundImage: `url(${back})`, backgroundSize: "cover",
+    backgroundPosition: "center", width:"100%", backgroundRepeat: "no-repeat", alignItems: "center", minHeight: "100vh" }}>
+      <Box
+        sx={{
+          p: 4,
+          boxShadow: 3,
+          borderRadius: 2,
+          backgroundColor: "white",
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          Login
+        </Typography>
+        
+        <Box component="form" onSubmit={handleSubmit} autoComplete="off">
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            variant="outlined"
+            fullWidth
+            required
+            margin="normal"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <Box sx={{ position: "relative", mb: 2 }}>
+            <TextField
+              label="Password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              fullWidth
+              required
+              value={formData.password}
+              onChange={handleChange}
             />
-          </div>
-          <div className="input-container">
-            <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <button
-                type="button"
-                className="toggle-password"
-                onClick={handlePasswordToggle}
-                aria-label={showPassword ? "Hide password" : "Show password"}
+            <IconButton
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              onClick={handlePasswordToggle}
+              sx={{ position: "absolute", right: 8, top: 12 }}
             >
-              {showPassword ? (
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                  >
-                    <path d="M1 12s2-6 11-6 11 6 11 6-2 6-11 6-11-6-11-6z"/>
-                    <path d="M12 12l-6 6"/>
-                  </svg>
-              ) : (
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                  >
-                    <path d="M17 18.5L12 12 7 18.5"/>
-                    <path d="M12 2C6 2 2 12 2 12s4 10 10 10 10-10 10-10-4-10-10-10z"/>
-                  </svg>
-              )}
-            </button>
-          </div>
-          <button type="submit" className="auth-button" disabled={loading}>
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            disabled={loading}
+            startIcon={loading && <CircularProgress size="1rem" />}
+            sx={{ mt: 2 }}
+          >
             {loading ? "Logging in..." : "Login"}
-          </button>
-          <p className="auth-footer">
+          </Button>
+          <Typography variant="body2" sx={{ mt: 2 }}>
             Don’t have an account? <a href="/signup">Sign Up</a>
-          </p>
-        </form>
-      </div>
-    </div>
+          </Typography>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

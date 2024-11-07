@@ -119,6 +119,9 @@
 .hamburger {
   display: none;
 }
+.dropdown{
+  display: none;
+}
 
 @media (max-width: 768px) {
   .navigation {
