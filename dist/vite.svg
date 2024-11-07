@@ -1,0 +1,19 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cake Base -->
+  <rect x="60" y="100" width="80" height="40" rx="10" fill="#D2691E" />
+  <rect x="70" y="90" width="60" height="20" rx="10" fill="#F4A460" />
+
+  <!-- Candle -->
+  <rect x="97" y="70" width="6" height="20" fill="#FFD700" />
+  <circle cx="100" cy="65" r="5" fill="#FF4500" />
+
+  <!-- Circular Text Around the Cake -->
+  <text x="100" y="30" font-size="14" text-anchor="middle" fill="#000">
+    <textPath href="#textCircle">Allooh Cakes and cookies</textPath>
+  </text>
+
+  <!-- Invisible Circle Path for Text -->
+  <defs>
+    <path id="textCircle" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" />
+  </defs>
+</svg>
