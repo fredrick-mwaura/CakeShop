@@ -2,10 +2,18 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-hot-toast";
-import { Box, Button, Container, IconButton, TextField, Typography, CircularProgress } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  TextField,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import back from '../../images/login.jpg'
+import back from "../../images/login.jpg";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -53,8 +61,19 @@ const Login = () => {
   };
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", backgroundImage: `url(${back})`, backgroundSize: "cover",
-    backgroundPosition: "center", width:"100%", backgroundRepeat: "no-repeat", alignItems: "center", minHeight: "100vh" }}>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        backgroundImage: `url(${back})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        backgroundRepeat: "no-repeat",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
       <Box
         sx={{
           p: 4,
@@ -67,7 +86,7 @@ const Login = () => {
         <Typography variant="h4" gutterBottom>
           Login
         </Typography>
-        
+
         <Box component="form" onSubmit={handleSubmit} autoComplete="off">
           <TextField
             label="Email"

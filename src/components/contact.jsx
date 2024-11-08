@@ -1,104 +1,120 @@
-/* eslint-disable no-undef */
-import { useState } from "react";
-import emailjs from "emailjs-com"; // Add this import
-import "../stylesheets/contact.css";
-import Header from "./Header";
+import React from 'react';
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Stack,
+  Paper,
+  IconButton,
+} from '@mui/material';
+import { Phone, Email, LocationOn, Facebook, Instagram, Twitter } from '@mui/icons-material';
 
-const Contact = () => {
-  // console.log(process.env.REACT_APP_EMAILJS_USER_ID);
-  const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  const userId = process.env.REACT_APP_EMAILJS_USER_ID;
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-  const emailParams = {
-          from_name: formData.name, // User's name
-          to_name: "Recipient Name", // Replace with the recipient's name
-          message: formData.message, // User's message
-          from_email: formData.email, // User's email (if you want to use it)
-        };
-    // EmailJS configuration
-    emailjs
-      .send(
-        serviceId,
-        templateId,
-        emailParams,
-        userId
-      )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        alert("Your message has been sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      })
-      .catch((error) => {
-        console.error("FAILED...", error);
-        alert("There was an issue sending your message.");
-      });
-  };
-
+const ContactUs = () => {
   return (
-    <>
-      <Header />
-      <div className="contact">
-        <div className="form-container">
-          <form onSubmit={handleSubmit} id="contacT" name="contacT" autoComplete="off">
-            <h2>Contact Us</h2>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit">Send</button>
-          </form>
-        </div>
-      </div>
-    </>
+    <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 3, backgroundColor: '#fff8e1' }}>
+        
+        {/* Title */}
+        <Typography variant="h2" align="center" gutterBottom sx={{ color: '#6d4c41', fontWeight: 'bold' }}>
+          Contact Us
+        </Typography>
+
+        <Typography variant="body1" align="center" sx={{ color: '#8d6e63', mb: 4 }}>
+          Have a question? Need a custom order? Reach out to us!
+        </Typography>
+
+        {/* Contact Information Section */}
+        <Box sx={{ mb: 4 }}>
+          <Stack direction="column" spacing={2} alignItems="center">
+            
+            {/* Phone Number */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Phone sx={{ color: '#6d4c41', mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: 'bold' }}>+254 7########</Typography>
+            </Box>
+            
+            {/* Email Address */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Email sx={{ color: '#6d4c41', mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: 'bold' }}>info@pinkiescupcakes.com</Typography>
+            </Box>
+            
+            {/* Physical Address */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <LocationOn sx={{ color: '#6d4c41', mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                123 Cake Street, Bakerstown, Nairobi 90001
+              </Typography>
+            </Box>
+            
+            {/* Social Media Icons */}
+            <Stack direction="row" spacing={2} mt={2}>
+              <IconButton href="https://facebook.com" target="_blank" aria-label="Facebook" sx={{ color: '#3b5998' }}>
+                <Facebook />
+              </IconButton>
+              <IconButton href="https://instagram.com" target="_blank" aria-label="Instagram" sx={{ color: '#e1306c' }}>
+                <Instagram />
+              </IconButton>
+              <IconButton href="https://twitter.com" target="_blank" aria-label="Twitter" sx={{ color: '#1da1f2' }}>
+                <Twitter />
+              </IconButton>
+            </Stack>
+          </Stack>
+        </Box>
+
+        {/* Contact Form */}
+        <Box component="form" noValidate autoComplete="off" sx={{ mt: 4 }}>
+          <Typography variant="h5" align="center" gutterBottom sx={{ color: '#6d4c41', fontWeight: 'bold' }}>
+            Send Us a Message
+          </Typography>
+          
+          <Stack spacing={2}>
+            <TextField
+              label="Full Name"
+              name="name"
+              variant="outlined"
+              fullWidth
+              required
+            />
+            <TextField
+              label="Email Address"
+              name="email"
+              type="email"
+              variant="outlined"
+              fullWidth
+              required
+            />
+            <TextField
+              label="Subject"
+              name="subject"
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              label="Message"
+              name="message"
+              variant="outlined"
+              fullWidth
+              required
+              multiline
+              rows={4}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 2, backgroundColor: '#6d4c41', '&:hover': { backgroundColor: '#8d6e63' } }}
+            >
+              Submit
+            </Button>
+          </Stack>
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 
-export default Contact;
+export default ContactUs;

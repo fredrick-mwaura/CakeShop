@@ -115,6 +115,32 @@
   border-radius: 50%;
 }
 
+.auth {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the links */
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.auth a {
+  color: #1976d2; /* Customize the color to match your theme */
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.auth a:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+  color: #115293; /* Darker color on hover */
+  border-color: #1976d2; /* Border color on hover */
+}
+
+
+
 /* Mobile menu for smaller screens */
 .hamburger {
   display: none;

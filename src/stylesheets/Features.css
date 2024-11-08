@@ -1,156 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    outline:none;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  outline:none;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .features {
     display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #ffffff; 
+  }
+  
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .feature-icon {
+    font-size: 40px;
+    color: #ffffff; 
+    margin-bottom: 15px;
+  }
+  
+  .feature h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  .heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Full width to stretch lines */
+    margin: 20px 0; /* Add vertical margin */
+  }
+  
+  .heading-container::before,
+  .heading-container::after {
+    content: '';
+    flex-grow: 1; /* Lines grow to take up space */
+    height: 1px; /* Line thickness */
+    background-color: #ccc; /* Line color (lighter for subtle effect) */
+    margin: 0 10px; /* Space between the line and heading */
+  }
+  
+  .heading {
+    font-size: 1.5rem; /* Adjust font size */
+    font-style: italic; /* Italic style for the heading */
+    font-weight: 300; /* Light weight for thinner text */
+    text-align: center;
+    color: #000; /* Text color */
+  }
+  
+
+  .flavours{
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    justify-content: space-around;
+  }
+
+  .flavour{
+    justify-content: space-around;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 40px 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+  }
+
+  .flavour img{
+    width: 180px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.disp_1{
+    display: flex;
     flex-wrap: wrap;
+    /* align-items:center; */
     justify-content: space-around;
-    padding: 2rem 1rem; 
+    /* background-color: #4a90e2; */
 }
 
-.feature {
-    background: #f9f9f9; 
-    border-radius: 8px; 
-    padding: 1.5rem;
-    margin: 1rem;
-    text-align: center;
-    flex: 1 1 calc(33.3333% - 2rem);
-    max-width: 300px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s; 
+.celebrate img{
+  background-color: #ffffff;
+    width: 450px;
+    border-radius: 5px;
+    border: 1px #808080 solid;
+    padding: 5px 5px;
+    margin: 10px;
+    margin-right: clamp(1.5rem, 2vw, 10rem);
 }
 
-.feature:hover {
-    transform: scale(1.05); 
-   grid-template-columns: 1fr 2fr;
-}
-
-.feature-icon {
-    font-size: 2rem; 
-    margin-bottom: 1rem; 
-    color: #5a5a5a; 
-}
-
-.flavor {
-    text-align: center;
-    margin: 2rem 0;
-    font-size: 1.5rem; 
-}
-
-.flavours {
+.celebrate{
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-around;
-}
-
-.flavour {
-    text-align: center;
-    margin: 1rem;
-    flex: 1 1 calc(20% - 1rem); 
-    max-width: 10em; 
-}
-
-.flavour img {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    /* justify-content: space-between; */
+    padding: 60px 0px;
+    background-color: #bdbdbd;
 }
 
-.disp_1 {
+/*.card_1 div{*/
+/*    background-color: ;*/
+/*}*/
+
+.card_2{
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    margin: 2rem 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #cec8c8;
+    width: 100%;
+    padding: 60px 0px;
+    /* margin: 10px 50px; */
 }
 
-.side-disp, .side-dis {
-    text-align: left; 
-    margin: 1rem;
-    flex: 1; 
-}
-
-.side-disp h3, .side-dis h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.img_2{
-    float: right;
-    margin-bottom: 1rem; 
-}
-
-.side-disp p, .side-dis p {
-    margin-bottom: 1.5rem;
-}
-
-.shop-button:hover {
-    background-color: #5a8de0; 
+.card_2 img{
+  background-color: #ffffff;
+  width: 450px;
+  border-radius: 5px;
+  padding: 8px 8px;
+  margin: 10px;
+  margin-right: clamp(1.5rem, 2vw, 10rem);
 }
 
 .Chat{
-    width: 80%;
-    height: 9em;
-    background-color:#bdbbbb;
-    margin: 1rem;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    border-radius:30px;
+  display: flex;
+  justify-content: center;
+  background-color: #666668;
+  color: #ffffff;
+  width: 100%;
+  height: 250px;
+  margin: 0;
+  padding: 40px;
 
 }
+.Chat div{
+  display: block;
+}
+
 .Chat p{
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+  font-size: xx-large;
+  color: #ffffff;
 }
 
-.Chat a{
-    padding: 10px;
-    color:#5a8de0;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    margin-inline: auto;
-    font-size: large;
-    border: 0;
-    cursor:pointer;
-    border-radius: 30px;
+.Chat .chat{
+  background-color: rgb(59, 119, 0);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius:5px;
+  color: #ffffff;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0);
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -ms-border-radius:5px;
+  -o-border-radius:5px;
 }
 
-@media (max-width: 768px) {
-    .feature {
-        flex: 1 1 calc(50% - 2rem); 
-    }
-
-    .flavour {
-        flex: 1 1 calc(50% - 1rem); 
-    }
-
-    .disp_1 {
-        flex-direction: column; 
-    }
-
-    .disp_1 img {
-        width: 100%;
-        margin-bottom: 1rem; 
-    }
-}
-
-@media (max-width: 480px) {
-    .feature {
-        flex: 1 1 100%; 
-    }
-
-    .flavour {
-        flex: 1 1 100%; 
-    }
-
-    .side-disp, .side-dis {
-        text-align: center; 
-    }
+.celebrate .bodytext{
+  color: #ffffff;
 }

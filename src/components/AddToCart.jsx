@@ -12,7 +12,7 @@ export default function AddToCart() {
   const [prevCart, setPrevCart] = useState(cart); // Track previous cart state
 
   const cartView = () => {
-    navigate('cart');
+    navigate('/client/cart');
   };
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);

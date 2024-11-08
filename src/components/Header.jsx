@@ -16,14 +16,15 @@ function NavBar() {
   return (
     <div>
       <header className="nillavee-header">
-        <Images
+      <Images
             src={Logo}
             alt="Nillavee Logo"
-            width="30"
-            height="30"
+            width="150"
+            height="150"
             className="logo-n"
             onClick={() => navigate('/client')}
         />
+
 
         <div className="header-nav">
           <div className="logo-container">
@@ -52,7 +53,7 @@ function NavBar() {
               <Link to="about-us">About Us</Link>
             </li>
             <li>
-              <Link to="about-us">Contact Us</Link>
+              <Link to="Contact-us">Contact Us</Link>
             </li>
           </ul>
         </div>

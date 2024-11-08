@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/Features1.css";
+import "../stylesheets/Features.css";
 import ball from "../images/1.jpg";
 import gum from "../images/2.jpg";
 import mango from "../images/3.jpg";
@@ -9,23 +9,22 @@ import flavor from "../images/6.jpg";
 import cele from "../images/cele.webp";
 
 function Features() {
-
   const PhoneNumber = "0705776570";
   const message = "Hello Cake shop and cakes.";
   const WhatsappLink = `https://api.whatsapp.com/send?phone=${PhoneNumber}&text=${encodeURIComponent(
     message
   )}`;
 
-//   const shareOnWhatsApp = () => {
-//   // Create the product URL using the same logic as in viewProductDetails
-//   const urlProduct = product.name.replace(/\s+/g, "-").toLowerCase();
-//   const productUrl = `http://localhost:5173/product-view/${urlProduct}`; // Replace with actual domain
-  
-//   const message = `Check out this product: ${product.name} for Ksh ${product.price}. More details here: ${productUrl}`;
-//   const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
-  
-//   window.open(url, "_blank");
-// };
+  //   const shareOnWhatsApp = () => {
+  //   // Create the product URL using the same logic as in viewProductDetails
+  //   const urlProduct = product.name.replace(/\s+/g, "-").toLowerCase();
+  //   const productUrl = `http://localhost:5173/product-view/${urlProduct}`; // Replace with actual domain
+
+  //   const message = `Check out this product: ${product.name} for Ksh ${product.price}. More details here: ${productUrl}`;
+  //   const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+  //   window.open(url, "_blank");
+  // };
 
   const feature = [
     {
@@ -59,56 +58,58 @@ function Features() {
           </div>
         ))}
       </div>
-      <div>
-        <div className="heading-container">
-          <h1 className="heading">Flavours Available</h1>
-        </div>
 
-        <div className="flavours">
-          <div className="flavour">
-            <img src={gum} alt="flavour" />
-            <p>Vanilla</p>
-          </div>
-
-          <div className="flavour">
-            <img src={orange} alt="flavour" />
-            <p>Chocolate</p>
-          </div>
-
-          <div className="flavour">
-            <img src={strawberry} alt="flavour" />
-            <p>Strawberry</p>
-          </div>
-
-          <div className="flavour">
-            <img src={mango} alt="flavour" />
-            <p>lemon</p>
-          </div>
-
-          <div className="flavour">
-            <img src={ball} alt="flavour" />
-            <p>forest</p>
+      <div className="disp_1">
+        <div className="celebrate">
+          <img src={cele} alt="Celebrate" />
+          <div className="bodytext">
+            <h3>Celebrate with us</h3>
+            <p>
+              Are you ready to channel the magic of birthdays and make your
+              <br />
+              celebrations complete? The missing wow factor is exquisite
+              birthday <br />
+              cakes baked in a design unique to you to create memories that
+              last.
+              <br />
+              We can help!
+            </p>
           </div>
         </div>
 
-        <div className="disp_1">
-          <div className="celebrate">
-            <img src={cele} alt="Celebrate" />
-            <div className="bodytext">
-              <h3>Celebrate with us</h3>
-              <p>
-                Are you ready to channel the magic of birthdays and make your
-                <br />
-                celebrations complete? The missing wow factor is exquisite
-                birthday <br />
-                cakes baked in a design unique to you to create memories that
-                last.
-                <br />
-                We can help!
-              </p>
+        {/* <div> */}
+          <div className="heading-container">
+            <h1 className="heading">Flavours Available</h1>
+          </div>
+
+          <div className="flavours">
+            <div className="flavour">
+              <img src={gum} alt="flavour" />
+              <p>Vanilla</p>
+            </div>
+
+            <div className="flavour">
+              <img src={orange} alt="flavour" />
+              <p>Chocolate</p>
+            </div>
+
+            <div className="flavour">
+              <img src={strawberry} alt="flavour" />
+              <p>Strawberry</p>
+            </div>
+
+            <div className="flavour">
+              <img src={mango} alt="flavour" />
+              <p>lemon</p>
+            </div>
+
+            <div className="flavour">
+              <img src={ball} alt="flavour" />
+              <p>forest</p>
             </div>
           </div>
-          <div className="Chat">
+
+          {/* <div className="Chat">
             <div>
               <p> Any Question?</p>
               <a
@@ -120,7 +121,7 @@ function Features() {
                 Chat On Whatsapp
               </a>
             </div>
-          </div>
+          </div> */}
           <div className="card_2">
             <div className="bodytext">
               <h3>Cakes for Kids</h3>
@@ -143,7 +144,7 @@ function Features() {
             <img src={flavor} className="img_2" alt="Celebrate" />
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }
