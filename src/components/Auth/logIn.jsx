@@ -16,8 +16,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import back from "../../images/login.jpg";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  // const [error, setError] = useState("");
+  const [formData, setFormData] = useState({ Username: "", password: "" });
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,11 +38,13 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("http://localhost/cake-backend/api/Login.php", { //place in the opt/lampp/htdocs
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
+    // console.log(['formData']),
 
       const result = await response.json();
       setLoading(false);
@@ -50,13 +52,15 @@ const Login = () => {
       if (response.status === 200) {
         login(result);
         toast.success("Successfully logged in!");
-        navigate(result.role === "admin" ? "/admin/dashboard" : "/dashboard"); //update
+        navigate(result.role === "admin" ? "/admin" : "/client"); //updated
       } else {
         setError(result.message || toast.error("Login failed"));
       }
     } catch (err) {
       setLoading(false);
+      console.log(err);
       setError(toast.error("An error occurred. Please try again."));
+      console.error("Error:", err);
     }
   };
 
@@ -86,17 +90,17 @@ const Login = () => {
         <Typography variant="h4" gutterBottom>
           Login
         </Typography>
-
+        
         <Box component="form" onSubmit={handleSubmit} autoComplete="off">
           <TextField
-            label="Email"
-            name="email"
-            type="email"
+            label="Username"
+            name="Username"
+            type="text"
             variant="outlined"
             fullWidth
             required
             margin="normal"
-            value={formData.email}
+            value={formData.Username}
             onChange={handleChange}
           />
           <Box sx={{ position: "relative", mb: 2 }}>
@@ -130,7 +134,7 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </Button>
           <Typography variant="body2" sx={{ mt: 2 }}>
-            Don’t have an account? <a href="/signup">Sign Up</a>
+            Don’t have an account? <a href="/client/signup">Sign Up</a>
           </Typography>
         </Box>
       </Box>

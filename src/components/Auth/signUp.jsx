@@ -47,7 +47,7 @@ const SignUp = () => {
       setErrorMessage("");
 
       try {
-        const response = await axios.post("/api/auth/signup", { //api call
+        const response = await axios.post("http://localhost/cake-backend/api/signup.php", { 
           username: formData.username,
           email: formData.email,
           password: formData.password,
@@ -164,7 +164,7 @@ const SignUp = () => {
         <Box mt={2} textAlign="center">
           <Typography variant="body2">
             Already have an account?{" "}
-            <Link href="/login" color="primary">
+            <Link href="/client/login" color="primary">
               Login
             </Link>
           </Typography>

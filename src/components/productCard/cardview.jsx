@@ -62,7 +62,7 @@ const CartView = () => {
       ) : (
         <Box>
           <Typography variant="h4" textAlign="center" gutterBottom>
-            Your Shopping Cart
+            Your Cart
           </Typography>
 
           <Stack container spacing={2} sx={{ mt: 2 }}>

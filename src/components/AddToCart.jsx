@@ -18,7 +18,7 @@ export default function AddToCart() {
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   // Log current cart for debugging
-  console.log("Current Cart:", cart);
+  // console.log("Current Cart:", cart);
 
   useEffect(() => {
     // Check if any item has been added or updated in the cart

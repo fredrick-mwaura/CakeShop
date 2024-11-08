@@ -3,7 +3,7 @@ include 'db.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-$name = $data->name;
+$name = $data->username;
 $email = $data->email;
 $password = password_hash($data->password, PASSWORD_BCRYPT);
 
