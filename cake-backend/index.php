@@ -1,2 +1,2 @@
 <?php
-echo "<h1>Welcome to the Cake Backend</h1>";
+echo "<h1>Welcome to the pinkie yummy Cake</h1>";

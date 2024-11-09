@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../stylesheets/Header.css";
 import {Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
@@ -7,11 +7,19 @@ import Logo from "../images/logo.png";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(()=>{
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
+  }, [])
 
   return (
     <div>
@@ -20,7 +28,7 @@ function NavBar() {
             src={Logo}
             alt="Nillavee Logo"
             width="150"
-            height="150"
+            height="100"
             className="logo-n"
             onClick={() => navigate('/client')}
         />
@@ -29,10 +37,22 @@ function NavBar() {
         <div className="header-nav">
           <div className="logo-container">
             <input type="text" placeholder="Search..." className="search-input" />
-            <p className="auth">
-              <Link to='login'>Login</Link>
-              <Link to='signup'>Register</Link>
-            </p>
+           <div>
+            {user ? (
+              <div className="user">
+                <h3>
+                  welcome, {user.name}
+                </h3>
+              </div>
+            ) : (
+              <p className="auth">
+                <Link to='login'>Login</Link>
+                <Link to='signup'>Register</Link>
+              </p>
+            )
+
+            }
+            </div>
 
           </div>
 
