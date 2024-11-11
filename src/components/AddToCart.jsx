@@ -4,7 +4,7 @@ import Icon from './icon';
 import { CartContext } from "./GlobalCart";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import '../stylesheets/Cart.css';
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 export default function AddToCart() {
   const { cart } = useContext(CartContext);

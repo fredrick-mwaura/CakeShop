@@ -1,5 +1,5 @@
 <?php
-// Enable CORS 
+// Enable CORS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -16,40 +16,40 @@ $response = array();
 
 // Validate the input data
 if (isset($data['Username']) && isset($data['password'])) {
-   $Username = $data['Username'];
-   $password = $data['password'];
+    $Username = $data['Username'];
+    $password = $data['password'];
 
-   // Prepare a statement to prevent SQL injection
-   $stmt = $conn->prepare("SELECT * FROM Login WHERE Username = ?");
-   $stmt->bind_param("s", $Username);
-   $stmt->execute();
-   $result = $stmt->get_result();
+    // Prepare a statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT * FROM Login WHERE Username = ?");
+    $stmt->bind_param("s", $Username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-   // Check if user exists
-   if ($result->num_rows > 0) {
-      $user = $result->fetch_assoc();
+    // Check if user exists
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-      // Verify the password
-      if (password_verify($password, $user['password'])) {
-         $response['success'] = true;
-         $response['message'] = "Login successful";
+        // Debug: log fetched password hash
+        error_log("Fetched password hash: " . $user['password']);
 
-         // Optional: You can generate a token here for authentication
-         // Example: $response['token'] = generateToken($user['id']);
-      } else {
-         $response['success'] = false;
-         $response['message'] = "Incorrect password";
-      }
-   } else {
-      $response['success'] = false;
-      $response['message'] = "User not found";
-   }
+        // Verify the password
+        if (password_verify($password, $user['password'])) {
+            $response['success'] = true;
+            $response['message'] = "Login successful";
+        } else {
+            $response['success'] = false;
+            $response['message'] = "Incorrect password";
+        }
+    } else {
+        $response['success'] = false;
+        $response['message'] = "User not found";
+    }
 
-   // Close the prepared statement
-   $stmt->close();
+    // Close the prepared statement
+    $stmt->close();
 } else {
-   $response['success'] = false;
-   $response['message'] = "incorrect Username or password";
+    $response['success'] = false;
+    $response['message'] = "Username or password is missing";
 }
 
 // Output the response as JSON

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
-import { Toaster } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -47,7 +47,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ErrorBoundary fallback={<Home />}>
-        <Toaster position="top-right" reverseOrder={true} />
+        {/* <Toaster position="top-right" reverseOrder={true} /> */}
         <AuthProvider>
           <CartProvider>
             <Router>
@@ -87,16 +87,17 @@ function App() {
       </ErrorBoundary>
 
       <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+
     </ThemeProvider>
   );
 }

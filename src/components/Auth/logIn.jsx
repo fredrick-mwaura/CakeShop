@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import {
   Box,
   Button,
@@ -48,11 +48,13 @@ const Login = () => {
 
       const result = await response.json();
       setLoading(false);
+      console.log(result)
 
       if (response.status === 200) {
         login(result);
         toast.success("Successfully logged in!");
-        navigate(result.role === "admin" ? "/admin" : "/client"); //updated
+        console.log(result.Role);
+        navigate(result.Role === "Admin" ? "/admin" : "/client/order"); //updated
       } else {
         setError(result.message || toast.error("Login failed"));
       }

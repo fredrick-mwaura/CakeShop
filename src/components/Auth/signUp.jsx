@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import Images from "../image.jsx";
 import google from "../../images/google.svg";
 import back from '../../images/login.jpg'

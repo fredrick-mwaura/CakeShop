@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Product from '../../components/utils/product';
+import {toast} from "react-toastify"
 import './productView.css';  // Import the CSS file
 // import AddToCart from "../AddToCart";
 import { CartContext } from '../GlobalCart.jsx';
@@ -15,6 +16,7 @@ const ProductView = () => {
 
   const handleAddToCart = () => {
     addToCart(product);
+    toast.success(`${product.name} added to cart!`);
   }
 
   if (!product) {

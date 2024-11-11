@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { CartContext } from "../GlobalCart.jsx";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import {
   Box,

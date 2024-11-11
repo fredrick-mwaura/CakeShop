@@ -7,7 +7,7 @@ const SignIn = ()=>{
 
    const handleSubmit = (e)=>{
       e.preventDefault()
-      navigate('/')
+      navigate('/admin')
    }
    return(
       <Container maxWidth="sm">
