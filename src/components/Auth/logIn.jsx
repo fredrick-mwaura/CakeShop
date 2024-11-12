@@ -38,17 +38,17 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost/cake-backend/api/Login.php", { //place in the opt/lampp/htdocs
+      const response = await fetch("http://localhost/cake-backend/api/Login.php", { //app.get
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
+        
       });
-
-    // console.log(['formData']),
 
       const result = await response.json();
       setLoading(false);
       console.log(result)
+      console.log(formData);
 
       if (response.ok) {//status 200
         login(result);
@@ -56,7 +56,7 @@ const Login = () => {
         console.log(result.Role);
         navigate(result.Role === "Admin" ? "/admin" : "/client/order"); //updated
       } else {
-        setError(result.message || toast.error("Login failed"));
+        setError(result.message || toast.error("Login failed, retry!"));
       }
     } catch (err) {
       setLoading(false);

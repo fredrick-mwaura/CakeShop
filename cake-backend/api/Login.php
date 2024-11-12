@@ -17,7 +17,7 @@ include 'db.php';
 
 // Get the raw POST data and decode it as an associative array
 $raw_data = file_get_contents("php://input");
-error_log("Received data: " . $raw_data); // Log raw input for debugging
+error_log("Received data: {$raw_data}"); // Log raw input for debugging
 
 $data = json_decode($raw_data, true);
 
