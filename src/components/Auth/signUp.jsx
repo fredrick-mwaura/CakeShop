@@ -59,7 +59,7 @@ const SignUp = () => {
           localStorage.setItem("user", JSON.stringify(response.data));
           toast.success("Signup successful!");
           setTimeout(() => {
-            navigate("cookie");
+            navigate("/client/cookie");
           }, 2000);
         } else {
           handleUnsuccessfulRes(response);

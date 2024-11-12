@@ -16,7 +16,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import back from "../../images/login.jpg";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ Username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +50,7 @@ const Login = () => {
       setLoading(false);
       console.log(result)
 
-      if (response.status === 200) {
+      if (response.ok) {//status 200
         login(result);
         toast.success("Successfully logged in!");
         console.log(result.Role);
@@ -95,14 +95,14 @@ const Login = () => {
         
         <Box component="form" onSubmit={handleSubmit} autoComplete="off">
           <TextField
-            label="username"
-            name="username"
+            label="Username"
+            name="Username"
             type="text"
             variant="outlined"
             fullWidth
             required
             margin="normal"
-            value={formData.username}
+            value={formData.Username}
             onChange={handleChange}
           />
           <Box sx={{ position: "relative", mb: 2 }}>

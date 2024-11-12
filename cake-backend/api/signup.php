@@ -7,7 +7,7 @@ $name = $data->username;
 $email = $data->email;
 $password = password_hash($data->password, PASSWORD_BCRYPT);
 
-$sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+$sql = "INSERT INTO users (FullName, email, PhoneNumber, password) VALUES ('$name', '$email', '$password')";
 
 $response = array();
 
@@ -16,7 +16,7 @@ if ($conn->query($sql) === TRUE) {
    $response['message'] = "User registered successfully";
 } else {
    $response['success'] = false;
-   $response['message'] = "Error: " . $conn->error;
+   $response['message'] = "Error: {$conn->error}" ;
 }
 
 echo json_encode($response);
