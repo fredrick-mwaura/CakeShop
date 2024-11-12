@@ -60,7 +60,8 @@ function App() {
                   <Route path="birthday" element={<BirthDay />} />
                   <Route path="all-cakes" element={<AllCakes />} />
                   <Route path="profile" element={<Profile />} />
-                  <Route path="cookie" element={<Cookie addToCart={AddToCart} />} />
+                  <Route path="cookie" element={<Cookie /> }/> 
+                  {/* <Route path="cookie" element={<Cookie /> }/> addToCart={AddToCart} />} /> */}
                   <Route path="contact-us" element={<Contact />} />
                   <Route path="signup" element={<SignUp />} />
                   <Route path="login" element={<Login />} />
