@@ -4,8 +4,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Images from "../image.jsx";
 import google from "../../images/google.svg";
-import back from '../../images/login.jpg'
-import {
+// import back from '../../images/login.jpg';
+import { sha256 } from 'js-sha256';
+import{
   Box,
   Button,
   CircularProgress,
@@ -20,6 +21,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
+    Role: "",
     password: "",
     confirmPassword: "",
   });
@@ -35,6 +37,8 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const hashedPassword = sha256(formData.password);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -46,12 +50,19 @@ const SignUp = () => {
     } else {
       setErrorMessage("");
 
+      // const hashedPassword = await hashPassword(formData.password);
+      // console.log(hashedPassword)
+
       try {
         const response = await axios.post("http://localhost/cake-backend/api/signup.php", { 
+          // mode: "no-cors",
           username: formData.username,
           email: formData.email,
-          password: formData.password,
+          Role: formData.Role,
+          password: formData.hashedPassword,
         });
+        console.log(formData);
+        console.log(hashedPassword)
 
         setLoading(false);
 
@@ -88,7 +99,7 @@ const SignUp = () => {
   };
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", backgroundImage: `url(${back})`, backgroundSize: "cover",
+    <Container sx={{ display: "flex", justifyContent: "center", backgroundSize: "cover",
     backgroundPosition: "center", width:"100%", backgroundRepeat: "no-repeat", alignItems: "center", minHeight: "100vh" }}>
       <Box
         sx={{
@@ -115,7 +126,7 @@ const SignUp = () => {
               label="Username"
               name="username"
               type="text"
-              value={formData.username}
+              value={formData.username || ""}
               onChange={handleChange}
               required
             />
@@ -123,7 +134,15 @@ const SignUp = () => {
               label="Email"
               name="email"
               type="email"
-              value={formData.email}
+              value={formData.email || ""}
+              onChange={handleChange}
+              required
+            />
+            <TextField
+              label="Role"
+              name="Role"
+              type="text"
+              value={formData.Role || ""}
               onChange={handleChange}
               required
             />
@@ -131,7 +150,7 @@ const SignUp = () => {
               label="Password"
               name="password"
               type="password"
-              value={formData.password}
+              value={formData.password || ""}
               onChange={handleChange}
               required
             />
@@ -139,7 +158,7 @@ const SignUp = () => {
               label="Confirm Password"
               name="confirmPassword"
               type="password"
-              value={formData.confirmPassword}
+              value={formData.confirmPassword || ""}
               onChange={handleChange}
               required
             />

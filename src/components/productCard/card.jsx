@@ -5,7 +5,7 @@ import { faEye, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Icon from '../icon';
 import { CartContext } from '../GlobalCart.jsx';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './product.css';
 
@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = () => {
     addToCart(product);
-    toast("done")
+    // toast("done")
     toast.success(`${product.name} added to cart!`);
   };
 
@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Toast Container */}
-      <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} />
+      {/* <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} /> */}
     </div>
   );
 };

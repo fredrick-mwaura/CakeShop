@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -13,7 +14,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import back from "../../images/login.jpg";
+// import back from "../../images/login.jpg";
 
 const Login = () => {
   const [formData, setFormData] = useState({ Username: "", password: "" });
@@ -36,42 +37,75 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    setError(""); // Reset any previous error
+  
     try {
-      const response = await fetch("http://localhost/cake-backend/api/Login.php", { //app.get
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-        
-      });
-
-      const result = await response.json();
+      // Using axios to make the POST request
+      const response = await axios.post(
+        "http://localhost/cake-backend/api/Login.php",
+        formData,
+        {
+          headers: { "Content-Type": "application/json" },
+          validateStatus: (status) => status < 500, // Accept all responses with status < 500
+        }
+      );
+  
       setLoading(false);
-      console.log(result)
-      console.log(formData);
 
-      if (response.ok) {//status 200
+    console.log("Full response:", response);
+  
+      // Handle successful login
+      if (response.status === 200 && response.data.success) {
+        const result = response.data;
         login(result);
         toast.success("Successfully logged in!");
-        console.log(result.Role);
-        navigate(result.Role === "Admin" ? "/admin" : "/client/order"); //updated
+        console.log(result.role);
+        navigate(result.role === "Admin" ? "/admin" : "/client/order");
+        return;
+      }
+  
+      // Handle specific error cases based on backend response
+      if (response.status === 401 || response.data.message === "Incorrect password") {
+        toast.warn("Incorrect password!");
+      } else if (response.status === 404 || response.data.message === "User not found") {
+        toast.warn("User does not exist!");
+      } else if (response.status === 422) {
+        toast.warn("Missing username or password.");
       } else {
-        setError(result.message || toast.error("Login failed, retry!"));
+        // Handle other error cases with response message
+        setError(response.data.message || "Login failed, please retry!");
+        toast.error(response.data.message || "Login failed, please retry!");
       }
     } catch (err) {
       setLoading(false);
-      console.log(err);
-      setError(toast.error("An error occurred. Please try again."));
-      console.error("Error:", error);
+      console.error("Error:", err);
+  
+      // Handle network errors or unexpected issues
+      if (err.response) {
+        switch (err.response.status) {
+          case 500:
+            toast.error("Server error, please try again later.");
+            break;
+          default:
+            toast.error("An unexpected error occurred. Please try again.");
+        }
+      } else if (err.request) {
+        // Network error (e.g., server not reachable)
+        toast.error("Unable to connect to the server. Please check your network.");
+      } else {
+        // Other errors (e.g., coding issues)
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
+  
 
   return (
     <Container
       sx={{
         display: "flex",
         justifyContent: "center",
-        backgroundImage: `url(${back})`,
+        // backgroundImage: `url(${back})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         width: "100%",
@@ -92,7 +126,7 @@ const Login = () => {
         <Typography variant="h4" gutterBottom>
           Login
         </Typography>
-        
+
         <Box component="form" onSubmit={handleSubmit} autoComplete="off">
           <TextField
             label="Username"

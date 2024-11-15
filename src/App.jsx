@@ -51,7 +51,7 @@ function App() {
         <AuthProvider>
           <CartProvider>
             <Router>
-              <AddToCart />
+              {/* <AddToCart /> */}
               <Routes>
                 {/* Client Routes */}
                 <Route path="/" element={<Navigate to="/client" />} />

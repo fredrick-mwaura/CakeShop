@@ -41,7 +41,7 @@ function NavBar() {
             {user ? (
               <div className="user">
                 <h3>
-                  welcome, {user.name}
+                  welcome, {user.Username}
                 </h3>
               </div>
             ) : (
