@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Icon from './icon';
 import { CartContext } from "./GlobalCart";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import '../stylesheets/Cart.css';
 import { toast } from "react-toastify";
+import Icon from './icon';
 
 export default function AddToCart() {
   const { cart } = useContext(CartContext);

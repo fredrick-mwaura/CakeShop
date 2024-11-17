@@ -17,6 +17,9 @@ import {
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+// import emptyCart from '../../images/empty_cart.svg'
+// import Images from '../image.jsx';
+import EmptyCart from '../utils/emptyCart'
 
 const CartView = () => {
   const { cart, setCart } = useContext(CartContext); // Assume setCart allows updating the cart directly
@@ -56,9 +59,9 @@ const CartView = () => {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
       {cart.length === 0 ? (
-        <Typography variant="h6" textAlign="center" color="text.secondary" sx={{ mt: 4, minHeight: 'calc(100vh - 160px)' }}>
-          Your cart is empty.
-        </Typography>
+
+        <EmptyCart />
+        
       ) : (
         <Box>
           <Typography variant="h4" textAlign="center" gutterBottom>

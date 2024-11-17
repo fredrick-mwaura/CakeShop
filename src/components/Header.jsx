@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../stylesheets/Header.css";
 import {Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
+import AddToCart from "./AddToCart";
 import Logo from "../images/logo.png";
+import {Box} from '@mui/material'
+import profile from '../images/profile2.png'
+// import Avatar from '@mui/material/Avatar';
+// import PersonIcon from '@mui/icons-material/Person';
+
      
 
 function NavBar() {
@@ -37,13 +43,34 @@ function NavBar() {
         <div className="header-nav">
           <div className="logo-container">
             <input type="text" placeholder="Search..." className="search-input" />
+            <div>
+              <Link to="cart"><AddToCart /></Link>
+              {/* <p className="cart-count">{user?.cart?.length || 0}</p> */}
+              
+            </div>
            <div>
             {user ? (
-              <div className="user">
-                <h3>
-                  welcome, {user.Username}
-                </h3>
-              </div>
+              <Box
+              display="flex"
+              justifyContent="flex-end" // Aligns children to the right
+              alignItems="center" // Centers items vertically
+              sx={{ padding: 2 }} // Optional padding
+          >
+              {/* <Avatar sx={{ width: 50, height: 50 }}> */}
+                  {/* <Link to="profile" ><PersonIcon /></Link> */}
+                  <Link to="profile" >
+                  <Images
+                  src={profile}
+                  alt="Profile"
+                  width="40"
+                  height="40"
+                  className="profile-img"
+                  onClick={() => navigate('/profile')}
+
+                   />
+                   </Link>
+              {/* </Avatar> */}
+          </Box>
             ) : (
               <p className="auth">
                 <Link to='login'>Login</Link>
