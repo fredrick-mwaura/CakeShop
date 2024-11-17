@@ -17,8 +17,8 @@ import { useNavigate } from 'react-router-dom';
 
 const mainListItems = [
   { text: 'Home', icon: <HomeRoundedIcon />, link: '/'},
-  { text: 'Analytics', icon: <AnalyticsRoundedIcon />, link: '/analytics'},
-  { text: 'Clients', icon: <PeopleRoundedIcon />, link: '/users' },
+  { text: 'Analytics', icon: <AnalyticsRoundedIcon />, link: 'analytics'},
+  { text: 'Clients', icon: <PeopleRoundedIcon />, link: 'users' },
 ];
 
 const secondaryListItems = [

@@ -1,111 +1,200 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Paper } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Paper,
+  Stack,
+} from '@mui/material';
+import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { toast } from 'react-toastify';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SaveIcon from '@mui/icons-material/Save';
+// import CancelIcon from '@mui/icons-material/Cancel';
+import axios from 'axios';
 
-function AddUser() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-  });
-  const [errors, setErrors] = useState({});
+function UserTable() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [newUser, setNewUser] = useState({ username: '', email: '', password: '' });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.fullName) newErrors.fullName = 'Full name is required';
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid';
-    }
-    if (!formData.password || formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      try {
-        const response = await fetch('/api/users', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        const data = await response.json();
-
-        if (response.ok) {
-          // Display success toast
-          toast.success('User added successfully!');
-          setFormData({ fullName: '', email: '', password: '' }); // Clear the form
-        } else {
-          // Display error toast
-          toast.error(data.message || 'Failed to add user');
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error('An error occurred. Please try again.');
+  // Fetch Users from API
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('http://localhost/cake-backend/api/getUsers.php');
+      const data = await response.json();
+      if (response.ok) {
+        setUsers(data);
+      } else {
+        toast.error('Failed to fetch users');
       }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred while fetching users');
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  // Handle Add New User
+  const handleAddUser = async () => {
+    if (!newUser.username || !newUser.email || newUser.password.length < 6) {
+      toast.error('Please fill all fields correctly.');
+      return;
+    }
+
+    try {
+      const response = await axios.get('http://localhost/cake-backend/api/addUser.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('User added successfully!');
+        setUsers((prevUsers) => [...prevUsers, data]);
+        setNewUser({ username: '', email: '', password: '' });
+      } else {
+        toast.error(data.message || 'Failed to add user');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
+  // Handle Delete User
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost/cake-backend/api/deleteUser.php?id=${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setUsers(users.filter((user) => user.id !== id));
+        toast.success('User deleted successfully!');
+      } else {
+        toast.error('Failed to delete user');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
+  // Handle Inline Edit Save
+  const handleSave = async (params) => {
+    try {
+      const response = await axios.get(`http://localhost/cake-backend/api/updateUser.php?id=${params.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params.row),
+      });
+      if (response.ok) {
+        toast.success('User updated successfully!');
+        fetchUsers(); // Refresh users list
+      } else {
+        toast.error('Failed to update user');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 70 },
+    {
+      field: 'username',
+      headerName: 'Full Name',
+      width: 200,
+      editable: true,
+    },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 250,
+      editable: true,
+    },
+    {
+      field: 'password',
+      headerName: 'Password',
+      width: 150,
+      editable: true,
+    },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      type: 'actions',
+      width: 150,
+      getActions: (params) => [
+        <GridActionsCellItem
+          icon={<SaveIcon />}
+          label="Save"
+          onClick={() => handleSave(params)}
+        />,
+        <GridActionsCellItem
+          icon={<DeleteIcon />}
+          label="Delete"
+          onClick={() => handleDelete(params.id)}
+        />,
+      ],
+    },
+  ];
 
   return (
-    <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, margin: 'auto' }}>
-      <Typography variant="h5" align="center" gutterBottom>
-        Add New User
+    <Box sx={{ padding: 4 }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        User Management
       </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Full Name"
-          name="fullName"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          value={formData.fullName}
-          onChange={handleChange}
-          error={!!errors.fullName}
-          helperText={errors.fullName}
-        />
-        <TextField
-          label="Email"
-          name="email"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          value={formData.email}
-          onChange={handleChange}
-          error={!!errors.email}
-          helperText={errors.email}
-        />
-        <TextField
-          label="Password"
-          name="password"
-          type="password"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          value={formData.password}
-          onChange={handleChange}
-          error={!!errors.password}
-          helperText={errors.password}
-        />
-        <Box mt={2} display="flex" justifyContent="center">
-          <Button type="submit" variant="contained" color="primary">
+      <Paper elevation={3} sx={{ padding: 2, marginBottom: 2 }}>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <TextField
+            label="username"
+            value={newUser.username}
+            onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+          />
+          <TextField
+            label="Email"
+            value={newUser.email}
+            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            value={newUser.password}
+            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            onClick={handleAddUser}
+          >
             Add User
           </Button>
-        </Box>
-      </form>
-    </Paper>
+        </Stack>
+      </Paper>
+
+      <Box sx={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={users}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          loading={loading}
+          disableSelectionOnClick
+        />
+      </Box>
+    </Box>
   );
 }
 
-export default AddUser;
+export default UserTable;

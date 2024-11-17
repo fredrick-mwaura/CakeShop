@@ -1,4 +1,20 @@
+# RewriteEngine On
+# # check req !== file 
+# RewriteCond %{REQUEST_FILENAME} !-f
+# # check req !== directory 
+# RewriteCond %{REQUEST_FILENAME} !-d 
+# RewriteRule ^(.*)$ index.php [QSA,L]
+
+# <IfModule mod_headers.c>
+#     Header set Access-Control-Allow-Origin "*"
+#     Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+#     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+#     Header set Access-Control-Allow-Credentials "true"
+# </IfModule>
+
+Options -MultiViews
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^ index.php [L]
+

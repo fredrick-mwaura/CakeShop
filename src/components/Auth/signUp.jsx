@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import Images from "../image.jsx";
 import google from "../../images/google.svg";
 // import back from '../../images/login.jpg';
-import { sha256 } from 'js-sha256';
+// import { sha256 } from 'js-sha256';
+import NewToken from './new_confirmation'
 import{
   Box,
   Button,
@@ -42,49 +43,90 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // Validate password length and confirm password match
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage(toast.error("Passwords do not match."));
+    setErrorMessage(""); // Reset error message on new submission
+  
+    // Basic Validation: Check if all fields are filled
+    if (
+      !formData.username ||
+      !formData.email ||
+      !formData.Role ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      toast.error("Please fill in all the fields.");
       setLoading(false);
-    } else {
-      setErrorMessage("");
-
-      // const hashedPassword = await hashPassword(formData.password);
-      // console.log(hashedPassword)
-
-      try {
-        const response = await axios.post("http://localhost/cake-backend/api/signup.php", { 
-          // mode: "no-cors",
+      return;
+    }
+  
+    // Validate password length and confirm password match
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
+  
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+  
+    // Hash the password using sha256 (uncomment if needed)
+    // const hashedPassword = sha256(formData.password);
+  
+    try {
+      const response = await axios.post(
+        "http://localhost/cake-backend/api/signup.php",
+        {
           username: formData.username,
           email: formData.email,
           Role: formData.Role,
-          password: formData.hashedPassword,
-        });
-        console.log(formData);
-        console.log(hashedPassword)
-
-        setLoading(false);
-
-        if (response.status === 201) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-          toast.success("Signup successful!");
-          setTimeout(() => {
-            navigate("/client/cookie");
-          }, 2000);
-        } else {
-          handleUnsuccessfulRes(response);
+          password: formData.password, // Use hashedPassword if hashing is implemented
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
         }
-      } catch (err) {
-        setLoading(false);
-        if (err.response && err.response.data.message) {
-          setErrorMessage(err.response.data.message);
+      );
+  
+      setLoading(false);
+  
+      // Handle successful signup response
+      if (response.status === 201) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        toast.success("Signup successful!");
+        setTimeout(() => {
+          navigate("/client/confirm_email");
+        }, 2000);
+      } else {
+        handleUnsuccessfulRes(response);
+      }
+    } catch (err) {
+      setLoading(false);
+  
+      // Handle Axios error response
+      if (err.response) {
+        if (err.response.status === 400) {
+          toast.error("Bad Request: Check your inputs.");
+        } else if (err.response.status === 409) {
+          toast.error("Email already exists.");
+        } else if (err.response.status === 500) {
+          toast.error("Server error. Please try again later.");
         } else {
-          toast.error("An error occurred. Please try again.");
+          toast.error("Unexpected error. Please contact support.");
         }
+      } else if (err.request) {
+        // Handle no response from server
+        toast.error("No response from the server. Please check your connection.");
+      } else {
+        // Handle unexpected errors
+        toast.error("An error occurred. Please try again.");
       }
     }
   };
+  
 
   const handleUnsuccessfulRes = (response) => {
     if (response.status === 400) {

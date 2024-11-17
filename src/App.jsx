@@ -25,15 +25,16 @@ import Login from "./components/Auth/logIn";
 import Cookie from "./components/Cookie";
 import { CartProvider } from "./components/GlobalCart";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
+import NewToken from "./components/Auth/new_confirmation.jsx";
 // import { useNavigate } from "react-router-dom";
 
 // Admin Imports
 import Analytics from "./Admin/mainGrid";
 import Notfound from "./components/Error/notfound";
 import ClientList from "./Admin/oftenClients";
-import AddUser from "./Admin/AddUser";
+// import UserTable from "./Admin/oftenClients";
 import AdminLayout from "./Admin/AdminLayout";
-import SignIn from "./Admin/Auth/Login";
+// import SignIn from "./Admin/Auth/Login";
 
 function App() {
   const theme = createTheme({
@@ -51,7 +52,7 @@ function App() {
         <AuthProvider>
           <CartProvider>
             <Router>
-              {/* <AddToCart /> */}
+              <AddToCart />
               <Routes>
                 {/* Client Routes */}
                 <Route path="/" element={<Navigate to="/client" />} />
@@ -69,15 +70,16 @@ function App() {
                   <Route path="about-us" element={<AboutUs />} />
                   <Route path="product-view/:productName" element={<ProductView />} />
                   <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
+                  <Route path="confirm_email" element={<NewToken/>} />
                   <Route path="*" element={<Notfound />} />
                 </Route>
 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminLayout />}>
                   <Route index element={<Analytics />} />
-                  <Route path="login" element={<SignIn />} />
+                  {/* <Route path="login" element={<SignIn />} /> */}
                   <Route path="users" element={<ClientList />} />
-                  <Route path="users/new" element={<AddUser />} />
+                  <Route path="users/new" element={<ClientList />} />
                   <Route path="*" element={<Notfound />} />
                 </Route>
               </Routes>
