@@ -1,10 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Cakes";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("localhost", "root", "", "Cakes");
 
 if ($conn->connect_error) {
    die("Connection failed: {$conn->connect_error}" );
