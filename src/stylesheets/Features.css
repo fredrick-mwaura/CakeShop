@@ -13,6 +13,7 @@
     justify-content: space-around;
     padding: 20px;
     background-color: #ffffff; 
+    padding: 8rem 0px;
   }
   
   .feature {
@@ -49,6 +50,7 @@
     justify-content: center;
     width: 100%; /* Full width to stretch lines */
     margin: 20px 0; /* Add vertical margin */
+    /* height: 500px; */
   }
   
   .heading-container::before,
@@ -71,7 +73,7 @@
 
   .flavours{
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     /* align-items: center; */
     justify-content: space-around;
   }
@@ -80,8 +82,10 @@
     justify-content: space-around;
     background-color: #ffffff;
     padding: 10px;
-    margin: 40px 20px;
+    margin: 40px 1rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+    /* height: 500px; */
+
   }
 
   .flavour img{
@@ -93,6 +97,7 @@
 .disp_1{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     /* align-items:center; */
     justify-content: space-around;
     /* background-color: #4a90e2; */
@@ -181,4 +186,14 @@
 
 .celebrate .bodytext{
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .celebrate img{
+    width: 200px;
+  }
+
+  .card_2 img{
+    width: 300px;
+  }
 }
