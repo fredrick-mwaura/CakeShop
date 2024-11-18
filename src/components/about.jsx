@@ -4,7 +4,7 @@ import { Container, Typography, Box, Paper } from '@mui/material';
 const AboutUs = () => {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 3, backgroundColor: '#fff8e1' }}>
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 3, backgroundColor: '#fff' }}>
         
         <Typography variant="h2" align="center" gutterBottom sx={{ color: '#6d4c41', fontWeight: 'bold' }}>
           About Us

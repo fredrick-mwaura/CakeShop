@@ -16,7 +16,7 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    background: linear-gradient(to right, #b7e1ff, #ffefbb);
+    background: linear-gradient(to right, #ddeaff, #ffe9e5);
 
 }
 
@@ -29,6 +29,7 @@
 
 .logo-container {
   display: flex;
+  /* flex-wrap: wrap; */
   align-items: center;
   gap: 15px;
 }
@@ -62,10 +63,11 @@
 }
 
 .header-nav {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
-  width: 70%;
+  justify-content: center;
+  width: 70rem;
 }
 
 .addTo {
@@ -86,7 +88,8 @@
   justify-content: flex-end;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
+  font-size: 0.7rem;
 }
 
 .navigation li {
@@ -150,12 +153,25 @@
 }
 
 @media (max-width: 768px) {
-  .navigation {
+
+.navigation a {
+  display: none;
+}
+
+
+.auth :link{
+  display: none;
+}
+
+@media (max-width: 468px) {
+  .logo-container{
     display: none;
   }
+}  
 
   .hamburger {
     display: block;
+    /* justify-self: end; */
     font-size: 24px;
     cursor: pointer;
   }
@@ -165,9 +181,9 @@
     flex-direction: column;
     background-color: #fff;
     position: absolute;
-    top: 60px;
+    top: 130px;
     left: 0;
-    width: 100%;
+    width: 30%;
     padding: 10px 0;
   }
 

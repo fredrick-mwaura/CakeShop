@@ -5,7 +5,7 @@ import gum from "../images/2.jpg";
 import mango from "../images/3.jpg";
 import orange from "../images/4.jpg";
 import strawberry from "../images/5.jpg";
-import flavor from "../images/6.jpg";
+// import cele from "../images/cele.webp";
 import cele from "../images/cele.webp";
 
 function Features() {
@@ -141,7 +141,7 @@ function Features() {
                 imagination to life!
               </p>
             </div>
-            <img src={flavor} className="img_2" alt="Celebrate" />
+            <img src={cele} className="img_2" alt="Celebrate" />
           </div>
         </div>
       {/* </div> */}
