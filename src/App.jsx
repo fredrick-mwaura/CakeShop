@@ -19,7 +19,7 @@ import AboutUs from "./components/about.jsx";
 import ProductView from './components/productCard/productview';
 import ErrorBoundary from "./components/Error/errorBoundary";
 import OrderPage from "./components/order/order";
-import PrivateRoute from "./components/routes/PrivateRoute";
+// import PrivateRoute from "./components/routes/PrivateRoute";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import Cookie from "./components/Cookie";
@@ -34,6 +34,7 @@ import Notfound from "./components/Error/notfound";
 import ClientList from "./Admin/oftenClients";
 // import UserTable from "./Admin/oftenClients";
 import AdminLayout from "./Admin/AdminLayout";
+import Orders from './Admin/utils/orders'
 // import SignIn from "./Admin/Auth/Login";
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
         <AuthProvider>
           <CartProvider>
             <Router>
-              {/* <AddToCart /> */}
+              <AddToCart />
               <Routes>
                 {/* Client Routes */}
                 <Route path="/" element={<Navigate to="/client" />} />
@@ -69,7 +70,8 @@ function App() {
                   <Route path="cart" element={<CartView />} />
                   <Route path="about-us" element={<AboutUs />} />
                   <Route path="product-view/:productName" element={<ProductView />} />
-                  <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
+                  <Route path="order" element={<OrderPage />}/>
+                  {/* <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} /> */}
                   <Route path="confirm_email" element={<NewToken/>} />
                   <Route path="*" element={<Notfound />} />
                 </Route>
@@ -78,6 +80,7 @@ function App() {
                 <Route path="/admin" element={<AdminLayout />}>
                   <Route index element={<Analytics />} />
                   {/* <Route path="login" element={<SignIn />} /> */}
+                  <Route path="notifications" element={<Orders/>}/>
                   <Route path="users" element={<ClientList />} />
                   <Route path="users/new" element={<ClientList />} />
                   <Route path="*" element={<Notfound />} />

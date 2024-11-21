@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useNavigate} from 'react';
 import Stack from '@mui/material/Stack';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import Date from './DatePicker';
@@ -8,6 +8,10 @@ import Color from './Theme/Color';
 
 
 const Header = () => {
+  let navigate = useNavigate;
+  const Notifications = () => {
+    navigate('/notifications');
+  };
   return (
     <Stack
       direction="row"
@@ -22,9 +26,9 @@ const Header = () => {
       spacing={2}
     >
       <NavbarBreadcrumbs />
-      <Stack direction="row" sx={{ gap: 1 }}>
+      <Stack direction="row" sx={{ gap: 10 }}>
         <Date />
-        <MenuButton showBadge aria-label="Open notifications"> {/*getting notification*/}
+        <MenuButton showBadge aria-label="Open notifications" onClick={Notifications}> {/*getting notification*/}
           <NotificationsRoundedIcon />
         </MenuButton>
         <Color />

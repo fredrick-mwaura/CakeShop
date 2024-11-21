@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../stylesheets/Header.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
-import AddToCart from "./AddToCart";
+// import AddToCart from "./AddToCart";
 import Logo from "../images/logo.png";
      
 
