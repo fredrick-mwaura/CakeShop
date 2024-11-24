@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Table,
   TableBody,
@@ -10,13 +10,13 @@ import {
   Paper,
   CircularProgress,
   Box,
-} from '@mui/material';
-import { CssVarsProvider, Sheet, Typography, Button } from '@mui/joy';
-import { CheckCircleOutline, ErrorOutline } from '@mui/icons-material';
+} from "@mui/material";
+import { CssVarsProvider, Sheet, Typography, Button } from "@mui/joy";
+import { CheckCircleOutline, ErrorOutline } from "@mui/icons-material";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchOrders = async () => {
@@ -24,19 +24,18 @@ const Orders = () => {
     setError(null);
 
     try {
-      const response = await axios.get('http://localhost/cake-backend/order/getOrders.php');
-
-      console.log('Response Data:', response.data);
-
-      if (response.data?.status === 'success' && Array.isArray(response.data.data)) {
-        setOrders(response.data.data); // Update state with valid data
+      const response = await axios.get(
+        "http://localhost/cake-backend/order/getOrders.php"
+      );
+      if (response.status === 200) {
+        setOrders(response.data);
       } else {
-        setError('Invalid response format or no orders found');
-        setOrders([]); // Set orders to an empty array to avoid errors
+        setOrders([]);
+        setError("No orders found or invalid response format.");
       }
     } catch (err) {
-      console.error('Error fetching orders:', err);
-      setError('Error fetching orders');
+      console.error("Error fetching orders:", err);
+      setError("Failed to fetch orders. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -46,33 +45,45 @@ const Orders = () => {
     fetchOrders();
   }, []);
 
+  useEffect(() => {
+    console.log("Orders state updated:", orders); // Debugging orders state
+  }, [orders]);
+
   return (
     <CssVarsProvider>
       <Sheet
         variant="outlined"
         sx={{
           maxWidth: 1200,
-          mx: 'auto',
+          mx: "auto",
           my: 4,
           p: 3,
-          borderRadius: 'md',
-          boxShadow: 'lg',
+          borderRadius: "md",
+          boxShadow: "lg",
         }}
       >
-        <Typography level="h2" sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography level="h2" sx={{ mb: 2, textAlign: "center" }}>
           Orders Made
         </Typography>
 
         {loading ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
             <CircularProgress />
           </Box>
         ) : error ? (
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 4, color: 'error.main' }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mt: 4,
+              color: "error.main",
+            }}
+          >
             <ErrorOutline sx={{ mr: 1 }} />
             {error}
           </Box>
-        ) : Array.isArray(orders) && orders.length > 0 ? (
+        ) : orders.length < 0 ? (
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
@@ -96,15 +107,19 @@ const Orders = () => {
                     <TableCell align="center">{order.name}</TableCell>
                     <TableCell align="center">{order.phone}</TableCell>
                     <TableCell align="center">{order.location}</TableCell>
-                    <TableCell align="center">{order.street}</TableCell>
-                    <TableCell align="center">{order.house}</TableCell>
-                    <TableCell align="center">{order.email}</TableCell>
+                    <TableCell align="center">{order.street || "N/A"}</TableCell>
+                    <TableCell align="center">{order.house || "N/A"}</TableCell>
+                    <TableCell align="center">{order.email || "N/A"}</TableCell>
                     <TableCell align="center">
-                      {order.date ? new Date(order.date).toLocaleDateString() : 'N/A'}
+                      {order.date ? new Date(order.date).toLocaleDateString() : "N/A"}
                     </TableCell>
-                    <TableCell align="center">{order.instructions || 'N/A'}</TableCell>
                     <TableCell align="center">
-                      {order.created_at ? new Date(order.created_at).toLocaleString() : 'N/A'}
+                      {order.instructions || "N/A"}
+                    </TableCell>
+                    <TableCell align="center">
+                      {order.created_at
+                        ? new Date(order.created_at).toLocaleString()
+                        : "N/A"}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -112,11 +127,12 @@ const Orders = () => {
             </Table>
           </TableContainer>
         ) : (
-          <Typography level="body2" sx={{ textAlign: 'center', mt: 4 }}>
+          <Typography level="body2" sx={{ textAlign: "center", mt: 4 }}>
             No orders available.
           </Typography>
         )}
-        <Box sx={{ textAlign: 'center', mt: 3 }}>
+
+        <Box sx={{ textAlign: "center", mt: 3 }}>
           <Button
             variant="solid"
             color="primary"

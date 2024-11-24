@@ -1,4 +1,5 @@
-import React, {useNavigate} from 'react';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import Date from './DatePicker';
@@ -8,9 +9,9 @@ import Color from './Theme/Color';
 
 
 const Header = () => {
-  let navigate = useNavigate;
-  const Notifications = () => {
-    navigate('/notifications');
+  const navigate = useNavigate();
+  let Notifications = () => {
+    navigate('/admin/notifications');
   };
   return (
     <Stack

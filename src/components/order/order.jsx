@@ -59,9 +59,6 @@ const OrderPage = () => {
           withCredentials: true, // To include cookies
         }
       );
-
-      if (response.data.success) {
-        toast.success('Order placed successfully!');
         // Reset form
         setFormData({
           name: '',
@@ -73,14 +70,14 @@ const OrderPage = () => {
           date: '',
           instructions: '',
         });
+        toast.success('Order placed successfully!');
         setErrors({});
-      } else {
-        toast.error('Failed to place the order.');
-      }
+      
     } catch (error) {
       console.error('Error placing order:', error);
       toast.error('An error occurred while placing your order.');
     }
+    console.log("client data:", formData)
   };
 
   return (
