@@ -3,6 +3,13 @@ import "../stylesheets/Header.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
 import Logo from "../images/logo.png";
+import { Cake } from "lucide-react";
+import { Home } from "lucide-react";
+import { Phone } from "lucide-react";
+import { Cookie } from "lucide-react";
+
+
+
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,16 +81,21 @@ function NavBar() {
           <ul className="dropdown">
             <li>
               <Link to="/client" onClick={toggleMenu}>
+              <Home color={'#333'} size={20} />
                 Home
               </Link>
             </li>
             <li>
               <Link to="all-cakes" onClick={toggleMenu}>
-                All Cakes
+              <Cake color={'#333'} size={20} />
+
+              All Cakes
               </Link>
             </li>
             <li>
               <Link to="birthday" onClick={toggleMenu}>
+              <Cookie color={'#333'} size={20} />
+
                 Birthday Cakes
               </Link>
             </li>
@@ -94,11 +106,14 @@ function NavBar() {
             </li>
             <li>
               <Link to="about-us" onClick={toggleMenu}>
+              <Phone color={'#333'} size={20} />
+
                 About Us
               </Link>
             </li>
             <li>
               <Link to="contact-us" onClick={toggleMenu}>
+              <Phone color={'#333'} size={20} />
                 Contact Us
               </Link>
             </li>

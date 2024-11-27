@@ -1,6 +1,6 @@
 /* Footer Base Styles */
 .foot {
-    background-color:#170f32; /* Dark background for contrast */
+  background-color: #292727;
     color: #fff; /* White text for readability */
     padding: 40px 20px; /* Add some padding around the footer */
     display: flex;
@@ -15,7 +15,7 @@
     width: 100%;
     height:auto;
     color:aliceblue;
-    background: #060230;
+    /* background: #060230; */
     margin-bottom:0;
 }
 

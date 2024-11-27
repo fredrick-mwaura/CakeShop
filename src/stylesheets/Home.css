@@ -1,118 +1,129 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-    
-    body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ddeaff, #ffe9e5);
-  }
-  
-  .hero-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    width: 100vw;
-    height: 70vh;
-    /* max-width: 1200px; */
-    /* margin: 50px; */
-    /* padding: 30px; */
-  }
-  
-  .text-content {
-    /* flex: 1; */
-    margin-right: 20px;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .text-content h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .text-content p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .text-content button {
-    padding: 10px 20px;
-    background-color: #ff0077;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .text-content button:hover {
-    background-color: #e6006f;
-  }
-  
+/* @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap"); */
 
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+  font-family: Gentium;
+  src: url(GentiumItalic.ttf);
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: family='Poppins:wght@700&display=swap';
+  src: url(https://fonts.googleapis.com/css2?);
+  font-style: italic;
+  /* background: linear-gradient(to right, #ddeaff, #ffe9e5); */
+  background-color: #fcf3f1;
+}
+
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  background-color: #fff9f7;
+
+  height: 70vh;
+  /* max-width: 1200px; */
+  /* margin: 50px; */
+  /* padding: 30px; */
+}
+
+.text-content {
+  align-items: center;
+  /* flex: 1; */
+  margin-right: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+.text-content h1 {
+  font-size: 5rem;
+  color: #333;
+  margin-bottom: 10px; 
+}
+
+.text-content p {
+  font-size: 2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.text-content button {
+  padding: 10px 20px;
+  background-color: #ff0077;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.text-content button:hover {
+  background-color: #e6006f;
+}
+
+.photo-gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  width: 420px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.photo1 {
+  position: relative;
+  top: 10%;
+  right: -10%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.iconn {
+  cursor: pointer;
+}
+
+.photo2 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.photo3 {
+  position: relative;
+  top: 100%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
   .photo-gallery {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .photo{
-    width: 420px;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .photo1  {
-    position: relative;
-    top: 10%;
-    right: -10%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    z-index: -1;
-    object-fit: cover;
-  }
-  
-  .iconn{
-    cursor: pointer;
-  }
-  
-  .photo2 {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-    .photo3 {
-      position: relative;
-      top: 100%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    
-  }
-  
-  @media (max-width: 768px) {
-  .photo-gallery{
     display: block;
   }
-    /*.main-image{*/
-    /*  display: none;*/
-    /*}*/
-  }
+  /*.main-image{*/
+  /*  display: none;*/
+  /*}*/
+}
 /* 
 .photo-gallery {
     position: relative;

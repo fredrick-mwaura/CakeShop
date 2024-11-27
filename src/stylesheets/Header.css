@@ -16,7 +16,9 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    background: linear-gradient(to right, #ddeaff, #ffe9e5);
+    /* background: linear-gradient(to right, #ddeaff, #ffe9e5); */
+  background-color: #fff9f7;
+
 
 }
 
@@ -179,11 +181,11 @@
   .dropdown {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #f0ecec;
     position: absolute;
     top: 130px;
     left: 0;
-    width: 30%;
+    width: 45%;
     padding: 10px 0;
   }
 
@@ -197,7 +199,11 @@
   }
 
   .dropdown li a {
+    display: block;
     color: #333;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    width: 90%;
     text-decoration: none;
   }
 }

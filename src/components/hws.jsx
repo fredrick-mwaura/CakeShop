@@ -3,7 +3,6 @@ import React from "react";
 import cut from "../images/cut.webp";
 import cake from "../images/cake.jpg";
 import cele from "../images/cele.webp";
-// import "../stylesheets/overlappingphotos.css";
 import "../stylesheets/Home.css";
 
 const Hws = () => {

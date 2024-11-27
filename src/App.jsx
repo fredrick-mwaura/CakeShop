@@ -13,7 +13,7 @@ import BirthDay from "./components/BirthDay";
 import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
 import CartView from './components/productCard/cardview.jsx';
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import NavBar from "./components/Header";
 import AboutUs from "./components/about.jsx";
 import ProductView from './components/productCard/productview';
@@ -83,7 +83,7 @@ function App() {
                   <Route path="*" element={<Notfound />} />
                 </Route>
               </Routes>
-              {/* <Footer /> */}
+              <Footer />
             </Router>
           </CartProvider>
         </AuthProvider>
