@@ -7,6 +7,10 @@ export default defineConfig({
   base: '',
   build: {
     outDir: "dist", // You can change 'build' to any folder name
+    sourcemap: false,  // Disable source maps for production builds
+  },  
+  server: {
+    sourcemap: true, // Enable source maps during development
   },
   // server: {
   //   proxy: {

@@ -4,31 +4,25 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Images from "../image.jsx";
 import google from "../../images/google.svg";
-// import back from '../../images/login.jpg';
-// import { sha256 } from 'js-sha256';
-import NewToken from './new_confirmation'
-import{
+import {
   Box,
   Button,
   CircularProgress,
   Container,
+  InputLabel,
+  IconButton,
   Link,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    Role: "",
-    password: "",
-    confirmPassword: "",
-  });
-
+  const [formData, setFormData] = useState({username: "", email: "", password: "", confirmPassword: ""});
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -38,18 +32,18 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const hashedPassword = sha256(formData.password);
+  const handlePasswordToggle = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage(""); // Reset error message on new submission
-  
+
     // Basic Validation: Check if all fields are filled
     if (
       !formData.username ||
       !formData.email ||
-      !formData.Role ||
       !formData.password ||
       !formData.confirmPassword
     ) {
@@ -57,32 +51,24 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
-  
+
     // Validate password length and confirm password match
     if (formData.password.length < 6) {
       toast.error("Password must be at least 6 characters long.");
       setLoading(false);
       return;
     }
-  
+
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match.");
       setLoading(false);
       return;
     }
-  
-    // Hash the password using sha256 (uncomment if needed)
-    // const hashedPassword = sha256(formData.password);
-  
+
     try {
       const response = await axios.post(
         "http://localhost/cake-backend/api/signup.php",
-        {
-          username: formData.username,
-          email: formData.email,
-          Role: formData.Role,
-          password: formData.password, // Use hashedPassword if hashing is implemented
-        },
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
@@ -90,10 +76,11 @@ const SignUp = () => {
           withCredentials: true,
         }
       );
-  
+
       setLoading(false);
-  
-      // Handle successful signup response
+      console.log("Full response:", response);
+      console.log(formData);
+
       if (response.status === 201) {
         localStorage.setItem("user", JSON.stringify(response.data));
         toast.success("Signup successful!");
@@ -105,44 +92,38 @@ const SignUp = () => {
       }
     } catch (err) {
       setLoading(false);
-  
-      // Handle Axios error response
-      if (err.response) {
-        if (err.response.status === 400) {
-          toast.error("Bad Request: Check your inputs.");
-        } else if (err.response.status === 409) {
-          toast.error("Email already exists.");
-        } else if (err.response.status === 500) {
-          toast.error("Server error. Please try again later.");
-        } else {
-          toast.error("Unexpected error. Please contact support.");
-        }
-      } else if (err.request) {
-        // Handle no response from server
-        toast.error("No response from the server. Please check your connection.");
-      } else {
-        // Handle unexpected errors
-        toast.error("An error occurred. Please try again.");
-      }
+
+      handleUnsuccessfulRes(err.response || { status: 500 });
     }
   };
-  
 
   const handleUnsuccessfulRes = (response) => {
     if (response.status === 400) {
-      toast.error("Bad Request: check your inputs.");
+      toast.error("Bad Request: Check your inputs.");
     } else if (response.status === 409) {
-      toast.error("Email already exists");
+      toast.error("Email already exists.");
     } else if (response.status === 500) {
-      toast.error("Please try again later.");
+      toast.error("Server error. Please try again later.");
     } else {
-      toast.error("Unexpected error, please contact admin");
+      toast.error("Unexpected error, please contact admin.");
+      console.log(response.status);
+      console.error("ona: ", error);
     }
   };
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", backgroundSize: "cover",
-    backgroundPosition: "center", width:"100%", backgroundRepeat: "no-repeat", alignItems: "center", minHeight: "100vh" }}>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        backgroundRepeat: "no-repeat",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
       <Box
         sx={{
           width: "100%",
@@ -157,11 +138,6 @@ const SignUp = () => {
         <Typography variant="h4" component="h2" gutterBottom align="center">
           Sign Up
         </Typography>
-        {/* {errorMessage && (
-          <Typography color="error" variant="body2" align="center">
-            {errorMessage}
-          </Typography>
-        )} */}
         <form onSubmit={handleSubmit} autoComplete="true">
           <Stack spacing={2}>
             <TextField
@@ -171,6 +147,7 @@ const SignUp = () => {
               value={formData.username || ""}
               onChange={handleChange}
               required
+              inputProps={{ "aria-label": "username" }}
             />
             <TextField
               label="Email"
@@ -179,38 +156,57 @@ const SignUp = () => {
               value={formData.email || ""}
               onChange={handleChange}
               required
+              // inputProps={{ "aria-label": "email" }}
             />
-            <TextField
-              label="Role"
-              name="Role"
-              type="text"
-              value={formData.Role || ""}
-              onChange={handleChange}
-              required
-            />
+            <Box sx={{ position: "relative", mb: 2 }}>
             <TextField
               label="Password"
               name="password"
-              type="password"
-              value={formData.password || ""}
-              onChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              fullWidth
               required
+              value={formData.password}
+              onChange={handleChange}
             />
+            <IconButton
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              onClick={handlePasswordToggle}
+              sx={{ position: "absolute", right: 8, top: 12 }}
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </Box>
+            <Box sx={{ position: "relative", mb: 1 }}>
             <TextField
-              label="Confirm Password"
+              label="confirm Password"
               name="confirmPassword"
-              type="password"
-              value={formData.confirmPassword || ""}
-              onChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              fullWidth
               required
+              value={formData.confirmPassword}
+              onChange={handleChange}
             />
+            <IconButton
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              onClick={handlePasswordToggle}
+              sx={{ position: "absolute", right: 8, top: 12 }}
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </Box>
+            {loading && (
+              <Box display="flex" justifyContent="center">
+                <CircularProgress />
+              </Box>
+            )}
             <Button
               type="submit"
               variant="contained"
               color="primary"
               fullWidth
               disabled={loading}
-              startIcon={loading && <CircularProgress size={20} />}
             >
               {loading ? "Signing up..." : "Sign Up"}
             </Button>
@@ -231,7 +227,6 @@ const SignUp = () => {
           </Typography>
         </Box>
       </Box>
-      {/* <Outlet/> */}
     </Container>
   );
 };

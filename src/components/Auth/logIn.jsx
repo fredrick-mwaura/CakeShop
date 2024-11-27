@@ -94,7 +94,7 @@ const Login = () => {
         toast.error("Unable to connect to the server. Please check your network.");
       } else {
         // Other errors (e.g., coding issues)
-        toast.error("An unexpected error occurred.");
+        toast.error("An unexpected error occurred.", error);
       }
     }
   };

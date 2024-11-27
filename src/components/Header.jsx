@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../stylesheets/Header.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
+// import AddToCart from "./AddToCart";
 import Logo from "../images/logo.png";
+<<<<<<< HEAD
 import { Cake } from "lucide-react";
 import { Home } from "lucide-react";
 import { Phone } from "lucide-react";
@@ -10,6 +12,9 @@ import { Cookie } from "lucide-react";
 
 
 
+=======
+     
+>>>>>>> 64b62985bd2ca7180a4b1ac25b0b07e82f0b73c5
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,13 +47,24 @@ function NavBar() {
 
         <div className="header-nav">
           <div className="logo-container">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="search-input"
-            />
+            <input type="text" placeholder="Search..." className="search-input" />
+           <div>
+            {user ? (
+              <div className="user">
+                <h3>
+                  welcome, {user.Username}
+                </h3>
+              </div>
+            ) : (
+              <p className="auth">
+                <Link to='login'>Login</Link>
+                <Link to='signup'>Register</Link>
+              </p>
+            )
 
-          
+            }
+            </div>
+
           </div>
 
           <ul className={`navigation ${isOpen ? "open" : ""}`}>

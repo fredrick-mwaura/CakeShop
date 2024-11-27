@@ -23,7 +23,7 @@ const NewToken = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost/cake-backend/api/request_new_token.php',
+        'http://localhost/cake-backend/api/resend_confrmation.php',
         { email },
         { headers: { 'Content-Type': 'application/json' } }
       );
