@@ -9,12 +9,9 @@ import {
   Button,
   CircularProgress,
   Container,
-  FormControl,
   InputLabel,
   IconButton,
   Link,
-  MenuItem,
-  Select,
   Stack,
   TextField,
   Typography,
@@ -23,7 +20,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({username: "", email: "", Role: "", password: "", confirmPassword: ""});
+  const [formData, setFormData] = useState({username: "", email: "", password: "", confirmPassword: ""});
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,7 +44,6 @@ const SignUp = () => {
     if (
       !formData.username ||
       !formData.email ||
-      !formData.Role ||
       !formData.password ||
       !formData.confirmPassword
     ) {
@@ -71,21 +67,19 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-       " http://localhost/cake-backend/api/signup.php",
-        {
-          formData,
-        },
+        "http://localhost/cake-backend/api/signup.php",
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
-            validateStatus: (status) => status < 500,
           },
-           withCredentials: true,
+          withCredentials: true,
         }
       );
 
       setLoading(false);
       console.log("Full response:", response);
+      console.log(formData);
 
       if (response.status === 201) {
         localStorage.setItem("user", JSON.stringify(response.data));
@@ -113,6 +107,7 @@ const SignUp = () => {
     } else {
       toast.error("Unexpected error, please contact admin.");
       console.log(response.status);
+      console.error("ona: ", error);
     }
   };
 
@@ -163,18 +158,6 @@ const SignUp = () => {
               required
               // inputProps={{ "aria-label": "email" }}
             />
-            <FormControl fullWidth required>
-              <InputLabel id="role-label">Role</InputLabel>
-              <Select
-                labelId="role-label"
-                name="Role"
-                value={formData.Role || ""}
-                onChange={handleChange}
-              >
-                <MenuItem value="Admin">Admin</MenuItem>
-                <MenuItem value="Employee">Employee</MenuItem>
-              </Select>
-            </FormControl>
             <Box sx={{ position: "relative", mb: 2 }}>
             <TextField
               label="Password"

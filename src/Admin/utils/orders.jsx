@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { CssVarsProvider, Sheet, Typography, Button } from "@mui/joy";
 import { CheckCircleOutline, ErrorOutline } from "@mui/icons-material";
+import { isObject } from "@mui/x-data-grid/internals";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -25,9 +26,9 @@ const Orders = () => {
 
     try {
       const response = await axios.get(
-        "http://localhost/cake-backend/order/getOrders.php"
+        "http://localhost/cake-backend/api/getOrders.php"
       );
-      if (response.status === 200) {
+      if (response.data) {
         setOrders(response.data);
       } else {
         setOrders([]);
@@ -46,7 +47,9 @@ const Orders = () => {
   }, []);
 
   useEffect(() => {
+    console.log(isObject(orders));
     console.log("Orders state updated:", orders); // Debugging orders state
+    console.log("Orders length:", orders.length); // Now correctly logging orders.length
   }, [orders]);
 
   return (
@@ -83,7 +86,7 @@ const Orders = () => {
             <ErrorOutline sx={{ mr: 1 }} />
             {error}
           </Box>
-        ) : orders.length < 0 ? (
+        ) : orders.length > 0 ? (
           <TableContainer component={Paper}>
             <Table>
               <TableHead>

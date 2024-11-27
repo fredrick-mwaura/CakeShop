@@ -50,7 +50,7 @@ const OrderPage = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost/cake-backend/order/placeOrder.php',
+        'http://localhost/cake-backend/order/placeorder.php',
         formData,
         {
           headers: {
