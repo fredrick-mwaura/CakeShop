@@ -22,7 +22,7 @@ const Hws = () => {
 
       <div className="photo-gallery">
 
-        <img src={cele} alt="Celebration" className="photo photo1" />
+        <img src={cele} alt="Celebration" className="photo photo" />
 
         {/* <img src={cake} alt="Cake table" className="photo photo2" /> */}
 

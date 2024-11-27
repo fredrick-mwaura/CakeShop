@@ -13,12 +13,9 @@ import AllCakes from "./components/AllCakes";
 import BirthDay from "./components/BirthDay";
 import AddToCart from "./components/AddToCart";
 import Contact from "./components/contact";
-<<<<<<< HEAD
-import CartView from './components/productCard/cardview.jsx';
+// import CartView from './components/productCard/cardview.jsx';
 import Footer from "./components/footer";
-=======
 import CartView from "./components/productCard/cardview.jsx";
->>>>>>> 64b62985bd2ca7180a4b1ac25b0b07e82f0b73c5
 import NavBar from "./components/Header";
 import AboutUs from "./components/about.jsx";
 import ProductView from "./components/productCard/productview";
@@ -120,10 +117,7 @@ function App() {
                   <Route path="*" element={<Notfound />} />
                 </Route>
               </Routes>
-<<<<<<< HEAD
               <Footer />
-=======
->>>>>>> 64b62985bd2ca7180a4b1ac25b0b07e82f0b73c5
             </Router>
           </CartProvider>
         </AuthProvider>
