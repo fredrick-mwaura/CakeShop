@@ -120,11 +120,11 @@ body {
   .photo-gallery {
     display: block;
   }
-  /*.main-image{*/
-  /*  display: none;*/
-  /*}*/
+  .main-image{
+   display: none;
+  }
 }
-/* 
+
 .photo-gallery {
     position: relative;
     display: flex;
@@ -172,4 +172,4 @@ body {
   .photo:hover {
     transform: scale(1.1);
   }
-   */
+  

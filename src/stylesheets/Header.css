@@ -173,7 +173,6 @@
 
   .hamburger {
     display: block;
-    /* justify-self: end; */
     font-size: 24px;
     cursor: pointer;
   }

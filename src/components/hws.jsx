@@ -1,7 +1,7 @@
 import React from "react";
 // import { Box, Button, Typography, Stack, useMediaQuery } from "@mui/material";
-import cut from "../images/cut.webp";
-import cake from "../images/cake.jpg";
+// import cut from "../images/cut.webp";
+// import cake from "../images/cake.jpg";
 import cele from "../images/cele.webp";
 import "../stylesheets/Home.css";
 

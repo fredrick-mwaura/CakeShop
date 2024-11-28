@@ -5,10 +5,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Color from "./Admin/Theme/Color.jsx";
+import './App.css'
 
 // Client Imports
 import Home from "./components/home.jsx";
-import Profile from "./components/Profile/Userprofile.jsx";
 import AllCakes from "./components/AllCakes";
 import BirthDay from "./components/BirthDay";
 import AddToCart from "./components/AddToCart";
@@ -28,6 +28,8 @@ import Cookie from "./components/Cookie";
 import { CartProvider } from "./components/GlobalCart";
 import { AuthProvider } from "./components/contexts/AuthContext.jsx";
 import NewToken from "./components/Auth/new_confirmation.jsx";
+import ForgotPassword from './components/Auth/forgotPassword.jsx'
+import Profile from './components/Profile/profile'
 
 // Admin Imports
 import Analytics from "./Admin/mainGrid";
@@ -100,7 +102,9 @@ function App() {
                   <Route path="contact-us" element={<Contact />} />
                   <Route path="signup" element={<SignUp />} />
                   <Route path="login" element={<Login />} />
+                  <Route path="forgot-password" element={<ForgotPassword/>}/>
                   <Route path="cart" element={<CartView />} />
+                  <Route path="profile" element={<Profile/>}/>
                   <Route path="about-us" element={<AboutUs />} />
                   <Route path="product-view/:productName" element={<ProductView />} />
                   <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
@@ -117,7 +121,6 @@ function App() {
                   <Route path="*" element={<Notfound />} />
                 </Route>
               </Routes>
-              <Footer />
             </Router>
           </CartProvider>
         </AuthProvider>

@@ -48,6 +48,9 @@ export default function Color({ mode, setMode }) {
         onClick={handleClose}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        sx={{
+          display: "sticky",
+        }}
       >
         <MenuItem selected={mode === "system"} onClick={handleMode("system")}>
           System Default
