@@ -3,24 +3,44 @@ import "../stylesheets/Header.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
 import Logo from "../images/logo.png";
-import { Cake } from "lucide-react";
-import { Home } from "lucide-react";
-import { Phone } from "lucide-react";
-import { Cookie } from "lucide-react";
-
-
-
-     
+import { Cake, Home, Phone, Cookie } from "lucide-react";
+import { Box, Button, Menu, MenuItem } from "@mui/material";
+import { FaUserCircle } from "react-icons/fa";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
+  const open = Boolean(anchorEl);
+
+  // Toggle navigation menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
- 
+
+  // Handle dropdown menu actions
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOptionClick = (option) => {
+    handleClose();
+    switch (option) {
+      case "Profile":
+        navigate("/client/profile");
+        break;
+      default:
+        navigate("/client/login");
+    }
+  };
+
+  // Load user data from localStorage on mount
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -28,32 +48,10 @@ function NavBar() {
     }
   }, []);
 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-  
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget); 
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null); 
-    };
-  
-    const handleOptionClick = (option) => {
-      handleClose(); 
-      switch (option) {
-        case "Profile":
-          navigate("/client/profile");
-          break;
-        default:
-          // console.log("Unknown option");
-          navigate('/client/login')
-      }
-    };
-
   return (
     <div>
       <header className="nillavee-header">
+        {/* Logo */}
         <Images
           src={Logo}
           alt="Nillavee Logo"
@@ -62,30 +60,26 @@ function NavBar() {
           className="logo-n"
           onClick={() => navigate("/client")}
         />
-        
 
+        {/* Search and User Info */}
         <div className="header-nav">
           <div className="logo-container">
             <input type="text" placeholder="Search..." className="search-input" />
-           <div>
-            {user ? (
-              <div className="user">
-                <h3>
-                  welcome, {user.Username}
-                </h3>
-              </div>
-            ) : (
-              <p className="auth">
-                <Link to='login'>Login</Link>
-                <Link to='signup'>Register</Link>
-              </p>
-            )
-
-            }
+            <div>
+              {user ? (
+                <div className="user">
+                  <h3>Welcome, {user.Username}</h3>
+                </div>
+              ) : (
+                <p className="auth">
+                  <Link to="login">Login</Link>
+                  <Link to="signup">Register</Link>
+                </p>
+              )}
             </div>
-
           </div>
 
+          {/* Navigation Links */}
           <ul className={`navigation ${isOpen ? "open" : ""}`}>
             <li>
               <Link to="/client">Home</Link>
@@ -103,78 +97,80 @@ function NavBar() {
               <Link to="about-us">About Us</Link>
             </li>
             <li>
-              <Link to="Contact-us">Contact Us</Link>
+              <Link to="contact-us">Contact Us</Link>
             </li>
           </ul>
+
+          {/* User Dropdown Menu */}
           <div>
-      <Box
-        sx={{
-          position: "absolute", // Place it on top
-          top: 16, // Distance from the top (adjust as needed)
-          right: 80, // Distance from the right (adjust as needed)
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: { xs: 40, sm: 50 }, // Responsive width
-          height: { xs: 40, sm: 50 }, // Responsive height
-          borderRadius: "50%",
-          backgroundColor: "primary.main",
-          color: "transparent",
-          boxShadow: 3,
-          cursor: "pointer",
-        }}
-        onClick={handleClick} // Attach the click handler
-      >
-        <FaUserCircle size={30} color="white" />
-      </Box>
-      {/* Dropdown Menu */}
-      <Menu
-        anchorEl={anchorEl} // Anchor element for the menu
-        open={open} // Whether the menu is open
-        onClose={handleClose} // Close the menu when clicking outside
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <MenuItem onClick={() => handleOptionClick("Profile")}>
-          Profile
-        </MenuItem>
-        <MenuItem onClick={() => handleOptionClick("Settings")}>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={() => handleOptionClick("Logout")}>Logout</MenuItem>
-      </Menu>
-    </div>
+            <Box
+              sx={{
+                position: "absolute",
+                top: 16,
+                right: 80,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: { xs: 40, sm: 50 },
+                height: { xs: 40, sm: 50 },
+                borderRadius: "50%",
+                backgroundColor: "primary.main",
+                boxShadow: 3,
+                cursor: "pointer",
+              }}
+              onClick={handleClick}
+            >
+              <FaUserCircle size={30} color="white" />
+            </Box>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              <MenuItem onClick={() => handleOptionClick("Profile")}>
+                Profile
+              </MenuItem>
+              <MenuItem onClick={() => handleOptionClick("Settings")}>
+                Settings
+              </MenuItem>
+              <MenuItem onClick={() => handleOptionClick("Logout")}>
+                Logout
+              </MenuItem>
+            </Menu>
+          </div>
         </div>
 
+        {/* Hamburger Menu */}
         <div className="hamburger" onClick={toggleMenu}>
-              {isOpen ? "✖" : "☰"}
-            </div>
+          {isOpen ? "✖" : "☰"}
+        </div>
 
+        {/* Dropdown Navigation for Small Screens */}
         {isOpen && (
           <ul className="dropdown">
             <li>
               <Link to="/client" onClick={toggleMenu}>
-              <Home color={'#333'} size={20} />
+                <Home color="#333" size={20} />
                 Home
               </Link>
             </li>
             <li>
               <Link to="all-cakes" onClick={toggleMenu}>
-              <Cake color={'#333'} size={20} />
-
-              All Cakes
+                <Cake color="#333" size={20} />
+                All Cakes
               </Link>
             </li>
             <li>
               <Link to="birthday" onClick={toggleMenu}>
-              <Cookie color={'#333'} size={20} />
-
+                <Cookie color="#333" size={20} />
                 Birthday Cakes
               </Link>
             </li>
@@ -185,32 +181,18 @@ function NavBar() {
             </li>
             <li>
               <Link to="about-us" onClick={toggleMenu}>
-              <Phone color={'#333'} size={20} />
-
+                <Phone color="#333" size={20} />
                 About Us
               </Link>
             </li>
             <li>
               <Link to="contact-us" onClick={toggleMenu}>
-              <Phone color={'#333'} size={20} />
+                <Phone color="#333" size={20} />
                 Contact Us
               </Link>
             </li>
           </ul>
         )}
-
-        {/* <div>
-          {user ? (
-            <div className="user">
-              <h3>welcome, {user.Username}</h3>
-            </div>
-          ) : (
-            <p className="auth">
-              <Link to="login">Login</Link>
-              <Link to="signup">Register</Link>
-            </p>
-          )}
-        </div> */}
       </header>
       <Outlet />
     </div>
