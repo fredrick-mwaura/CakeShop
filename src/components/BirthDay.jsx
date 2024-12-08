@@ -1,7 +1,7 @@
 import React from "react";
 import '../stylesheets/birthday.css';
 import Product from "./utils/product";
-import ProductCard from "./productCard/card.jsx";
+import ProductCard from "./productCard/card";
 
 // BirthDay Component
 const BirthDay = ({ addToCart }) => {

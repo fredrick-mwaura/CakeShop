@@ -4,12 +4,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Images from "../image.jsx";
 import google from "../../images/google.svg";
+import isValidPassword from "../utils/password"
 import {
   Box,
   Button,
   CircularProgress,
   Container,
-  InputLabel,
   IconButton,
   Link,
   Stack,
@@ -53,8 +53,8 @@ const SignUp = () => {
     }
 
     // Validate password length and confirm password match
-    if (formData.password.length < 6) {
-      toast.error("Password must be at least 6 characters long.");
+    if (isValidPassword(formData.password)) {
+      toast.error("password must be atleast 8 characters and include character and number.");
       setLoading(false);
       return;
     }
@@ -87,6 +87,7 @@ const SignUp = () => {
         setTimeout(() => {
           navigate("/client/confirm_email");
         }, 2000);
+      setLoading(false);
       } else {
         handleUnsuccessfulRes(response);
       }

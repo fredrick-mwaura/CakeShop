@@ -1,6 +1,6 @@
 /* Footer Base Styles */
 .foot {
-  background-color: #292727;
+  background-color: rgba(15, 23, 42, 1);
     color: #fff; /* White text for readability */
     padding: 40px 20px; /* Add some padding around the footer */
     display: flex;

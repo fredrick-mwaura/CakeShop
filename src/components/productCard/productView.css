@@ -40,8 +40,8 @@
   color: #333;
 }
 
-.product-info .availability {
-  color: green;
+.availability {
+  color: rgb(5, 180, 5);
   font-weight: bold;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .add-to-cart-btn {
-  background-color: #d9534f;
+  background-color: #e40f08bd;
   color: white;
   padding: 10px 20px;
   font-size: 1rem;
@@ -75,11 +75,11 @@
 }
 
 .whatsapp-btn {
-  background-color: #5cb85c;
-  color: white;
+  background-color: transparent;
+  color: rgb(9, 7, 7);
   padding: 10px 20px;
   font-size: 1rem;
-  border: none;
+  border: 1px #4cae4c solid;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -94,6 +94,24 @@
   color: #777;
   margin-top: 15px;
   font-style: italic;
+}
+
+.containe {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.line {
+  flex: 1; 
+  height: 1px; 
+  background-color: #fbfb07;
+  margin: 0 10px; 
+}
+
+.containe p {
+  margin: 0; 
+  font-size: xx-large;
 }
 
 .product-description {
@@ -111,6 +129,10 @@
 .product-description p {
   font-size: 1.1rem;
   color: #333;
+}
+
+.product-description p{
+  font-size: small;
 }
 
 .product-image {
@@ -132,3 +154,4 @@
   -ms-border-radius:2px;
   -o-border-radius:2px;
 }
+

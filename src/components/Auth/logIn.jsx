@@ -46,10 +46,14 @@ const Login = () => {
         {
           headers: { "Content-Type": "application/json" },
           validateStatus: (status) => status < 500,
-        }
-      );
+        });
 
       setLoading(false);
+      // const data = await response.json();
+      // if(response.authenticated){
+      //   navigate("/client/cookies")
+      // }
+      // console.log(response.authenticated);
 
       if (response.status === 200 && response.data.success) {
         const result = response.data;
@@ -80,8 +84,9 @@ const Login = () => {
       } else if (err.request) {
         toast.error("Unable to connect to the server. Please check your network.");
       } else {
-        toast.error("An unexpected error occurred.");
-      }
+        toast.error("An unexpected error occurred.", error);
+        console.error(error);
+      };      
     }
   };
 

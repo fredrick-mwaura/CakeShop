@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Container, TextField, Typography, Avatar, CircularProgress, Paper, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Avatar,
+  CircularProgress,
+  Paper,
+  Stack,
+  Alert,
+} from "@mui/material";
 import { FaFacebook, FaInstagram, FaTelegram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
 
@@ -11,27 +22,63 @@ const Profile = () => {
   });
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState(null);
   const [passwords, setPasswords] = useState({
     currentPassword: "",
     newPassword: "",
     confirmNewPassword: "",
   });
 
+  // Fetch user profile
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost/cake-backend/api/GetProfile.php", {
+      const response = await axios.get("http://localhost/cake-backend/api/getUsers.php", {
         headers: { "Content-Type": "application/json", withCredentials: true },
       });
       setProfile(response.data);
       setLoading(false);
     } catch (err) {
       setLoading(false);
+      setError("Failed to load profile. Please try again.");
       console.error("Error fetching profile:", err);
     }
   };
 
+  // Update profile information
+  const handleUpdate = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const formData = new FormData();
+      formData.append("username", profile.Username);
+      formData.append("email", profile.email);
+      formData.append("existingProfilePicture", profile.profilePicture);
+      if (selectedFile) formData.append("profilePicture", selectedFile);
+
+      const response = await axios.post("http://localhost/cake-backend/api/UpdateUser.php", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (response.status === 200) {
+        alert("Profile updated successfully!");
+        setEditMode(false);
+        fetchProfile();
+      } else {
+        setError("Failed to update profile. Please try again.");
+      }
+    } catch (err) {
+      setError("Error updating profile. Please check your input.");
+      console.error("Error updating profile:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfile((prev) => ({ ...prev, [name]: value }));
@@ -46,63 +93,98 @@ const Profile = () => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpdate = async () => {
-    try {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("username", profile.Username);
-      formData.append("email", profile.email);
-      formData.append("existingProfilePicture", profile.profilePicture);
-      if (selectedFile) formData.append("profilePicture", selectedFile);
-      const response = await axios.post("http://localhost/cake-backend/api/UpdateProfile.php", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setLoading(false);
-      if (response.status === 200) {
-        alert("Profile updated successfully!");
-        setEditMode(false);
-        fetchProfile();
-      }
-    } catch (err) {
-      setLoading(false);
-      console.error("Error updating profile:", err);
-    }
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+    setError(null); // Clear any errors when toggling modes
   };
-
-  const toggleEditMode = () => setEditMode(!editMode);
 
   useEffect(() => {
     fetchProfile();
   }, []);
 
+    useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }, []);
+
+    useEffect(() => {
+      const S_email = localStorage.getItem('user');
+      if(S_email){
+        setEmail(JSON.parse(S_email));
+      }
+    }, [])
+
   return (
-    <Container maxWidth="md" sx={{ py: 4, px: { xs: 2, md: 4 }, backgroundColor: "#fff", borderRadius: 4, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        py: 4,
+        px: { xs: 2, md: 4 },
+        backgroundColor: "#fff",
+        borderRadius: 4,
+        boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+      }}
+    >
       {/* Header */}
       <Box sx={{ textAlign: "center", mb: 4 }}>
-        <Typography variant="h4" fontWeight="bold" color="primary.main">Profile Settings</Typography>
+        <Typography variant="h4" fontWeight="bold" color="primary.main">
+          Profile Settings
+        </Typography>
       </Box>
+
+      {/* Error Alert */}
+      {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}
 
       {/* Profile Section */}
       <Stack direction={{ xs: "column", md: "row" }} spacing={4} sx={{ mb: 4 }}>
         {/* Personal Information */}
-        <Paper sx={{ p: 3, backgroundColor: "white", borderRadius: "12px", boxShadow: "0 5px 15px rgba(0,0,0,0.1)", flex: 1 }}>
-          <Typography variant="h6" mb={2} fontWeight="bold" color="text.primary">Personal Information</Typography>
+        <Paper
+          sx={{
+            p: 3,
+            backgroundColor: "white",
+            borderRadius: "12px",
+            boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+            flex: 1,
+          }}
+        >
+          <Typography variant="h6" mb={2} fontWeight="bold" color="text.primary">
+            Personal Information
+          </Typography>
           <Box display="flex" alignItems="center" gap={2} mb={3}>
             <Avatar
-              src={profile.profilePicture ? `http://localhost/cake-backend/uploads/${profile.profilePicture}` : null}
-              sx={{ width: 100, height: 100, fontSize: "2rem", backgroundColor: "primary.main" }}
+              src={
+                profile.profilePicture
+                  ? `http://localhost/cake-backend/uploads/${profile.profilePicture}`
+                  : null
+              }
+              sx={{
+                width: 100,
+                height: 100,
+                fontSize: "2rem",
+                backgroundColor: "primary.main",
+              }}
             >
               {!profile.profilePicture && profile.Username.charAt(0).toUpperCase()}
             </Avatar>
-            <input accept="image/*" style={{ display: "none" }} id="upload-profile-picture" type="file" onChange={handleFileChange} />
+            <input
+              accept="image/*"
+              style={{ display: "none" }}
+              id="upload-profile-picture"
+              type="file"
+              onChange={handleFileChange}
+            />
             <label htmlFor="upload-profile-picture">
-              <Button variant="outlined" color="primary" component="span">Change Picture</Button>
+              <Button variant="outlined" color="primary" component="span">
+                Change Picture
+              </Button>
             </label>
           </Box>
           <TextField
             fullWidth
             disabled={!editMode}
-            value={profile.Username}
+            value={user.username}
             name="Username"
             onChange={handleChange}
             label="Username"
@@ -112,7 +194,7 @@ const Profile = () => {
           <TextField
             fullWidth
             disabled={!editMode}
-            value={profile.email}
+            value={email.email || ""}
             name="email"
             onChange={handleChange}
             label="Email"
@@ -122,60 +204,17 @@ const Profile = () => {
           {loading ? (
             <CircularProgress size={24} />
           ) : (
-            <Button variant="contained" color="primary" onClick={editMode ? handleUpdate : toggleEditMode} sx={{ mt: 2 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={editMode ? handleUpdate : toggleEditMode}
+              sx={{ mt: 2 }}
+            >
               {editMode ? "Save Changes" : "Edit Profile"}
             </Button>
           )}
         </Paper>
-
-        {/* Password Section */}
-        <Paper sx={{ p: 3, backgroundColor: "white", borderRadius: "12px", boxShadow: "0 5px 15px rgba(0,0,0,0.1)", flex: 1 }}>
-          <Typography variant="h6" mb={2} fontWeight="bold" color="text.primary">Change Password</Typography>
-          <TextField
-            fullWidth
-            type="password"
-            label="Current Password"
-            variant="outlined"
-            margin="normal"
-            name="currentPassword"
-            value={passwords.currentPassword}
-            onChange={handlePasswordChange}
-          />
-          <TextField
-            fullWidth
-            type="password"
-            label="New Password"
-            variant="outlined"
-            margin="normal"
-            name="newPassword"
-            value={passwords.newPassword}
-            onChange={handlePasswordChange}
-          />
-          <TextField
-            fullWidth
-            type="password"
-            label="Confirm New Password"
-            variant="outlined"
-            margin="normal"
-            name="confirmNewPassword"
-            value={passwords.confirmNewPassword}
-            onChange={handlePasswordChange}
-          />
-          <Button variant="contained" color="primary" sx={{ mt: 2 }}>Update Password</Button>
-        </Paper>
       </Stack>
-
-      {/* Social Media Section */}
-      <Paper sx={{ p: 3, backgroundColor: "white", borderRadius: "12px", boxShadow: "0 5px 15px rgba(0,0,0,0.1)" }}>
-        <Typography variant="h6" mb={2} fontWeight="bold" color="text.primary">Social Media</Typography>
-        <Stack direction="row" spacing={2} flexWrap="wrap">
-          <Button startIcon={<FaFacebook />} variant="contained" color="primary">Facebook</Button>
-          <Button startIcon={<FaInstagram />} variant="contained" color="secondary">Instagram</Button>
-          <Button startIcon={<FaTelegram />} variant="contained" color="info">Telegram</Button>
-          <Button startIcon={<FaWhatsapp />} variant="contained" color="success">WhatsApp</Button>
-          <Button startIcon={<FaLinkedin />} variant="contained" color="primary">LinkedIn</Button>
-        </Stack>
-      </Paper>
     </Container>
   );
 };

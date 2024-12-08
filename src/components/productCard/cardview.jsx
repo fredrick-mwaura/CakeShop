@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { Children, useContext, useState } from 'react';
 import { CartContext } from "../GlobalCart.jsx";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
@@ -20,8 +20,12 @@ import RemoveIcon from '@mui/icons-material/Remove';
 // import emptyCart from '../../images/empty_cart.svg'
 // import Images from '../image.jsx';
 import EmptyCart from '../utils/emptyCart'
+import '../../stylesheets/CartView.css'
+import { AuthContext } from "../contexts/AuthContext";
 
 const CartView = () => {
+  const { userr } = useContext(AuthContext); 
+  const [user, setUser] = useState(null);
   const { cart, setCart } = useContext(CartContext); // Assume setCart allows updating the cart directly
   const navigate = useNavigate();
 
@@ -46,14 +50,21 @@ const CartView = () => {
   };
 
   const handleCheckout = () => {
+
+    if(userr){
     if (cart.length !== 0) {
       navigate('/client/order');
     } else {
-      toast.error('Nothing is in your cart');
+      toast.warn('Nothing is in your cart please add something to order!');
       setTimeout(() => {
         navigate('/client/birthday');
-      }, 500);
+      }, 300);
     }
+  }
+  else{
+    toast.info('login to place order')
+    navigate('/client/login')
+  }
   };
 
   return (

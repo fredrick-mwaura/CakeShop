@@ -1,4 +1,4 @@
-import Cake1 from '../../images/cake.webp';
+import Cake1 from '../../images/cake copy.webp';
 import Cake2 from '../../images/eggless-chocolate-cake.jpg'
 import Cake3 from "../../images/1.jpg";
 import Cake4 from "../../images/2.jpg";

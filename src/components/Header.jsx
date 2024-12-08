@@ -6,12 +6,15 @@ import Logo from "../images/logo.png";
 import { Cake, Home, Phone, Cookie } from "lucide-react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 import { FaUserCircle } from "react-icons/fa";
+import useResponsiveStyles from "./utils/responsive";
+import { FaSignInAlt } from 'react-icons/fa';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
+  const styles = useResponsiveStyles();
 
   const open = Boolean(anchorEl);
 
@@ -22,22 +25,7 @@ function NavBar() {
 
   // Handle dropdown menu actions
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleOptionClick = (option) => {
-    handleClose();
-    switch (option) {
-      case "Profile":
-        navigate("/client/profile");
-        break;
-      default:
-        navigate("/client/login");
-    }
+    navigate("profile");
   };
 
   // Load user data from localStorage on mount
@@ -48,41 +36,33 @@ function NavBar() {
     }
   }, []);
 
+
   return (
     <div>
       <header className="nillavee-header">
         {/* Logo */}
         <Images
           src={Logo}
-          alt="Nillavee Logo"
+          alt="Pinkies"
           width="150"
           height="100"
           className="logo-n"
-          onClick={() => navigate("/client")}
+          onClick={() => navigate("/")}
         />
 
         {/* Search and User Info */}
         <div className="header-nav">
           <div className="logo-container">
-            <input type="text" placeholder="Search..." className="search-input" />
-            <div>
-              {user ? (
-                <div className="user">
-                  <h3>Welcome, {user.Username}</h3>
-                </div>
-              ) : (
-                <p className="auth">
-                  <Link to="login">Login</Link>
-                  <Link to="signup">Register</Link>
-                </p>
-              )}
-            </div>
+            <input type="text" placeholder="Search..." className="search-input" />            
           </div>
 
           {/* Navigation Links */}
           <ul className={`navigation ${isOpen ? "open" : ""}`}>
             <li>
-              <Link to="/client">Home</Link>
+              <Link to="/client">
+                {/* Safely render user data */}
+                {user ? `Home name: ${user.username}` : "Home"} 
+              </Link> 
             </li>
             <li>
               <Link to="all-cakes">All Cakes</Link>
@@ -105,10 +85,14 @@ function NavBar() {
           <div>
             <Box
               sx={{
-                position: "absolute",
+                position: "sticky",
                 top: 16,
                 right: 80,
-                display: "flex",
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
                 alignItems: "center",
                 justifyContent: "center",
                 width: { xs: 40, sm: 50 },
@@ -120,31 +104,8 @@ function NavBar() {
               }}
               onClick={handleClick}
             >
-              <FaUserCircle size={30} color="white" />
-            </Box>
-            <Menu
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-            >
-              <MenuItem onClick={() => handleOptionClick("Profile")}>
-                Profile
-              </MenuItem>
-              <MenuItem onClick={() => handleOptionClick("Settings")}>
-                Settings
-              </MenuItem>
-              <MenuItem onClick={() => handleOptionClick("Logout")}>
-                Logout
-              </MenuItem>
-            </Menu>
+              <FaUserCircle size={60} color="white" />
+            </Box>            
           </div>
         </div>
 
@@ -157,7 +118,7 @@ function NavBar() {
         {isOpen && (
           <ul className="dropdown">
             <li>
-              <Link to="/client" onClick={toggleMenu}>
+              <Link to="/" onClick={toggleMenu}>
                 <Home color="#333" size={20} />
                 Home
               </Link>
@@ -171,7 +132,7 @@ function NavBar() {
             <li>
               <Link to="birthday" onClick={toggleMenu}>
                 <Cookie color="#333" size={20} />
-                Birthday Cakes
+                Birthday
               </Link>
             </li>
             <li>
@@ -190,6 +151,37 @@ function NavBar() {
                 <Phone color="#333" size={20} />
                 Contact Us
               </Link>
+            </li>
+            <li>
+            <div>
+              {user ? (
+                <div className="user-mobile">
+                  <Box
+                    sx={{
+                      position: "sticky",
+                      top: 16,
+                      right: 80,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: { xs: 40, sm: 50 },
+                      height: { xs: 40, sm: 50 },
+                      borderRadius: "50%",
+                      backgroundColor: "primary.main",
+                      boxShadow: 3,
+                      cursor: "pointer",
+                    }}
+                    onClick={handleClick}
+                  >
+                    <FaUserCircle size={30} color="black" />
+                  </Box>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>                  
+                  <Link to="login"> <FaSignInAlt size={24} color="blue" /> Login</Link>
+                </div>
+              )}
+            </div>
             </li>
           </ul>
         )}

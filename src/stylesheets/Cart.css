@@ -1,5 +1,5 @@
 .addTo {
-  position: fixed; 
+  position: absolute; 
   top: 20px; 
   right: 20px; 
   padding: 10px;
@@ -10,15 +10,20 @@
   z-index: 3;
   cursor: pointer;
 }
+
+/* .addTo div{
+  position: sticky;
+} */
+
 .badge {
   position: absolute; 
   top: 0;
   right: 0;
-  background-color: red; 
-  color: white;
+  background-color: rgb(255, 0, 128); 
+  color: rgb(251, 249, 249);
   border-radius: 50%;
-  padding: 0.25em 0.5em;
-  font-size: 0.75em; 
+  padding: 0.2em 0.2em;
+  font-size: 0.7em; 
 }
 
 /* 

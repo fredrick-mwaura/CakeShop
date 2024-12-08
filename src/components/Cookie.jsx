@@ -8,7 +8,7 @@ const cakeProducts = [
 
 ];
 
-const Cookie = ({ addToCart }) => {
+const Cookie = ({ addToCart, showToast }) => {
   return (
     <>            
     <div className="title">Cookies</div>

@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from "./GlobalCart";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import '../stylesheets/Cart.css';
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import Icon from './icon';
 
-export default function AddToCart() {
+export default function AddToCart({showToast}) {
   const { cart } = useContext(CartContext);
   const navigate = useNavigate();
   const [prevCart, setPrevCart] = useState(cart); // Track previous cart state
 
   const cartView = () => {
-    navigate('/client/cart');
+    navigate('cart');
   };
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -26,7 +26,7 @@ export default function AddToCart() {
         cart.some((item, index) => item.quantity > (prevCart[index]?.quantity || 0));
 
     if (itemAdded) {
-      toast.success('Product added to cart successfully');
+    console.log('Product added to cart successfully');
     }
 
     // Update prevCart to current cart state
@@ -35,8 +35,10 @@ export default function AddToCart() {
 
   return (
       <div className="addTo">
-        <Icon icon={faCartShopping} size="2x" color="black" className="Cart" onClick={cartView} />
+        <div>
+        <Icon icon={faCartShopping} size="1x" color="black" className="Cart" onClick={cartView} />
       <span className="badge">{totalItems > 0 ? totalItems : 0}</span>
+      </div>
       </div>
   );
 }

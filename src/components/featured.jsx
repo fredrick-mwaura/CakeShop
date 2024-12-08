@@ -50,138 +50,7 @@ const Product = [
     priceRange: [700, 1000],
     src: Cake1,
   },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: Cake3,
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake4,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  {
-    name: "Orange Almond Cake",
-    price: 4200,
-    src: Cake3,
-  },
-  {
-    name: "Gluten Free Chocolate Cake",
-    priceRange: [700, 1000],
-    src: Cake1,
-  },
-  {
-    name: "Naked Chocolate Cake",
-    priceRange: [3000, 3500],
-    src: "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/72/6737701/1.jpg?2184",
-  },
-  // {
-  //   name: "Orange Almond Cake",
-  //   price: 4200,
-  //   src: Cake3,
-  // },
-];
-
+]
 // Card component to display each cake
 const Birthday = ({ cake }) => {
   const { addToCart } = useContext(CartContext); // Access the addToCart function from the context
@@ -195,9 +64,6 @@ const Birthday = ({ cake }) => {
           ? `Ksh ${cake.priceRange[0]} - ${cake.priceRange[1]}`
           : `Ksh ${cake.price}`}
       </p>
-
-      {/* Add to Cart Button */}
-      {/* <button onClick={() => addToCart(cake)}>Add to Cart</button> */}
       <div className="Icon">
         <Icon icon={faWhatsapp} size="1.5x" color="black" className="chatty" />
         <Icon icon={faEye} size="1.5x" color="black" className="chatty" />

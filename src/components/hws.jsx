@@ -1,33 +1,22 @@
 import React from "react";
-// import { Box, Button, Typography, Stack, useMediaQuery } from "@mui/material";
-// import cut from "../images/cut.webp";
-// import cake from "../images/cake.jpg";
 import cele from "../images/cele.webp";
 import "../stylesheets/Home.css";
+import { useNavigate } from "react-router-dom";
 
 const Hws = () => {
-  // const isSmallScreen = useMediaQuery("(max-width: 768px)");
-
-  // import React from "react";
-
-  // const OverlappingPhotos = () => {
+  const navigate = useNavigate();
+  const Cakes = () => {
+    navigate('birthday');
+  };
   return (
     <div className="hero-section">
-
       <div className="text-content">
         <h1>Fresh and Yummy Cakes for You</h1>
         <p>Your taste buds never had it so good.</p>
-        <button>Shop Now</button>
+        <button onClick={Cakes}>Shop Now</button>
       </div>
-
       <div className="photo-gallery">
-
-        <img src={cele} alt="Celebration" className="photo photo" />
-
-        {/* <img src={cake} alt="Cake table" className="photo photo2" /> */}
-
-        {/* <img src={cake} alt="Birthday cake" className="photo photo3" /> */}
-
+        <img src={cele} alt="Celebration" className="photo" />
       </div>
     </div>
   );

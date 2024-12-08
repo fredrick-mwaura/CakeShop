@@ -8,9 +8,9 @@ const ClientList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [openAddDialog, setOpenAddDialog] = useState(false);
-  const [newClient, setNewClient] = useState({ Username: '', email: '', Role: '' });
+  const [newClient, setNewClient] = useState({ Username: '', email: '', Password: '' });
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const [editClient, setEditClient] = useState({ LoginID: '', Username: '', email: '', Role: '' });
+  const [editClient, setEditClient] = useState({ LoginID: '', Username: '', email: '', Password: '' });
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -34,7 +34,7 @@ const ClientList = () => {
   const handleAddClient = async () => {
     try {
       const response = await axios.post('http://localhost/cake-backend/api/addUser.php', newClient);
-      if (response.data.status === 'success') {
+      if (response.data.status === 'success') { //201
         setClients([...clients, response.data.data]);
         setOpenAddDialog(false);
       } else {
@@ -96,7 +96,7 @@ const ClientList = () => {
                   <TableCell><strong>Login ID</strong></TableCell>
                   <TableCell><strong>Username</strong></TableCell>
                   <TableCell><strong>Email</strong></TableCell>
-                  <TableCell><strong>Role</strong></TableCell>
+                  {/* <TableCell><strong>Role</strong></TableCell> */}
                   <TableCell><strong>Actions</strong></TableCell>
                 </TableRow>
               </TableHead>
@@ -107,7 +107,7 @@ const ClientList = () => {
                       <TableCell>{client.LoginID}</TableCell>
                       <TableCell>{client.Username}</TableCell>
                       <TableCell>{client.email}</TableCell>
-                      <TableCell>{client.Role}</TableCell>
+                      {/* <TableCell>{client.Role}</TableCell> */}
                       <TableCell>
                         <Button
                           variant="outlined"
@@ -168,17 +168,18 @@ const ClientList = () => {
               />
               <TextField
                 label="Email"
+                type='email'
                 fullWidth
                 margin="normal"
                 value={newClient.email}
                 onChange={(e) => setNewClient({ ...newClient, email: e.target.value })}
               />
               <TextField
-                label="Role"
+                label="Password"
                 fullWidth
                 margin="normal"
-                value={newClient.Role}
-                onChange={(e) => setNewClient({ ...newClient, Role: e.target.value })}
+                value={newClient.Password}
+                onChange={(e) => setNewClient({ ...newClient, Password: e.target.value })}
               />
             </DialogContent>
             <DialogActions>
@@ -210,11 +211,11 @@ const ClientList = () => {
                 onChange={(e) => setEditClient({ ...editClient, email: e.target.value })}
               />
               <TextField
-                label="Role"
+                label="Password"
                 fullWidth
                 margin="normal"
-                value={editClient.Role}
-                onChange={(e) => setEditClient({ ...editClient, Role: e.target.value })}
+                value={editClient.Password}
+                onChange={(e) => setEditClient({ ...editClient, Password: e.target.value })}
               />
             </DialogContent>
             <DialogActions>

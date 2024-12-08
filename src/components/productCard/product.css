@@ -9,8 +9,8 @@
     /*width: 100%;*/
     position: relative;
     margin-bottom: 20px;
-    /*display: grid;*/
-    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .product-card:hover {
@@ -24,18 +24,6 @@
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
-}
-
-h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 15px;
 }
 
 .product-actions {

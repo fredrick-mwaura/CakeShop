@@ -23,14 +23,22 @@ const ContactUs = () => {
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
       <Paper
         elevation={3}
-        sx={{ p: 4, borderRadius: 3, backgroundColor: "#ffffff" }}
+        sx={{
+          p: 4,
+          borderRadius: 3,
+          backgroundColor: "#f5f5f5",
+        }}
       >
         {/* Title */}
         <Typography
           variant="h2"
           align="center"
           gutterBottom
-          sx={{ color: "#6d4c41", fontWeight: "bold" }}
+          sx={{
+            color: "#37474f",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+          }}
         >
           Contact Us
         </Typography>
@@ -38,34 +46,34 @@ const ContactUs = () => {
         <Typography
           variant="body1"
           align="center"
-          sx={{ color: "#8d6e63", mb: 4 }}
+          sx={{ color: "#607d8b", mb: 4 }}
         >
-          Have a question? Need a custom order? Reach out to us!
+          Have a question or a special request? We'd love to hear from you!
         </Typography>
 
         {/* Contact Information Section */}
         <Box sx={{ mb: 4 }}>
-          <Stack direction="column" spacing={2} alignItems="center">
+          <Stack direction="column" spacing={3} alignItems="center">
             {/* Phone Number */}
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Phone sx={{ color: "#6d4c41", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+              <Phone sx={{ color: "#009688", mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: "500" }}>
                 +254 7########
               </Typography>
             </Box>
 
             {/* Email Address */}
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Email sx={{ color: "#6d4c41", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+              <Email sx={{ color: "#009688", mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: "500" }}>
                 info@pinkiescupcakes.com
               </Typography>
             </Box>
 
             {/* Physical Address */}
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <LocationOn sx={{ color: "#6d4c41", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+              <LocationOn sx={{ color: "#009688", mr: 1 }} />
+              <Typography variant="body1" sx={{ fontWeight: "500" }}>
                 123 Cake Street, Bakerstown, Nairobi 90001
               </Typography>
             </Box>
@@ -76,7 +84,10 @@ const ContactUs = () => {
                 href="https://facebook.com"
                 target="_blank"
                 aria-label="Facebook"
-                sx={{ color: "#3b5998" }}
+                sx={{
+                  color: "#4267B2",
+                  "&:hover": { color: "#3b5998" },
+                }}
               >
                 <Facebook />
               </IconButton>
@@ -84,7 +95,10 @@ const ContactUs = () => {
                 href="https://instagram.com"
                 target="_blank"
                 aria-label="Instagram"
-                sx={{ color: "#e1306c" }}
+                sx={{
+                  color: "#E4405F",
+                  "&:hover": { color: "#e1306c" },
+                }}
               >
                 <Instagram />
               </IconButton>
@@ -92,7 +106,10 @@ const ContactUs = () => {
                 href="https://twitter.com"
                 target="_blank"
                 aria-label="Twitter"
-                sx={{ color: "#1da1f2" }}
+                sx={{
+                  color: "#1DA1F2",
+                  "&:hover": { color: "#0d8de0" },
+                }}
               >
                 <Twitter />
               </IconButton>
@@ -106,12 +123,15 @@ const ContactUs = () => {
             variant="h5"
             align="center"
             gutterBottom
-            sx={{ color: "#6d4c41", fontWeight: "bold" }}
+            sx={{
+              color: "#37474f",
+              fontWeight: "bold",
+            }}
           >
             Send Us a Message
           </Typography>
 
-          <Stack spacing={2}>
+          <Stack spacing={3}>
             <TextField
               label="Full Name"
               name="name"
@@ -145,12 +165,12 @@ const ContactUs = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
               fullWidth
               sx={{
                 mt: 2,
-                backgroundColor: "#6d4c41",
-                "&:hover": { backgroundColor: "#8d6e63" },
+                backgroundColor: "#009688",
+                "&:hover": { backgroundColor: "#00796b" },
+                fontWeight: "bold",
               }}
             >
               Submit

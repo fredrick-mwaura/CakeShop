@@ -1,23 +1,16 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  outline:none;
-  padding: 0;
-}
-
 .nillavee-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 10px 15px;
     border-bottom: 1px solid #ccc;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
-    /* background: linear-gradient(to right, #ddeaff, #ffe9e5); */
-  background-color: #fff9f7;
+    background: linear-gradient(to right, #ddeaff, #ffe9e5);
+  /* background-color: rgba(255, 182, 193, 1); */
 
 
 }
@@ -31,7 +24,7 @@
 
 .logo-container {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   align-items: center;
   gap: 15px;
 }
@@ -160,6 +153,10 @@
   display: none;
 }
 
+.logo-n{
+  display: none;
+}
+
 
 .auth :link{
   display: none;
@@ -182,10 +179,11 @@
     flex-direction: column;
     background-color: #f0ecec;
     position: absolute;
-    top: 130px;
+    top: 80px;
     left: 0;
-    width: 45%;
-    padding: 10px 0;
+    width: fit-content;
+    height: 720px;
+    padding: auto !important;
   }
 
   .dropdown.open {
@@ -193,18 +191,40 @@
   }
 
   .dropdown li {
-    padding: 10px 0;
-    text-align: center;
+    display: flex;
+    position: relative;
+    padding: 10px ;
+    left: 10px !important;
+    justify-content: center;
   }
 
   .dropdown li a {
     display: block;
     color: #333;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     font-size: 1.4em;
     width: 90%;
     text-decoration: none;
   }
+  .dropdown li a {
+    color: blue; /* Default link color */
+    text-decoration: none; /* Optional, to remove underline */
+  }
+  
+  .dropdown li a:visited {
+    color: purple; /* Color for visited links */
+  }
+  
+  .dropdown li a:hover {
+    color: green; /* Color when hovering */
+    text-decoration: underline; /* Optional, adds underline on hover */
+  }
+  
+  .dropdown li a:active {
+    color: red; /* Color for active (clicked) links */
+  }
+  
+  
 }
 
 .lo {
