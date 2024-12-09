@@ -6,6 +6,7 @@ import AddToCart from './AddToCart.jsx';
 // import Birthday from './featured' ;
 import QRCodeOnHover from './Button/test.jsx'
 import Footer from './footer'
+import Reviews from './rev'
 
 function Home() {
   // console.log('Home.jsx is logged');
@@ -14,6 +15,7 @@ function Home() {
         <AddToCart/>
         <Hws/>
         <Features />
+        <Reviews/>
         <QRCodeOnHover/>
         <Footer/>
         

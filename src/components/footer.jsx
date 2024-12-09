@@ -1,6 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "../stylesheets/footer.css";
-
+import Reviews from "./rev";
 function Footer() {
   const year = new Date().getFullYear(); // Fixed year issue
 
@@ -16,7 +17,10 @@ function Footer() {
             <a href="#">Celebration Insights</a>
           </li>
           <li>
-            <a href="#">Reviews</a>
+            <Link to="reviews">Reviews</Link>
+          </li>
+          <li>
+            <Link to="blogs">blogs</Link>
           </li>
         </ul>
         <ul>
@@ -42,6 +46,7 @@ function Footer() {
           <p>Phone: 123-456-7890</p>
           <a href="mailto:cake@gmail.com">cake@gmail.com</a>
         </div>
+        <Footer/>
       </div>
 
       <div className="footer-bottom">

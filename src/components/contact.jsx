@@ -22,10 +22,10 @@ const ContactUs = () => {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
       <Paper
-        elevation={3}
+        // elevation={3}
         sx={{
           p: 4,
-          borderRadius: 3,
+          // borderRadius: 3,
           backgroundColor: "#f5f5f5",
         }}
       >

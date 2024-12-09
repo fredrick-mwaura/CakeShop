@@ -4,9 +4,9 @@ import { Container, Typography, Box, Paper } from '@mui/material';
 const AboutUs = () => {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 3, backgroundColor: '#fff' }}>
+      <Paper sx={{ p: 4, backgroundColor: '#fff' }}>
         
-        <Typography variant="h2" align="center" gutterBottom sx={{ color: '#6d4c41', fontWeight: 'bold' }}>
+        <Typography variant="h2" align="center" gutterBottom sx={{fontWeight: 'bold' }}>
           About Us
         </Typography>
         
@@ -38,10 +38,11 @@ const AboutUs = () => {
         </Typography>
 
         <Box sx={{ mt: 4, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ color: '#6d4c41', fontWeight: 'bold' }}>
+          <Typography variant="h6" sx={{fontWeight: 'bold' }}>
             Join Us for a Sweet Experience!
           </Typography>
-          <Typography variant="body2" sx={{ mt: 1, color: '#6d4c41' }}>
+          <Typography variant="body2" sx={{ mt: 1}}>
+
             Visit us or contact us for custom orders. We can’t wait to bake for you!
           </Typography>
         </Box>

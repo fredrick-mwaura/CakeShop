@@ -1,0 +1,70 @@
+.page-container {
+  display: flex;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.blog-content {
+  width: 70%;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 30%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-left: 1px solid #ddd;
+}
+
+.sidebar h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sidebar p {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.titlee {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.intro {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #444;
+}
+
+.ideas-list {
+  list-style: none;
+  padding: 0;
+}
+
+.idea {
+  margin-bottom: 15px;
+}
+
+.idea-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 50px 0;
+  color: #333;
+}
+
+.idea-description {
+  margin: 5px 0;
+  color: #555;
+}
+
+.final-thoughts {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.customer{
+  border-radius: 10px;
+}
