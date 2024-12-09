@@ -6,7 +6,7 @@ const BirthDay = ({ addToCart }) => {
   const [randomProducts, setRandomProducts] = useState([]);
 
   useEffect(() => {
-    const pickedProducts = getRandomProducts(Product, 5); // Get 5 random products
+    const pickedProducts = getRandomProducts(Product, 10); // Get random products
     setRandomProducts(pickedProducts);
   }, []);
   // console.log("Loaded products:", Product);
