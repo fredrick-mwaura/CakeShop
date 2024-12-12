@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import Restricted from './components/contexts/restrict';
+// import Restricted from './components/contexts/restrict';
 
 // Client Imports
 import Home from "./components/home.jsx";
@@ -109,16 +109,14 @@ function App() {
                   <Route path="all-cakes" element={<AllCakes showToast={showToast} />} />
                   <Route path="cookie" element={<Cookie showToast={showToast} />} />
                   <Route path="contact-us" element={<Contact />} />
-                  <Route path="signup" element={<Restricted><SignUp /></Restricted>} />
-                  <Route path="login" element={<Restricted><Login /></Restricted>} />
+                  <Route path="signup" element={<SignUp />} />
+                  <Route path="login" element={<Login />} />
                   <Route path="forgot-password" element={<ForgotPassword />} />
                   <Route path="cart" element={<CartView />} />
                   <Route path="about-us" element={<AboutUs />} />
                   <Route path="product-view/:productName" element={<ProductView />} />
                   <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
                   <Route path="profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-                  {/* <ProtectedRoute path="orders" element={<OrderPage />} />
-                  <ProtectedRoute path="profile" element={<Profile />} /> */}
                   <Route path="confirm_email" element={<NewToken />} />
                   <Route path="blogs" element={<Blogs />} />
                   <Route path="reviews" element={<Reviews/>}/>
