@@ -1,184 +1,150 @@
 import React from "react";
-import {
-  Container,
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Stack,
-  Paper,
-  IconButton,
-} from "@mui/material";
-import {
-  Phone,
-  Email,
-  LocationOn,
-  Facebook,
-  Instagram,
-  Twitter,
-} from "@mui/icons-material";
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Facebook, 
+  Instagram, 
+  Twitter 
+} from "lucide-react";
 
 const ContactUs = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
-      <Paper
-        // elevation={3}
-        sx={{
-          p: 4,
-          // borderRadius: 3,
-          backgroundColor: "#f5f5f5",
-        }}
-      >
+    <div className="max-w-4xl mx-auto my-8 px-4">
+      <div className="bg-gray-50 p-8 rounded-lg shadow-sm">
         {/* Title */}
-        <Typography
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{
-            color: "#37474f",
-            fontWeight: "bold",
-            textTransform: "uppercase",
-          }}
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-4 uppercase">
           Contact Us
-        </Typography>
+        </h2>
 
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ color: "#607d8b", mb: 4 }}
-        >
+        <p className="text-gray-600 text-center mb-8">
           Have a question or a special request? We'd love to hear from you!
-        </Typography>
+        </p>
 
         {/* Contact Information Section */}
-        <Box sx={{ mb: 4 }}>
-          <Stack direction="column" spacing={3} alignItems="center">
+        <div className="mb-8">
+          <div className="flex flex-col items-center space-y-4">
             {/* Phone Number */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Phone sx={{ color: "#009688", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "500" }}>
-                +254 7########
-              </Typography>
-            </Box>
+            <div className="flex items-center">
+              <Phone className="text-teal-500 mr-2" size={20} />
+              <span className="font-medium">+254 7########</span>
+            </div>
 
             {/* Email Address */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Email sx={{ color: "#009688", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "500" }}>
-                info@pinkiescupcakes.com
-              </Typography>
-            </Box>
+            <div className="flex items-center">
+              <Mail className="text-teal-500 mr-2" size={20} />
+              <span className="font-medium">info@pinkiescupcakes.com</span>
+            </div>
 
             {/* Physical Address */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <LocationOn sx={{ color: "#009688", mr: 1 }} />
-              <Typography variant="body1" sx={{ fontWeight: "500" }}>
+            <div className="flex items-center">
+              <MapPin className="text-teal-500 mr-2" size={20} />
+              <span className="font-medium">
                 123 Cake Street, Bakerstown, Nairobi 90001
-              </Typography>
-            </Box>
+              </span>
+            </div>
 
             {/* Social Media Icons */}
-            <Stack direction="row" spacing={2} mt={2}>
-              <IconButton
-                href="https://facebook.com"
-                target="_blank"
+            <div className="flex space-x-4 mt-4">
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 transition-colors"
                 aria-label="Facebook"
-                sx={{
-                  color: "#4267B2",
-                  "&:hover": { color: "#3b5998" },
-                }}
               >
-                <Facebook />
-              </IconButton>
-              <IconButton
-                href="https://instagram.com"
-                target="_blank"
+                <Facebook size={24} />
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-pink-600 hover:text-pink-800 transition-colors"
                 aria-label="Instagram"
-                sx={{
-                  color: "#E4405F",
-                  "&:hover": { color: "#e1306c" },
-                }}
               >
-                <Instagram />
-              </IconButton>
-              <IconButton
-                href="https://twitter.com"
-                target="_blank"
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-600 transition-colors"
                 aria-label="Twitter"
-                sx={{
-                  color: "#1DA1F2",
-                  "&:hover": { color: "#0d8de0" },
-                }}
               >
-                <Twitter />
-              </IconButton>
-            </Stack>
-          </Stack>
-        </Box>
+                <Twitter size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
 
         {/* Contact Form */}
-        <Box component="form" noValidate autoComplete="off" sx={{ mt: 4 }}>
-          <Typography
-            variant="h5"
-            align="center"
-            gutterBottom
-            sx={{
-              color: "#37474f",
-              fontWeight: "bold",
-            }}
-          >
+        <form className="mt-8">
+          <h3 className="text-xl font-bold text-gray-800 text-center mb-6">
             Send Us a Message
-          </Typography>
+          </h3>
 
-          <Stack spacing={3}>
-            <TextField
-              label="Full Name"
-              name="name"
-              variant="outlined"
-              fullWidth
-              required
-            />
-            <TextField
-              label="Email Address"
-              name="email"
-              type="email"
-              variant="outlined"
-              fullWidth
-              required
-            />
-            <TextField
-              label="Subject"
-              name="subject"
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              label="Message"
-              name="message"
-              variant="outlined"
-              fullWidth
-              required
-              multiline
-              rows={4}
-            />
-            <Button
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              ></textarea>
+            </div>
+
+            <button
               type="submit"
-              variant="contained"
-              fullWidth
-              sx={{
-                mt: 2,
-                backgroundColor: "#009688",
-                "&:hover": { backgroundColor: "#00796b" },
-                fontWeight: "bold",
-              }}
+              className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-md transition-colors mt-4"
             >
               Submit
-            </Button>
-          </Stack>
-        </Box>
-      </Paper>
-    </Container>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

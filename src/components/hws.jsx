@@ -9,16 +9,16 @@ const Hws = () => {
     navigate('birthday');
   };
   return (
-    <div className="hero-section">
+    <main className="hero-section">
       <div className="text-content">
         <h1>Fresh and Yummy Cakes for You</h1>
-        <p>Your taste buds never had it so good.</p>
+        <h5>Your taste buds never had it so good.</h5>
         <button onClick={Cakes}>Shop Now</button>
       </div>
-      <div className="photo-gallery">
+      <section className="photo-gallery">
         <img src={cele} alt="Celebration" className="photo" />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

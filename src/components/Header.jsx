@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "../stylesheets/Header.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Images from "./image";
 import Logo from "../images/logo.png";
 import { Cake, Home, Phone, Cookie } from "lucide-react";
-import { Box, Button, Menu, MenuItem } from "@mui/material";
-import { FaUserCircle } from "react-icons/fa";
-import useResponsiveStyles from "./utils/responsive";
-import { FaSignInAlt } from 'react-icons/fa';
+import { FaUserCircle, FaSignInAlt } from "react-icons/fa";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
-  const styles = useResponsiveStyles();
-
-  const open = Boolean(anchorEl);
 
   // Toggle navigation menu
   const toggleMenu = () => {
@@ -24,7 +16,7 @@ function NavBar() {
   };
 
   // Handle dropdown menu actions
-  const handleClick = (event) => {
+  const handleClick = () => {
     navigate("profile");
   };
 
@@ -36,154 +28,164 @@ function NavBar() {
     }
   }, []);
 
-
   return (
     <div>
-      <header className="nillavee-header">
+      <header className="flex items-center justify-between p-4 bg-white shadow-md sticky top-0 z-50">
         {/* Logo */}
         <Images
           src={Logo}
           alt="Pinkies"
           width="150"
           height="100"
-          className="logo-n"
+          className="cursor-pointer"
           onClick={() => navigate("/")}
         />
 
         {/* Search and User Info */}
-        <div className="header-nav">
-          <div className="logo-container">
-            <input type="text" placeholder="Search..." className="search-input" />            
+        <div className="flex items-center space-x-6">
+          {/* Search Input - Hidden on mobile */}
+          <div className="hidden md:block">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-pink-300"
+            />
           </div>
 
-          {/* Navigation Links */}
-          <ul className={`navigation ${isOpen ? "open" : ""}`}>
-            <li>
-              <Link to="/client">
-                {/* Safely render user data */}
-                {user ? `Home name: ${user.username}` : "Home"} 
-              </Link> 
-            </li>
-            <li>
-              <Link to="all-cakes">All Cakes</Link>
-            </li>
-            <li>
-              <Link to="birthday">Birthday Cakes</Link>
-            </li>
-            <li>
-              <Link to="cookie">Cookie</Link>
-            </li>
-            <li>
-              <Link to="about-us">About Us</Link>
-            </li>
-            <li>
-              <Link to="contact-us">Contact Us</Link>
-            </li>
-          </ul>
+          {/* Navigation Links - Hidden on mobile */}
+          <nav className="hidden md:flex space-x-6">
+            <Link to="/client" className="text-gray-700 hover:text-pink-600">
+              {user ? `Hi, ${user.username}` : "Home"}
+            </Link>
+            <Link to="all-cakes" className="text-gray-700 hover:text-pink-600">
+              All Cakes
+            </Link>
+            <Link to="birthday" className="text-gray-700 hover:text-pink-600">
+              Birthday Cakes
+            </Link>
+            <Link to="cookie" className="text-gray-700 hover:text-pink-600">
+              Cookies
+            </Link>
+            <Link to="about-us" className="text-gray-700 hover:text-pink-600">
+              About Us
+            </Link>
+            <Link to="contact-us" className="text-gray-700 hover:text-pink-600">
+              Contact Us
+            </Link>
+          </nav>
 
-          {/* User Dropdown Menu */}
-          <div>
-            <Box
-              sx={{
-                position: "sticky",
-                top: 16,
-                right: 80,
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "flex",
-                },
-                alignItems: "center",
-                justifyContent: "center",
-                width: { xs: 40, sm: 50 },
-                height: { xs: 40, sm: 50 },
-                borderRadius: "50%",
-                backgroundColor: "primary.main",
-                boxShadow: 3,
-                cursor: "pointer",
-              }}
-              onClick={handleClick}
+          {/* User Icon - Hidden on mobile */}
+          {user ? (
+            <div className="hidden md:block">
+              <div
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-pink-500 shadow-lg cursor-pointer hover:bg-pink-600 transition-colors"
+                onClick={handleClick}
+              >
+                <FaUserCircle size={24} className="text-white" />
+              </div>
+            </div>
+          ) : (
+            <Link
+              to="login"
+              className="hidden md:flex items-center space-x-2 text-blue-600 hover:text-blue-800"
             >
-              <FaUserCircle size={60} color="white" />
-            </Box>            
-          </div>
+              <FaSignInAlt size={20} />
+              <span>Login</span>
+            </Link>
+          )}
         </div>
 
-        {/* Hamburger Menu */}
-        <div className="hamburger" onClick={toggleMenu}>
+        {/* Hamburger Menu - Mobile only */}
+        <button
+          className="md:hidden text-2xl focus:outline-none"
+          onClick={toggleMenu}
+        >
           {isOpen ? "✖" : "☰"}
-        </div>
+        </button>
 
-        {/* Dropdown Navigation for Small Screens */}
+        {/* Mobile Menu */}
         {isOpen && (
-          <ul className="dropdown">
-            <li>
-              <Link to="/" onClick={toggleMenu}>
-                <Home color="#333" size={20} />
-                Home
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-white shadow-lg py-4 px-6 z-40">
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-pink-300"
+              />
+            </div>
+            
+            <nav className="flex flex-col space-y-4">
+              <Link
+                to="/"
+                onClick={toggleMenu}
+                className="flex items-center space-x-2 text-gray-700 hover:text-pink-600"
+              >
+                <Home size={20} />
+                <span>Home</span>
               </Link>
-            </li>
-            <li>
-              <Link to="all-cakes" onClick={toggleMenu}>
-                <Cake color="#333" size={20} />
-                All Cakes
+              <Link
+                to="all-cakes"
+                onClick={toggleMenu}
+                className="flex items-center space-x-2 text-gray-700 hover:text-pink-600"
+              >
+                <Cake size={20} />
+                <span>All Cakes</span>
               </Link>
-            </li>
-            <li>
-              <Link to="birthday" onClick={toggleMenu}>
-                <Cookie color="#333" size={20} />
-                Birthday
+              <Link
+                to="birthday"
+                onClick={toggleMenu}
+                className="flex items-center space-x-2 text-gray-700 hover:text-pink-600"
+              >
+                <Cookie size={20} />
+                <span>Birthday</span>
               </Link>
-            </li>
-            <li>
-              <Link to="cookie" onClick={toggleMenu}>
-                Cookie
+              <Link
+                to="cookie"
+                onClick={toggleMenu}
+                className="text-gray-700 hover:text-pink-600"
+              >
+                Cookies
               </Link>
-            </li>
-            <li>
-              <Link to="about-us" onClick={toggleMenu}>
-                <Phone color="#333" size={20} />
-                About Us
+              <Link
+                to="about-us"
+                onClick={toggleMenu}
+                className="flex items-center space-x-2 text-gray-700 hover:text-pink-600"
+              >
+                <Phone size={20} />
+                <span>About Us</span>
               </Link>
-            </li>
-            <li>
-              <Link to="contact-us" onClick={toggleMenu}>
-                <Phone color="#333" size={20} />
-                Contact Us
+              <Link
+                to="contact-us"
+                onClick={toggleMenu}
+                className="flex items-center space-x-2 text-gray-700 hover:text-pink-600"
+              >
+                <Phone size={20} />
+                <span>Contact Us</span>
               </Link>
-            </li>
-            <li>
-            <div>
+              
               {user ? (
-                <div className="user-mobile">
-                  <Box
-                    sx={{
-                      position: "sticky",
-                      top: 16,
-                      right: 80,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: { xs: 40, sm: 50 },
-                      height: { xs: 40, sm: 50 },
-                      borderRadius: "50%",
-                      backgroundColor: "primary.main",
-                      boxShadow: 3,
-                      cursor: "pointer",
-                    }}
-                    onClick={handleClick}
-                  >
-                    <FaUserCircle size={30} color="black" />
-                  </Box>
+                <div
+                  className="flex items-center space-x-2 cursor-pointer"
+                  onClick={() => {
+                    handleClick();
+                    toggleMenu();
+                  }}
+                >
+                  <FaUserCircle size={20} className="text-gray-700" />
+                  <span>Profile</span>
                 </div>
               ) : (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>                  
-                  <Link to="login"> <FaSignInAlt size={24} color="blue" /> Login</Link>
-                </div>
+                <Link
+                  to="login"
+                  onClick={toggleMenu}
+                  className="flex items-center space-x-2 text-blue-600 hover:text-blue-800"
+                >
+                  <FaSignInAlt size={20} />
+                  <span>Login</span>
+                </Link>
               )}
-            </div>
-            </li>
-          </ul>
+            </nav>
+          </div>
         )}
       </header>
       <Outlet />

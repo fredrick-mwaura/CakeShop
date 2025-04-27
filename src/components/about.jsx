@@ -1,53 +1,66 @@
 import React from 'react';
-import { Container, Typography, Box, Paper } from '@mui/material';
 
 const AboutUs = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
-      <Paper sx={{ p: 4, backgroundColor: '#fff' }}>
-        
-        <Typography variant="h2" align="center" gutterBottom sx={{fontWeight: 'bold' }}>
+    <div className="max-w-4xl mx-auto my-8 px-4">
+      <div className="bg-white p-8 rounded-lg shadow-sm">
+        {/* Main Title */}
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">
           About Us
-        </Typography>
+        </h1>
         
-        <Typography variant="h5" align="center" gutterBottom sx={{ color: '#8d6e63', fontStyle: 'italic' }}>
+        {/* Subtitle */}
+        <h2 className="text-xl md:text-2xl text-center mb-8 text-amber-700 italic">
           Welcome to Sweet Treats Cake Shop!
-        </Typography>
+        </h2>
 
-        <Typography variant="body1" sx={{ mt: 2, mb: 3, lineHeight: 1.8 }}>
+        {/* Introduction Paragraph */}
+        <p className="text-gray-700 mb-6 leading-relaxed">
           At Sweet Treats, we believe that every celebration deserves a delicious cake. Our journey began with a passion for baking and a love for creating beautiful desserts that bring joy to every occasion. From birthdays to weddings, we are dedicated to crafting exquisite cakes that not only look amazing but taste divine.
-        </Typography>
+        </p>
 
-        <Typography variant="h5" gutterBottom sx={{ color: '#8d6e63', fontWeight: 'bold' }}>
+        {/* Our Mission Section */}
+        <h3 className="text-xl font-bold mb-4 text-amber-700">
           Our Mission
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.8 }}>
+        </h3>
+        <p className="text-gray-700 mb-6 leading-relaxed">
           Our mission is to provide our customers with the finest quality cakes made from the freshest ingredients. We strive to create memorable experiences through our custom cake designs and exceptional customer service.
-        </Typography>
+        </p>
 
-        <Typography variant="h5" gutterBottom sx={{ color: '#8d6e63', fontWeight: 'bold' }}>
+        {/* Why Choose Us Section */}
+        <h3 className="text-xl font-bold mb-4 text-amber-700">
           Why Choose Us?
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.8 }}>
-          <ul>
-            <li><strong>Handcrafted Quality:</strong> Each cake is lovingly handcrafted with attention to detail.</li>
-            <li><strong>Custom Designs:</strong> We work with you to create a cake that reflects your unique style and theme.</li>
-            <li><strong>Fresh Ingredients:</strong> We use only the highest quality ingredients to ensure the best taste.</li>
-            <li><strong>Customer Satisfaction:</strong> Your happiness is our top priority!</li>
-          </ul>
-        </Typography>
+        </h3>
+        <ul className="text-gray-700 mb-6 space-y-2 leading-relaxed">
+          <li className="flex items-start">
+            <span className="mr-2">•</span>
+            <span><strong>Handcrafted Quality:</strong> Each cake is lovingly handcrafted with attention to detail.</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">•</span>
+            <span><strong>Custom Designs:</strong> We work with you to create a cake that reflects your unique style and theme.</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">•</span>
+            <span><strong>Fresh Ingredients:</strong> We use only the highest quality ingredients to ensure the best taste.</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">•</span>
+            <span><strong>Customer Satisfaction:</strong> Your happiness is our top priority!</span>
+          </li>
+        </ul>
 
-        <Box sx={{ mt: 4, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{fontWeight: 'bold' }}>
+        {/* Call to Action */}
+        <div className="mt-8 text-center">
+          <h4 className="text-lg font-bold mb-2">
             Join Us for a Sweet Experience!
-          </Typography>
-          <Typography variant="body2" sx={{ mt: 1}}>
-
-            Visit us or contact us for custom orders. We can’t wait to bake for you!
-          </Typography>
-        </Box>
-      </Paper>
-    </Container>
+          </h4>
+          <p className="text-gray-600">
+            Visit us or contact us for custom orders. We can't wait to bake for you!
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

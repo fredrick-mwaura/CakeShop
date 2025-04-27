@@ -1,144 +1,108 @@
-import { Children, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from "../GlobalCart.jsx";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Divider,
-  Stack,
-  IconButton,
-  Typography,
-} from '@mui/material';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-// import emptyCart from '../../images/empty_cart.svg'
-// import Images from '../image.jsx';
-import EmptyCart from '../utils/emptyCart'
-import '../../stylesheets/CartView.css'
+import EmptyCart from '../utils/emptyCart';
+import '../../stylesheets/CartView.css';
 import { AuthContext } from "../contexts/AuthContext";
 
 const CartView = () => {
-  const { userr } = useContext(AuthContext); 
+  const { userr } = useContext(AuthContext);
   const [user, setUser] = useState(null);
-  const { cart, setCart } = useContext(CartContext); // Assume setCart allows updating the cart directly
+  const { cart, setCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Calculate the total price
   const calculateTotalPrice = (cartItems) =>
     cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(cart));
 
-  // Update item quantity
   const handleQuantityChange = (id, change) => {
     const updatedCart = cart.map((item) => {
       if (item.id === id) {
         const newQuantity = item.quantity + change;
-        if (newQuantity < 1) return item; // Prevent quantity from going below 1
+        if (newQuantity < 1) return item;
         return { ...item, quantity: newQuantity };
       }
       return item;
-    }).filter(item => item.quantity > 0); // Remove items with quantity 0
+    }).filter(item => item.quantity > 0);
 
-    setCart(updatedCart); // Update the cart in the context
-    setTotalPrice(calculateTotalPrice(updatedCart)); // Update total price
+    setCart(updatedCart);
+    setTotalPrice(calculateTotalPrice(updatedCart));
   };
 
   const handleCheckout = () => {
-
-    if(userr){
-    if (cart.length !== 0) {
-      navigate('/client/order');
+    if (userr) {
+      if (cart.length !== 0) {
+        navigate('/client/order');
+      } else {
+        toast.warn('Nothing is in your cart please add something to order!');
+        setTimeout(() => {
+          navigate('/client/birthday');
+        }, 300);
+      }
     } else {
-      toast.warn('Nothing is in your cart please add something to order!');
-      setTimeout(() => {
-        navigate('/client/birthday');
-      }, 300);
+      toast.info('Login to place order');
+      navigate('/client/login');
     }
-  }
-  else{
-    toast.info('login to place order')
-    navigate('/client/login')
-  }
   };
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
+    <div className="max-w-4xl mx-auto my-10 px-4">
       {cart.length === 0 ? (
-
         <EmptyCart />
-        
       ) : (
-        <Box>
-          <Typography variant="h4" textAlign="center" gutterBottom>
-            Your Cart
-          </Typography>
+        <div>
+          <h2 className="text-3xl font-semibold text-center mb-6">Your Cart</h2>
 
-          <Stack container spacing={2} sx={{ mt: 2 }}>
+          <div className="space-y-4">
             {cart.map((item) => (
-              <Stack item xs={12} key={item.id}>
-                <Card sx={{ display: 'flex', boxShadow: 3 }}>
-                  <CardMedia
-                    component="img"
-                    sx={{ width: 120 }}
-                    image={item.src}
-                    alt={item.name}
-                  />
-                  <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                    <CardContent>
-                      <Typography variant="h6">{item.name}</Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Price: Ksh {item.price.toFixed(2)}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Total: Ksh {(item.price * item.quantity).toFixed(2)}
-                      </Typography>
-                    </CardContent>
-                    <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', mr: 2 }}>
-                      <IconButton
-                        color="primary"
-                        onClick={() => handleQuantityChange(item.id, -1)}
-                      >
-                        <RemoveIcon />
-                      </IconButton>
-                      <Typography variant="body1" sx={{ mx: 1 }}>
-                        {item.quantity}
-                      </Typography>
-                      <IconButton
-                        color="primary"
-                        onClick={() => handleQuantityChange(item.id, 1)}
-                      >
-                        <AddIcon />
-                      </IconButton>
-                    </Box>
-                  </Box>
-                </Card>
-              </Stack>
+              <div key={item.id} className="flex items-center bg-white shadow-md rounded-lg overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.name}
+                  className="w-32 h-32 object-cover"
+                />
+                <div className="flex-1 p-4">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <p className="text-gray-600">Price: Ksh {item.price.toFixed(2)}</p>
+                  <p className="text-gray-600">Total: Ksh {(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+                <div className="flex items-center space-x-2 mr-4">
+                  <button
+                    onClick={() => handleQuantityChange(item.id, -1)}
+                    className="w-8 h-8 rounded-full bg-blue-500 text-white text-lg hover:bg-blue-600"
+                  >
+                    -
+                  </button>
+                  <span className="text-lg">{item.quantity}</span>
+                  <button
+                    onClick={() => handleQuantityChange(item.id, 1)}
+                    className="w-8 h-8 rounded-full bg-blue-500 text-white text-lg hover:bg-blue-600"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
             ))}
-          </Stack>
+          </div>
 
-          <Divider sx={{ my: 4 }} />
+          <div className="border-t my-8"></div>
 
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Typography variant="h5">Cart Total: Ksh {totalPrice.toFixed(2)}</Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<ShoppingCartCheckoutIcon />}
+          <div className="flex justify-between items-center">
+            <p className="text-xl font-semibold">Cart Total: Ksh {totalPrice.toFixed(2)}</p>
+            <button
               onClick={handleCheckout}
+              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 flex items-center gap-2"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.2 6.4a1 1 0 001 1.2h12.6M7 13h0" />
+              </svg>
               Place Order
-            </Button>
-          </Stack>
-        </Box>
+            </button>
+          </div>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 

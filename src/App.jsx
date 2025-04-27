@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import { ThemeProvider, createTheme } from "@mui/material/styles";
+import React, { useState, useEffect, useCallback, Navigate, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 import CssBaseline from "@mui/material/CssBaseline";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,25 +8,16 @@ import "./App.css";
 // import Restricted from './components/contexts/restrict';
 
 // Client Imports
-import Home from "./components/home.jsx";
-import AllCakes from "./components/AllCakes";
-import BirthDay from "./components/BirthDay";
-// import AddToCart from "./components/AddToCart";
-import Contact from "./components/contact";
-// import Footer from "./components/footer";
-import CartView from "./components/productCard/cardview.jsx";
+const Home = lazy(() => import ("./components/home.jsx"));
 import NavBar from "./components/Header";
-import AboutUs from "./components/about.jsx";
-import ProductView from "./components/productCard/productview";
 import ErrorBoundary from "./components/Error/errorBoundary";
-import OrderPage from "./components/order/order";
 import PrivateRoute from "./components/routes/PrivateRoute";
 // import ProtectedRoute from "./components/routes/protectedRoutes";
 import SignUp from "./components/Auth/signUp";
 import Login from "./components/Auth/logIn";
 import Cookie from "./components/Cookie";
 import { CartProvider } from "./components/GlobalCart";
-import { AuthProvider } from "./components/contexts/AuthContext.jsx";
+import { AuthProvider } from "./components/contexts/AuthContext.tsx";
 import NewToken from "./components/Auth/new_confirmation.jsx";
 import ForgotPassword from "./components/Auth/forgotPassword.jsx";
 import Profile from "./components/Profile/profile";
@@ -35,11 +25,28 @@ import Blogs from "./components/Blogs.jsx";
 import Reviews from "./components/Reviews.jsx";
 
 // Admin Imports
-import Analytics from "./Admin/mainGrid";
-import Notfound from "./components/Error/notfound";
-import ClientList from "./Admin/oftenClients";
-import AdminLayout from "./Admin/AdminLayout";
-import Orders from "./Admin/utils/orders";
+const AllCakes = lazy(() => import("./components/AllCakes"));
+const BirthDay = lazy(() => import("./components/BirthDay"));
+const Contact = lazy(() => import("./components/contact"));
+const CartView = lazy(() => import("./components/productCard/cardview.jsx"));
+const AboutUs = lazy(() => import("./components/about.jsx"));
+
+const ProductView = lazy(() => import("./components/productCard/productview"));
+const OrderPage = lazy(() => import("./components/order/order"));
+const SignUp = lazy(() => import("./components/Auth/signUp"));
+const Login = lazy(() => import("./components/Auth/logIn"));
+const Cookie = lazy(() => import("./components/Cookie"));
+const NewToken = lazy(() => import("./components/Auth/new_confirmation.jsx"));
+const ForgotPassword = lazy(() => import("./components/Auth/forgotPassword.jsx"));
+const Profile = lazy(() => import("./components/Profile/profile"));
+const Blogs = lazy(() => import("./components/Blogs.jsx"));
+const Reviews = lazy(() => import("./components/Reviews.jsx"));
+
+const Analytics = lazy(() => import("./Admin/mainGrid"));
+const Notfound = lazy(() => import("./components/Error/notfound"));
+const ClientList = lazy(() => import("./Admin/oftenClients"));
+const AdminLayout = lazy(() => import("./Admin/AdminLayout"));
+const Orders = lazy(() => import("./Admin/utils/orders"));
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -71,39 +78,20 @@ function App() {
     [toastId]
   );
 
-  // Listen for system theme changes
-  // useEffect(() => {
-  //   const handleSystemThemeChange = (e) => {
-  //     setSystemMode(e.matches ? "dark" : "light");
-  //   };
-
-  //   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  //   mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-  //   return () => {
-  //     mediaQuery.removeEventListener("change", handleSystemThemeChange);
-  //   };
-  // }, []);
-
-  // const theme = createTheme({
-  //   palette: {
-  //     mode: mode === "system" ? systemMode : mode,
-  //   },
-  // });
-
   return (
     // <ThemeProvider >
     <div data-aos="fade-down">
+      <Suspense fallback={<div className="text-center min-h-screen">Loading...</div>}>
       <CssBaseline />
-      <ErrorBoundary fallback={<Home />}>
+      <ErrorBoundary>
         <AuthProvider>
           <CartProvider>
             <Router>
               {/* <AddToCart showToast={showToast}/> */}
               <Routes data-aos="fade-up">
                 {/* Client Routes */}
+                <Route path="/" element={<NavBar />}>
                 <Route path="/" element={<Navigate to="/client" />} />
-                <Route path="/client" element={<NavBar />}>
                   <Route index element={<Home />} />
                   <Route path="birthday" element={<BirthDay showToast={showToast} />} />
                   <Route path="all-cakes" element={<AllCakes showToast={showToast} />} />
@@ -115,11 +103,14 @@ function App() {
                   <Route path="cart" element={<CartView />} />
                   <Route path="about-us" element={<AboutUs />} />
                   <Route path="product-view/:productName" element={<ProductView />} />
-                  <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
-                  <Route path="profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-                  <Route path="confirm_email" element={<NewToken />} />
+                  <Route path="order" element={OrderPage}/>
+                  <Route path="profile" element={<Profile/>}/>
+                  {/* <Route path="order" element={<PrivateRoute><OrderPage /></PrivateRoute>} />
+                  <Route path="profile" element={<PrivateRoute><Profile /></PrivateRoute>} /> */}
+                 
+                 <Route path="confirm_email" element={<NewToken />} />
                   <Route path="blogs" element={<Blogs />} />
-                  <Route path="reviews" element={<Reviews/>}/>
+                  {/* <Route path="reviews" element={<Reviews/>}/> */}
                   <Route path="*" element={<Notfound />} />
                 </Route>
 
@@ -149,7 +140,8 @@ function App() {
         draggable
         pauseOnHover
       />
-   
+
+      </Suspense>   
     </div>
   );
 }
