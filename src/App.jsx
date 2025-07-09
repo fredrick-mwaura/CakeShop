@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, Navigate, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect, useCallback, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 import CssBaseline from "@mui/material/CssBaseline";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,21 +8,14 @@ import "./App.css";
 // import Restricted from './components/contexts/restrict';
 
 // Client Imports
-const Home = lazy(() => import ("./components/home.jsx"));
+
+const Home = lazy(() => import("./components/home.jsx"));
 import NavBar from "./components/Header";
 import ErrorBoundary from "./components/Error/errorBoundary";
 import PrivateRoute from "./components/routes/PrivateRoute";
 // import ProtectedRoute from "./components/routes/protectedRoutes";
-import SignUp from "./components/Auth/signUp";
-import Login from "./components/Auth/logIn";
-import Cookie from "./components/Cookie";
 import { CartProvider } from "./components/GlobalCart";
 import { AuthProvider } from "./components/contexts/AuthContext.tsx";
-import NewToken from "./components/Auth/new_confirmation.jsx";
-import ForgotPassword from "./components/Auth/forgotPassword.jsx";
-import Profile from "./components/Profile/profile";
-import Blogs from "./components/Blogs.jsx";
-import Reviews from "./components/Reviews.jsx";
 
 // Admin Imports
 const AllCakes = lazy(() => import("./components/AllCakes"));
@@ -30,7 +23,6 @@ const BirthDay = lazy(() => import("./components/BirthDay"));
 const Contact = lazy(() => import("./components/contact"));
 const CartView = lazy(() => import("./components/productCard/cardview.jsx"));
 const AboutUs = lazy(() => import("./components/about.jsx"));
-
 const ProductView = lazy(() => import("./components/productCard/productview"));
 const OrderPage = lazy(() => import("./components/order/order"));
 const SignUp = lazy(() => import("./components/Auth/signUp"));
@@ -41,7 +33,6 @@ const ForgotPassword = lazy(() => import("./components/Auth/forgotPassword.jsx")
 const Profile = lazy(() => import("./components/Profile/profile"));
 const Blogs = lazy(() => import("./components/Blogs.jsx"));
 const Reviews = lazy(() => import("./components/Reviews.jsx"));
-
 const Analytics = lazy(() => import("./Admin/mainGrid"));
 const Notfound = lazy(() => import("./components/Error/notfound"));
 const ClientList = lazy(() => import("./Admin/oftenClients"));
