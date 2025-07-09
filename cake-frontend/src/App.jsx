@@ -9,7 +9,7 @@ import "./App.css";
 
 // Client Imports
 
-const Home = lazy(() => import("./components/home.jsx"));
+import Home from "./components/home.jsx";
 import NavBar from "./components/Header";
 import ErrorBoundary from "./components/Error/errorBoundary";
 import PrivateRoute from "./components/routes/PrivateRoute";
@@ -80,17 +80,11 @@ function App() {
             <Router>
               {/* <AddToCart showToast={showToast}/> */}
               <Routes data-aos="fade-up">
-                {/* Home at root */}
+                {/* All client routes under root with NavBar */}
                 <Route path="/" element={<NavBar />}>
-                  <Route index element={<Home />} />
-                </Route>
-
-                {/* The following redirect is commented out to ensure Home is accessible at '/' */}
-                {/* <Route path="/" element={<Navigate to="/client" />} /> */}
-
-                {/* Client Routes under /client */}
-                <Route path="/client" element={<NavBar />}>
-                  <Route index element={<Home />} />
+                  {/* Pass showToast to Home so AddToCart works as expected */}
+                  {/* <Route index element={<Home showToast={showToast} />} /> nimetoa juu there is routing and rendering issue*/}
+                  <Route index element={<div>Test Render</div>} />
                   <Route path="birthday" element={<BirthDay showToast={showToast} />} />
                   <Route path="all-cakes" element={<AllCakes showToast={showToast} />} />
                   <Route path="cookie" element={<Cookie showToast={showToast} />} />
